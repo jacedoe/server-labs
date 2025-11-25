@@ -1,7 +1,7 @@
 site_name: Guía de Infraestructura Web y Monitoreo 🚀
-site_url: https://[TU-USUARIO].github.io/[TU-REPOSITORIO]/
-repo_url: https://github.com/[TU-USUARIO]/[TU-REPOSITORIO]
-repo_name: [TU-REPOSITORIO]
+site_url: https://jacedoe.github.io/server-labs/
+repo_url: https://github.com/jacedoe/server-labs
+repo_name: server-labs
 site_description: Documentación paso a paso para el despliegue de VM con XO-Lite, contenedores Podman (NGINX, MariaDB, WordPress) y servicios de monitoreo.
 
 # Configuración del Tema

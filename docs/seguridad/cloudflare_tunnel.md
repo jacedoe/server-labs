@@ -11,13 +11,9 @@ Instalaremos el cliente que gestionará el túnel en tu VM Debian Trixie.
 
 Descargar el Repositorio de Cloudflare:
 
-Bash
-
 curl -fsSL https://pkg.cloudflare.com/pubkey.gpg | sudo gpg --dearmor -o /usr/share/keyrings/cloudflare.gpg
 echo 'deb [signed-by=/usr/share/keyrings/cloudflare.gpg] https://pkg.cloudflare.com/cloudflared trixie main' | sudo tee /etc/apt/sources.list.d/cloudflared.list
 Actualizar e Instalar:
-
-Bash
 
 sudo apt update
 sudo apt install -y cloudflared
@@ -27,8 +23,6 @@ La configuración se realiza en dos partes: autenticación y definición del tú
 A. Autenticación
 Autentica tu cloudflared con tu cuenta de Cloudflare. Se te pedirá iniciar sesión en el navegador.
 
-Bash
-
 cloudflared tunnel login
 Se abrirá una URL en tu terminal. Pégala en tu navegador, inicia sesión en Cloudflare y selecciona tu dominio.
 
@@ -37,13 +31,13 @@ Asigna un nombre a tu túnel y crea la configuración local.
 
 Crear el Túnel:
 
-Bash
+ 
 
 cloudflared tunnel create wp-tunnel
 # (Esto te dará un ID de túnel único que necesitarás)
 Crear el Archivo de Configuración (config.yml): Crea el directorio de configuración para cloudflared y el archivo config.yml.
 
-Bash
+ 
 
 sudo mkdir /etc/cloudflared
 sudo nano /etc/cloudflared/config.yml
@@ -65,8 +59,6 @@ Aquí, http://localhost:80 se refiere al puerto del host donde está escuchando 
 C. Mapeo DNS y Túnel
 Conecta el túnel a tu dominio en el panel de Cloudflare.
 
-Bash
-
 cloudflared tunnel route dns wp-tunnel web.tudominio.com
 Esto crea automáticamente el registro DNS de tipo CNAME en tu zona de Cloudflare, apuntando a tu túnel.
 
@@ -75,18 +67,18 @@ Ejecuta el cliente cloudflared como un servicio persistente.
 
 Instalar el Servicio del Sistema (Systemd):
 
-Bash
+ 
 
 sudo cloudflared tunnel run --overwrite-service
 Iniciar y Habilitar el Servicio:
 
-Bash
+ 
 
 sudo systemctl start cloudflared
 sudo systemctl enable cloudflared
 Verificar el Estado:
 
-Bash
+ 
 
 sudo systemctl status cloudflared
 El estado debe mostrarse como active (running).

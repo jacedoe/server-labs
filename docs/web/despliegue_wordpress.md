@@ -4,7 +4,7 @@ Este documento detalla la creación y ejecución del stack de tres contenedores 
 4.1. Estructura de Directorios
 Trabajaremos dentro del directorio de nuestro usuario (admin en este ejemplo).
 
-Bash
+ 
 
 cd ~
 mkdir -p projects/wordpress-stack
@@ -16,7 +16,7 @@ Aunque NGINX actuará como proxy inverso, necesita un archivo de configuración 
 
 Crear el directorio de configuración:
 
-Bash
+ 
 
 mkdir -p nginx/conf.d
 Crear el archivo default.conf (nginx/conf.d/default.conf):
@@ -104,14 +104,14 @@ podman-compose up -d
 4.5. Verificación
 Verificar el estado de los contenedores:
 
-Bash
+ 
 
 podman ps
 Deberías ver los tres contenedores (mariadb_wp, wordpress_app, nginx_proxy) con el estado Up.
 
 Verificar el log de WordPress (opcional):
 
-Bash
+ 
 
 podman logs -f wordpress_app
 Esto confirmará que WordPress se ha conectado correctamente a la base de datos MariaDB.

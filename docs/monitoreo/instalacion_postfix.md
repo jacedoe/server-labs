@@ -4,7 +4,7 @@ Para que el script de escaneo de infraestructura pueda enviarte alertas por corr
 6.1. Instalación de Postfix
 Instalar el paquete:
 
-Bash
+ 
 
 sudo apt update
 sudo apt install -y postfix mailutils libsasl2-2 ca-certificates sasl2-bin
@@ -21,12 +21,12 @@ Si utilizaste el asistente, ya tienes la base. Ahora, editaremos el archivo de c
 
 Editar main.cf:
 
-Bash
+ 
 
 sudo vim /etc/postfix/main.cf
 Añadir las siguientes líneas al final del archivo:
 
-Bash
+ 
 
 # Configuraciones de TLS y SASL
 smtp_sasl_auth_enable = yes
@@ -47,7 +47,7 @@ Necesitas un archivo para almacenar el usuario y la contraseña (o la App Passwo
 
 Crear el archivo sasl_passwd:
 
-Bash
+ 
 
 sudo nano /etc/postfix/sasl_passwd
 Añadir las credenciales:
@@ -57,7 +57,7 @@ Añadir las credenciales:
 
 Generar el archivo de hash y protegerlo:
 
-Bash
+ 
 
 sudo postmap /etc/postfix/sasl_passwd
 sudo rm /etc/postfix/sasl_passwd # Elimina el archivo de texto plano
@@ -65,17 +65,17 @@ sudo chmod 600 /etc/postfix/sasl_passwd.db
 6.4. Reiniciar y Probar el Servicio
 Reiniciar Postfix:
 
-Bash
+ 
 
 sudo systemctl restart postfix
 Prueba de Envío: Envía un correo de prueba a tu bandeja de entrada:
 
-Bash
+ 
 
 echo "Prueba de Postfix - Todo OK" | mail -s "Alerta: Postfix Configurado" tu_correo_personal@ejemplo.com
 Verificar Logs: Si el correo no llega, revisa el log de Postfix:
 
-Bash
+ 
 
 tail /var/log/mail.log
 Busca mensajes como status=sent para confirmar la entrega exitosa.

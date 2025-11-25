@@ -47,7 +47,7 @@ Herramientas:
 
 arp-scan: Utilizado para escanear la subred y obtener las direcciones MAC e IP de los dispositivos conectados.
 
-Script Bash: Lógica para comparar los resultados del escaneo actual con un estado anterior (lista de dispositivos conocidos).
+Script  : Lógica para comparar los resultados del escaneo actual con un estado anterior (lista de dispositivos conocidos).
 
 postfix: Configurado como agente de transferencia de correo (MTA) simple para enviar notificaciones por correo electrónico.
 
@@ -130,7 +130,7 @@ monitoreo/script_arp_scan.md
 
 Instalación de la herramienta arp-scan.
 
-Desarrollo y explicación del script Bash:
+Desarrollo y explicación del script  :
 
 Obtención de la lista actual de dispositivos.
 
