@@ -1,52 +1,59 @@
 ---
-title: Server Labs
+title: Guía de Infraestructura Web y Monitoreo 🚀
 icon: material/home
 hide:
   - toc
-description: Documentación oficial del proyecto Server Labs — Infraestructura, contenedores, seguridad y automatización.
+description: Documentación paso a paso para el despliegue de VM con XO-Lite, contenedores Podman (NGINX, MariaDB, WordPress) y servicios de monitoreo.
 ---
 
-# 🧭 **Bienvenido a Server Labs**
+# 🏡 Bienvenido a Server Labs
 
-Una documentación técnica diseñada para construir, desplegar y mantener entornos modernos utilizando Linux, Podman, redes seguras y automatización.  
-Aquí encontrarás guías paso a paso, arquitectura, configuraciones reales y buenas prácticas.
+Esta documentación te guiará paso a paso en la creación de tu infraestructura web y monitoreo con **XO-Lite**, **Podman**, **WordPress**, **NGINX**, **MariaDB**, y servicios de monitoreo automatizado.  
 
----
-
-## 🚀 **Comienza aquí**
-
-<div class="grid cards" markdown>
--   :material-rocket-launch:{ .lg .middle } **Primeros pasos**
-    
-    Aprender la estructura del proyecto y preparar el entorno.
-    
-    [:material-arrow-right-bold: Abrir guía](infraestructura/introduccion.md)
-
--   :material-docker:{ .lg .middle } **Contenedores con Podman**
-
-    Deploy, redes, compose, reverse proxy y almacenamiento.
-
-    [:material-arrow-right-bold: Ver secciones](contenedores/index.md)
-
--   :material-shield-check:{ .lg .middle } **Seguridad**
-
-    Firewall, hardening, claves SSH, VPN y reglas avanzadas.
-
-    [:material-arrow-right-bold: Entrar](seguridad/index.md)
-</div>
+> Sigue la guía según tu objetivo: despliegue, seguridad, monitoreo o referencia de comandos útiles.
 
 ---
 
-## 🏗️ **Arquitectura del Proyecto**
+## ⚙️ 1. Preparación de la Infraestructura
 
-!!! abstract "Objetivo general"
-    Server Labs proporciona un entorno modular y reproducible basado en:
-    
-    - Linux (Rocky Linux y Ubuntu)
-    - Contenedores con Podman
-    - Reverse Proxy, monitoreo, VPN
-    - Seguridad por capas
-    - Automatización y documentación técnica
+- **Servidor XO-Lite:** [Instalación de XO-Lite](preparacion/instalacion_xo_lite.md)  
+- **Despliegue VM Debian Trixie:** [Guía paso a paso](preparacion/despliegue_vm_debian.md)
 
-Diagrama básico (puedo generarte uno completo si quieres):
+---
 
+## 🐳 2. Plataforma Web con Podman
+
+- **Preparación de Podman:** [Configuración del entorno](web/preparacion_podman.md)  
+- **Despliegue de WordPress Stack:** [Deploy completo](web/despliegue_wordpress.md)
+
+---
+
+## 🔒 3. Acceso y Seguridad
+
+- **Cloudflare Tunnel:** [Configuración segura](seguridad/cloudflare_tunnel.md)
+
+---
+
+## 🛡️ 4. Monitoreo Automatizado
+
+- **Configuración de Postfix:** [Instalación y setup](monitoreo/instalacion_postfix.md)  
+- **Script de Escaneo (arp-scan):** [Configuración y uso](monitoreo/script_arp_scan.md)  
+- **Programación con Cron:** [Tareas automatizadas](monitoreo/programacion_cron.md)
+
+---
+
+## 📚 Apéndices
+
+- **Comandos Útiles:** [Referencia rápida](apendices/comandos_utiles.md)  
+- **Guía de Estilo (Oficial):** [Normas de documentación](guia-de-estilo.md)
+
+---
+
+## 🔗 Recursos Adicionales
+
+- [Repositorio GitHub del proyecto](https://github.com/jacedoe/server-labs)  
+- [Abrir un Issue o Pull Request](https://github.com/jacedoe/server-labs/issues)
+
+---
+
+> 💡 Tip: Usa la barra de búsqueda de la página para encontrar cualquier comando, archivo o sección.

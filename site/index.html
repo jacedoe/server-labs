@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Documentación paso a paso para el despliegue de VM con XO-Lite, contenedores Podman (NGINX, MariaDB, WordPress) y servicios de monitoreo.">
+        <meta name="description" content="Documentación oficial del proyecto Server Labs — Infraestructura, contenedores, seguridad y automatización.">
       
       
       
@@ -22,7 +22,7 @@
     
     
       
-        <title>Guía de Infraestructura Web y Monitoreo 🚀</title>
+        <title>Server Labs - Guía de Infraestructura Web y Monitoreo 🚀</title>
       
     
     
@@ -71,6 +71,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#bienvenido-a-server-labs" class="md-skip">
+          Saltar a contenido
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -101,7 +106,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              🏡 Inicio
+              Server Labs
             
           </span>
         </div>
@@ -189,6 +194,8 @@
       <a href="." class="md-tabs__link">
         
   
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
     
   
   🏡 Inicio
@@ -288,6 +295,23 @@
   
 
       
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="guia-de-estilo.md" class="md-tabs__link">
+        
+  
+    
+  
+  📘 Guía de Estilo (Oficial)
+
+      </a>
+    </li>
+  
+
+      
     </ul>
   </div>
 </nav>
@@ -298,6 +322,8 @@
         <div class="md-main__inner md-grid">
           
             
+              
+                
               
               <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
                 <div class="md-sidebar__scrollwrap">
@@ -346,9 +372,27 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+  
+  <span class="md-ellipsis">
+    🏡 Inicio
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="." class="md-nav__link md-nav__link--active">
         
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
   
   <span class="md-ellipsis">
     🏡 Inicio
@@ -357,6 +401,43 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#comienza-aqui" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚀 Comienza aquí
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arquitectura-del-proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      🏗️ Arquitectura del Proyecto
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -690,7 +771,7 @@
         
   
   <span class="md-ellipsis">
-    4.2. Script de Escaneo (arp-scan)
+    4.2. Script de escaneo con arp-scan
     
   </span>
   
@@ -800,6 +881,27 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="guia-de-estilo.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    📘 Guía de Estilo (Oficial)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -808,7 +910,9 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" hidden>
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -817,6 +921,34 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#comienza-aqui" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚀 Comienza aquí
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arquitectura-del-proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      🏗️ Arquitectura del Proyecto
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -829,46 +961,72 @@
               <article class="md-content__inner md-typeset">
                 
                   
+  
+
+
+
+  
+    <a href="https://github.com/jacedoe/server-labs/edit/master/docs/index.md" title="Editar esta página" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="bienvenido-a-server-labs">🧭 <strong>Bienvenido a Server Labs</strong><a class="headerlink" href="#bienvenido-a-server-labs" title="Permanent link">&para;</a></h1>
+<p>Una documentación técnica diseñada para construir, desplegar y mantener entornos modernos utilizando Linux, Podman, redes seguras y automatización.<br />
+Aquí encontrarás guías paso a paso, arquitectura, configuraciones reales y buenas prácticas.</p>
+<hr />
+<h2 id="comienza-aqui">🚀 <strong>Comienza aquí</strong><a class="headerlink" href="#comienza-aqui" title="Permanent link">&para;</a></h2>
+<div class="grid cards" markdown>
+-   :material-rocket-launch:{ .lg .middle } **Primeros pasos**
+
+    Aprender la estructura del proyecto y preparar el entorno.
+
+    [:material-arrow-right-bold: Abrir guía](infraestructura/introduccion.md)
+
+-   :material-docker:{ .lg .middle } **Contenedores con Podman**
+
+    Deploy, redes, compose, reverse proxy y almacenamiento.
+
+    [:material-arrow-right-bold: Ver secciones](contenedores/index.md)
+
+-   :material-shield-check:{ .lg .middle } **Seguridad**
+
+    Firewall, hardening, claves SSH, VPN y reglas avanzadas.
+
+    [:material-arrow-right-bold: Entrar](seguridad/index.md)
+</div>
+
+<hr />
+<h2 id="arquitectura-del-proyecto">🏗️ <strong>Arquitectura del Proyecto</strong><a class="headerlink" href="#arquitectura-del-proyecto" title="Permanent link">&para;</a></h2>
+<div class="admonition abstract">
+<p class="admonition-title">Objetivo general</p>
+<p>Server Labs proporciona un entorno modular y reproducible basado en:</p>
+<ul>
+<li>Linux (Rocky Linux y Ubuntu)</li>
+<li>Contenedores con Podman</li>
+<li>Reverse Proxy, monitoreo, VPN</li>
+<li>Seguridad por capas</li>
+<li>Automatización y documentación técnica</li>
+</ul>
+</div>
+<p>Diagrama básico (puedo generarte uno completo si quieres):</p>
+
+
+
+
+
 
 
   
   
 
 
-  <h1>🏡 Inicio</h1>
-
-<p>🏡 Guía de Infraestructura Web Segura y Monitoreada</p>
-<p>¡Bienvenido(a) a la documentación de nuestro proyecto de infraestructura!Esta guía exhaustiva detalla la configuración y el despliegue de un entorno robusto y seguro para alojar una aplicación web basada en WordPress. El proyecto se extiende desde la capa de virtualización hasta los servicios de seguridad y monitoreo automatizado.</p>
-<p>🎯 Objetivos del Proyecto. 
-El objetivo principal de esta documentación es proporcionar un manual paso a paso y reproducible para cualquier persona que desee replicar una pila de hosting web moderno, ligero y seguro, centrado en el uso de Podman y túneles de acceso seguro.</p>
-<p>Plataforma Base: Instalar y configurar una máquina virtual (VM) en XO-Lite/XCP-ng con Debian Trixie.</p>
-<p>Despliegue Web: Orquestar una aplicación de WordPress utilizando contenedores Podman y podman-compose (NGINX, MariaDB).</p>
-<p>Seguridad y Acceso: Utilizar Cloudflare Tunnel para exponer el sitio a Internet de forma segura sin abrir puertos del firewall local.</p>
-<p>Monitoreo: Implementar un servicio automatizado con arp-scan y cron para escanear periódicamente la infraestructura y notificar cambios de red a través de Postfix.</p>
-<p>🗺️ Estructura de la Guía. Utiliza el menú de navegación lateral o superior para seguir el flujo de trabajo lógico del despliegue:</p>
-<ol>
-<li>
-<p>Preparación de la Infraestructura: Instalación del hypervisor y la VM.</p>
-</li>
-<li>
-<p>Plataforma Web con Podman: Instalación de Podman y el despliegue del stack de WordPress.</p>
-</li>
-<li>
-<p>Acceso y Seguridad: Configuración de Cloudflare Tunnel para el acceso público.</p>
-</li>
-<li>
-<p>Monitoreo Automatizado: Implementación de la alerta de red y la programación con Cron.Apéndices: Comandos útiles, términos y referencias.</p>
-</li>
-</ol>
 
 
-
-
-
-
-
-
-
+  
 
 
 
@@ -896,6 +1054,21 @@ El objetivo principal de esta documentación es proporcionar un manual paso a pa
   
 </div>
       
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/jacedoe" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
     </div>
   </div>
 </footer>
@@ -906,7 +1079,7 @@ El objetivo principal de esta documentación es proporcionar un manual paso a pa
     </div>
     
     
-    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.tabs", "navigation.sections", "search.suggest", "search.highlight", "toc.follow"], "search": "assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.tabs", "navigation.sections", "search.suggest", "search.highlight", "toc.follow", "content.code.copy", "content.action.edit", "content.code.annotate"], "search": "assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
     
     
       <script src="assets/javascripts/bundle.f1b6f286.min.js"></script>
