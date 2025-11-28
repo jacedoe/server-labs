@@ -2,54 +2,79 @@ site_name: Guía de Infraestructura Web y Monitoreo 🚀
 site_url: https://jacedoe.github.io/server-labs/
 repo_url: https://github.com/jacedoe/server-labs
 repo_name: server-labs
-site_description: Documentación paso a paso para el despliegue de VM con XO-Lite, contenedores Podman (NGINX, MariaDB, WordPress) y servicios de monitoreo.
+site_description: >
+  Documentación paso a paso para el despliegue de VM con XO-Lite,
+  contenedores Podman (NGINX, MariaDB, WordPress) y servicios de monitoreo.
 
-# Configuración del Tema
+# ============================
+#        TEMA Y ESTILO
+# ============================
 theme:
   name: material
   language: es
   palette:
-    # Puedes elegir un esquema de color que te guste
-    primary: deep purple 
+    primary: deep purple
     accent: indigo
   features:
-    - navigation.tabs # Permite la navegación principal en pestañas
-    - navigation.sections # Agrupa la navegación en secciones contraíbles
+    - navigation.tabs
+    - navigation.sections
     - search.suggest
     - search.highlight
     - toc.follow
+    - content.code.copy     # añade botón “copiar”
+    - content.action.edit   # botón editar en GitHub
+    - content.code.annotate # anotaciones en código
 
-# Extensiones de Markdown (para mejorar la funcionalidad)
+# ============================
+#    EXTENSIONES MARKDOWN
+# ============================
 markdown_extensions:
+  - admonition
+  - attr_list
+  - toc:
+      permalink: true
   - pymdownx.highlight:
       anchor_linenums: true
       line_spans: __span
       pygments_lang_class: true
   - pymdownx.inlinehilite
   - pymdownx.snippets
-  - admonition # Para crear bloques de notas y advertencias (ej: !!! note)
-  - toc:
-      permalink: true
-  - attr_list
+  - pymdownx.superfences
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
 
-# ESTRUCTURA DE NAVEGACIÓN (nav)
-# Esta sección mapea la estructura de directorios a los títulos del menú.
+# ============================
+#       ARCHIVOS EXTRA
+# ============================
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/jacedoe
+
+# ============================
+#      NAVEGACIÓN DEL SITIO
+# ============================
 nav:
   - 🏡 Inicio: index.md
+
   - ⚙️ 1. Preparación de la Infraestructura:
-    - 1.1. Servidor XO-Lite: preparacion/instalacion_xo_lite.md
-    - 1.2. Despliegue VM Debian Trixie: preparacion/despliegue_vm_debian.md
+      - 1.1. Servidor XO-Lite: preparacion/instalacion_xo_lite.md
+      - 1.2. Despliegue VM Debian Trixie: preparacion/despliegue_vm_debian.md
+
   - 🐳 2. Plataforma Web con Podman:
-    - 2.1. Preparación de Podman: web/preparacion_podman.md
-    - 2.2. Despliegue de WordPress Stack: web/despliegue_wordpress.md
+      - 2.1. Preparación de Podman: web/preparacion_podman.md
+      - 2.2. Despliegue de WordPress Stack: web/despliegue_wordpress.md
+
   - 🔒 3. Acceso y Seguridad:
-    - 3.1. Cloudflare Tunnel: seguridad/cloudflare_tunnel.md
+      - 3.1. Cloudflare Tunnel: seguridad/cloudflare_tunnel.md
+
   - 🛡️ 4. Monitoreo Automatizado:
-    - 4.1. Configuración de Postfix: monitoreo/instalacion_postfix.md
-    - 4.2. Script de Escaneo (arp-scan): monitoreo/script_arp_scan.md
-    - 4.3. Programación con Cron: monitoreo/programacion_cron.md
+      - 4.1. Configuración de Postfix: monitoreo/instalacion_postfix.md
+      - 4.2. Script de escaneo con arp-scan: monitoreo/script_arp_scan.md
+      - 4.3. Programación con Cron: monitoreo/programacion_cron.md
+
   - 📚 Apéndices:
-    - Comandos Útiles: apendices/comandos_utiles.md
+      - Comandos Útiles: apendices/comandos_utiles.md
+
+  - 📘 Guía de Estilo (Oficial): guia-de-estilo.md

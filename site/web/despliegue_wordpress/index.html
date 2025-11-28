@@ -860,22 +860,24 @@ Aunque NGINX actuará como proxy inverso, necesita un archivo de configuración 
 <p>mkdir -p nginx/conf.d
 Crear el archivo default.conf (nginx/conf.d/default.conf):</p>
 <p>Nginx</p>
-<p>server {
-    listen 80;</p>
-<div class="language-text highlight"><pre><span></span><code>location / {
-    # El nombre del servidor debe coincidir con el nombre del servicio de WordPress en podman-compose
-    proxy_pass http://wordpress:80; 
-    proxy_set_header Host $host;
-    proxy_set_header X-Real-IP $remote_addr;
-    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+<pre><code>server {
+    listen 80;
+
+    location / {
+        # El nombre del servidor debe coincidir con el nombre del servicio de WordPress en podman-compose
+        proxy_pass http://wordpress:80; 
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
 }
-</code></pre></div>
-<p>}
-Este archivo le dice a NGINX que escuche en el puerto 80 y pase todas las peticiones al servicio interno http://wordpress:80.</p>
+</code></pre>
+<p>Este archivo le dice a NGINX que escuche en el puerto 80 y pase todas las peticiones al servicio interno http://wordpress:80.</p>
 <p>4.3. El Archivo podman-compose.yml
 Este archivo define los tres servicios, sus dependencias, variables de entorno y los volúmenes persistentes. Crea el archivo podman-compose.yml en la raíz de ~/projects/wordpress-stack/.</p>
-<p>version: '3.8'</p>
-<p>services:
+<pre><code>version: '3.8'
+
+services:
   # 1. Base de Datos (MariaDB)
   db:
     image: mariadb:10.11
@@ -883,15 +885,16 @@ Este archivo define los tres servicios, sus dependencias, variables de entorno y
     restart: always
     environment:
       # *** MODIFICAR ESTOS VALORES ***
-      MARIADB_ROOT_PASSWORD: <tu_password_root_db> 
+      MARIADB_ROOT_PASSWORD: &lt;tu_password_root_db&gt; 
       MARIADB_DATABASE: wordpress
       MARIADB_USER: wpuser
-      MARIADB_PASSWORD: <tu_password_usuario_db>
+      MARIADB_PASSWORD: &lt;tu_password_usuario_db&gt;
     volumes:
       - ~/data/mariadb:/var/lib/mysql # Persistencia de datos
     networks:
-      - web_net</p>
-<p># 2. Aplicación (WordPress)
+      - web_net
+
+  # 2. Aplicación (WordPress)
   wordpress:
     image: wordpress:latest
     container_name: wordpress_app
@@ -903,12 +906,13 @@ Este archivo define los tres servicios, sus dependencias, variables de entorno y
       WORDPRESS_DB_HOST: db:3306 # El nombre del servicio DB
       WORDPRESS_DB_NAME: wordpress
       WORDPRESS_DB_USER: wpuser
-      WORDPRESS_DB_PASSWORD: <tu_password_usuario_db>
+      WORDPRESS_DB_PASSWORD: &lt;tu_password_usuario_db&gt;
     volumes:
       - ~/data/wordpress:/var/www/html # Persistencia de código y uploads
     networks:
-      - web_net</p>
-<p># 3. Proxy (NGINX)
+      - web_net
+
+  # 3. Proxy (NGINX)
   nginx:
     image: nginx:stable
     container_name: nginx_proxy
@@ -916,16 +920,18 @@ Este archivo define los tres servicios, sus dependencias, variables de entorno y
     depends_on:
       - wordpress
     ports:
-      - "80:80"  # Puerto HTTP
-      - "443:443" # Puerto HTTPS
+      - &quot;80:80&quot;  # Puerto HTTP
+      - &quot;443:443&quot; # Puerto HTTPS
     volumes:
       - ./nginx/conf.d:/etc/nginx/conf.d:ro # Monta el archivo de configuración creado
     networks:
-      - web_net</p>
-<p>networks:
+      - web_net
+
+networks:
   # Referencia a la red creada en el paso anterior (preparacion_podman.md)
   web_net:
-    external: true</p>
+    external: true
+</code></pre>
 <p>4.4. Despliegue de los Servicios
 Una vez que el archivo podman-compose.yml esté listo, despliega el stack en modo detached (segundo plano):</p>
 <p>podman-compose up -d</p>
@@ -937,6 +943,29 @@ Deberías ver los tres contenedores (mariadb_wp, wordpress_app, nginx_proxy) con
 <p>podman logs -f wordpress_app
 Esto confirmará que WordPress se ha conectado correctamente a la base de datos MariaDB.</p>
 <p>Acceso Local: Si la red local lo permite, intenta acceder al sitio desde tu máquina local usando la IP de la VM: http://192.168.1.XX. Deberías ver la pantalla de configuración inicial de WordPress.</p>
+<p>Script para solucinonar poibles problemas con los permisos de Wordpress a la hora de subir archivos como imágenes al servidor</p>
+<pre><code>#!/bin/bash
+# Script para preparar directorios y permisos rootless de WordPress en Podman
+
+set -e
+
+# Variables
+VOLUME_PATH=&quot;$HOME/.local/share/containers/storage/volumes/www_wp_data/_data&quot;
+WP_CONTENT=&quot;$VOLUME_PATH/wp-content&quot;
+
+echo &quot;✅ Creando directorios necesarios...&quot;
+podman unshare mkdir -p &quot;$WP_CONTENT/uploads&quot;
+podman unshare mkdir -p &quot;$WP_CONTENT/plugins&quot;
+podman unshare mkdir -p &quot;$WP_CONTENT/cache&quot;
+
+echo &quot;✅ Ajustando propietario a www-data (UID 33:GID 33)...&quot;
+podman unshare chown -R 33:33 &quot;$WP_CONTENT&quot;
+
+echo &quot;✅ Ajustando permisos a 775...&quot;
+podman unshare chmod -R 775 &quot;$WP_CONTENT&quot;
+
+echo &quot;✅ Todo listo. WordPress puede escribir en wp-content.&quot;
+</code></pre>
 
 
 

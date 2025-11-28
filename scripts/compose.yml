@@ -4,7 +4,7 @@ services:
   db:
     image: docker.io/library/mariadb:10.6
     environment:
-      MYSQL_ROOT_PASSWORD: 'f2m_+Vm3cV*j'
+      MYSQL_ROOT_PASSWORD: 'your_password'
       MYSQL_DATABASE: wordpress
       MYSQL_USER: wpuser
       MYSQL_PASSWORD: '!'
@@ -18,7 +18,7 @@ services:
     environment:
       WORDPRESS_DB_HOST: db
       WORDPRESS_DB_USER: wpuser
-      WORDPRESS_DB_PASSWORD: '!Age#Uck?Imple3Oon'
+      WORDPRESS_DB_PASSWORD: 'your_password'
       WORDPRESS_DB_NAME: wordpress
     volumes:
       - wp_data:/var/www/html

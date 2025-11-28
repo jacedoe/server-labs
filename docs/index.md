@@ -1,24 +1,52 @@
-🏡 Guía de Infraestructura Web Segura y Monitoreada
+---
+title: Server Labs
+icon: material/home
+hide:
+  - toc
+description: Documentación oficial del proyecto Server Labs — Infraestructura, contenedores, seguridad y automatización.
+---
 
-¡Bienvenido(a) a la documentación de nuestro proyecto de infraestructura!Esta guía exhaustiva detalla la configuración y el despliegue de un entorno robusto y seguro para alojar una aplicación web basada en WordPress. El proyecto se extiende desde la capa de virtualización hasta los servicios de seguridad y monitoreo automatizado.
+# 🧭 **Bienvenido a Server Labs**
 
-🎯 Objetivos del Proyecto. 
-El objetivo principal de esta documentación es proporcionar un manual paso a paso y reproducible para cualquier persona que desee replicar una pila de hosting web moderno, ligero y seguro, centrado en el uso de Podman y túneles de acceso seguro.
+Una documentación técnica diseñada para construir, desplegar y mantener entornos modernos utilizando Linux, Podman, redes seguras y automatización.  
+Aquí encontrarás guías paso a paso, arquitectura, configuraciones reales y buenas prácticas.
 
-Plataforma Base: Instalar y configurar una máquina virtual (VM) en XO-Lite/XCP-ng con Debian Trixie.
+---
 
-Despliegue Web: Orquestar una aplicación de WordPress utilizando contenedores Podman y podman-compose (NGINX, MariaDB).
+## 🚀 **Comienza aquí**
 
-Seguridad y Acceso: Utilizar Cloudflare Tunnel para exponer el sitio a Internet de forma segura sin abrir puertos del firewall local.
+<div class="grid cards" markdown>
+-   :material-rocket-launch:{ .lg .middle } **Primeros pasos**
+    
+    Aprender la estructura del proyecto y preparar el entorno.
+    
+    [:material-arrow-right-bold: Abrir guía](infraestructura/introduccion.md)
 
-Monitoreo: Implementar un servicio automatizado con arp-scan y cron para escanear periódicamente la infraestructura y notificar cambios de red a través de Postfix.
+-   :material-docker:{ .lg .middle } **Contenedores con Podman**
 
-🗺️ Estructura de la Guía. Utiliza el menú de navegación lateral o superior para seguir el flujo de trabajo lógico del despliegue:
+    Deploy, redes, compose, reverse proxy y almacenamiento.
 
-1. Preparación de la Infraestructura: Instalación del hypervisor y la VM.
+    [:material-arrow-right-bold: Ver secciones](contenedores/index.md)
 
-2. Plataforma Web con Podman: Instalación de Podman y el despliegue del stack de WordPress.
+-   :material-shield-check:{ .lg .middle } **Seguridad**
 
-3. Acceso y Seguridad: Configuración de Cloudflare Tunnel para el acceso público.
+    Firewall, hardening, claves SSH, VPN y reglas avanzadas.
 
-4. Monitoreo Automatizado: Implementación de la alerta de red y la programación con Cron.Apéndices: Comandos útiles, términos y referencias.
+    [:material-arrow-right-bold: Entrar](seguridad/index.md)
+</div>
+
+---
+
+## 🏗️ **Arquitectura del Proyecto**
+
+!!! abstract "Objetivo general"
+    Server Labs proporciona un entorno modular y reproducible basado en:
+    
+    - Linux (Rocky Linux y Ubuntu)
+    - Contenedores con Podman
+    - Reverse Proxy, monitoreo, VPN
+    - Seguridad por capas
+    - Automatización y documentación técnica
+
+Diagrama básico (puedo generarte uno completo si quieres):
+
