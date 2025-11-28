@@ -4,8 +4,6 @@ Este documento detalla la creación y ejecución del stack de tres contenedores 
 4.1. Estructura de Directorios
 Trabajaremos dentro del directorio de nuestro usuario (admin en este ejemplo).
 
- 
-
 cd ~
 mkdir -p projects/wordpress-stack
 cd projects/wordpress-stack
@@ -16,13 +14,11 @@ Aunque NGINX actuará como proxy inverso, necesita un archivo de configuración 
 
 Crear el directorio de configuración:
 
- 
-
 mkdir -p nginx/conf.d
 Crear el archivo default.conf (nginx/conf.d/default.conf):
 
 Nginx
-
+```
 server {
     listen 80;
 
@@ -34,11 +30,12 @@ server {
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     }
 }
+```
 Este archivo le dice a NGINX que escuche en el puerto 80 y pase todas las peticiones al servicio interno http://wordpress:80.
 
 4.3. El Archivo podman-compose.yml
 Este archivo define los tres servicios, sus dependencias, variables de entorno y los volúmenes persistentes. Crea el archivo podman-compose.yml en la raíz de ~/projects/wordpress-stack/.
-
+```
 version: '3.8'
 
 services:
@@ -95,6 +92,7 @@ networks:
   # Referencia a la red creada en el paso anterior (preparacion_podman.md)
   web_net:
     external: true
+```
 
 4.4. Despliegue de los Servicios
 Una vez que el archivo podman-compose.yml esté listo, despliega el stack en modo detached (segundo plano):
@@ -104,16 +102,38 @@ podman-compose up -d
 4.5. Verificación
 Verificar el estado de los contenedores:
 
- 
-
 podman ps
 Deberías ver los tres contenedores (mariadb_wp, wordpress_app, nginx_proxy) con el estado Up.
 
 Verificar el log de WordPress (opcional):
 
- 
-
 podman logs -f wordpress_app
 Esto confirmará que WordPress se ha conectado correctamente a la base de datos MariaDB.
 
 Acceso Local: Si la red local lo permite, intenta acceder al sitio desde tu máquina local usando la IP de la VM: http://192.168.1.XX. Deberías ver la pantalla de configuración inicial de WordPress.
+
+Script para solucinonar poibles problemas con los permisos de Wordpress a la hora de subir archivos como imágenes al servidor
+
+```
+#!/bin/bash
+# Script para preparar directorios y permisos rootless de WordPress en Podman
+
+set -e
+
+# Variables
+VOLUME_PATH="$HOME/.local/share/containers/storage/volumes/www_wp_data/_data"
+WP_CONTENT="$VOLUME_PATH/wp-content"
+
+echo "✅ Creando directorios necesarios..."
+podman unshare mkdir -p "$WP_CONTENT/uploads"
+podman unshare mkdir -p "$WP_CONTENT/plugins"
+podman unshare mkdir -p "$WP_CONTENT/cache"
+
+echo "✅ Ajustando propietario a www-data (UID 33:GID 33)..."
+podman unshare chown -R 33:33 "$WP_CONTENT"
+
+echo "✅ Ajustando permisos a 775..."
+podman unshare chmod -R 775 "$WP_CONTENT"
+
+echo "✅ Todo listo. WordPress puede escribir en wp-content."
+``` 

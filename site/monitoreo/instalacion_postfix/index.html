@@ -857,7 +857,6 @@ Para que el script de escaneo de infraestructura pueda enviarte alertas por corr
 </ol>
 <p>6.1. Instalación de Postfix
 Instalar el paquete:</p>
-<p> </p>
 <p>sudo apt update
 sudo apt install -y postfix mailutils libsasl2-2 ca-certificates sasl2-bin
 Asistente de Configuración: Durante la instalación, Postfix te preguntará sobre el tipo de configuración. Selecciona las siguientes opciones:</p>
@@ -867,10 +866,8 @@ Asistente de Configuración: Durante la instalación, Postfix te preguntará sob
 <p>6.2. Configuración como Smarthost (Ejemplo con Gmail/TLS)
 Si utilizaste el asistente, ya tienes la base. Ahora, editaremos el archivo de configuración principal para detallar la autenticación.</p>
 <p>Editar main.cf:</p>
-<p> </p>
 <p>sudo vim /etc/postfix/main.cf
 Añadir las siguientes líneas al final del archivo:</p>
-<p> </p>
 <h1 id="configuraciones-de-tls-y-sasl">Configuraciones de TLS y SASL<a class="headerlink" href="#configuraciones-de-tls-y-sasl" title="Permanent link">&para;</a></h1>
 <p>smtp_sasl_auth_enable = yes
 smtp_sasl_security_options = noanonymous
@@ -885,25 +882,20 @@ smtp_tls_CAfile = /etc/ssl/certs/ca-certificates.crt</p>
 <p>6.3. Configuración de Credenciales de Autenticación
 Necesitas un archivo para almacenar el usuario y la contraseña (o la App Password en servicios como Gmail) del servidor SMTP externo.</p>
 <p>Crear el archivo sasl_passwd:</p>
-<p> </p>
 <p>sudo nano /etc/postfix/sasl_passwd
 Añadir las credenciales:</p>
 <p>[smtp.gmail.com]:587  tu_correo@gmail.com:tu_contraseña_o_app_password
 ¡ADVERTENCIA DE SEGURIDAD! Utiliza siempre una Contraseña de Aplicación específica para esto, y no tu contraseña principal, especialmente si usas 2FA.</p>
 <p>Generar el archivo de hash y protegerlo:</p>
-<p> </p>
 <p>sudo postmap /etc/postfix/sasl_passwd
 sudo rm /etc/postfix/sasl_passwd # Elimina el archivo de texto plano
 sudo chmod 600 /etc/postfix/sasl_passwd.db
 6.4. Reiniciar y Probar el Servicio
 Reiniciar Postfix:</p>
-<p> </p>
 <p>sudo systemctl restart postfix
 Prueba de Envío: Envía un correo de prueba a tu bandeja de entrada:</p>
-<p> </p>
 <p>echo "Prueba de Postfix - Todo OK" | mail -s "Alerta: Postfix Configurado" tu_correo_personal@ejemplo.com
 Verificar Logs: Si el correo no llega, revisa el log de Postfix:</p>
-<p> </p>
 <p>tail /var/log/mail.log
 Busca mensajes como status=sent para confirmar la entrega exitosa.</p>
 <p>Con Postfix configurado, tenemos la capacidad de notificar sobre eventos de la infraestructura.</p>

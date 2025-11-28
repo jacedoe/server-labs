@@ -46,48 +46,16 @@ Selección de Software: Desmarca cualquier entorno de escritorio (GNOME, KDE, et
 2.3. Configuración Post-Instalación
 Una vez que la instalación haya finalizado y hayas reiniciado la VM, accede a ella a través de SSH usando el usuario estándar que creaste:
 
- 
-
 ssh admin@192.168.1.XX
 A. Actualización del Sistema
 Es fundamental mantener el sistema actualizado:
 
- 
-
 sudo apt update
 sudo apt upgrade -y
+
 B. Instalación de Herramientas Esenciales
 Instala herramientas que facilitarán la gestión y la configuración posterior:
 
- 
-
 sudo apt install -y vim curl wget net-tools
-C. Configuración de Firewall (UFW)
-Instala y configura el firewall básico para permitir solo el tráfico necesario:
 
-Instalar UFW:
 
- 
-
-sudo apt install -y ufw
-Permitir tráfico esencial:
-
- 
-
-# Permitir SSH para la administración remota
-sudo ufw allow ssh
-# Permitir HTTP y HTTPS (para los contenedores web que escuchan en el host)
-sudo ufw allow http
-sudo ufw allow https
-Habilitar UFW:
-
- 
-
-sudo ufw enable
-# Confirma con 'y'
-Verificar el estado:
-
- 
-
-sudo ufw status
-Asegúrate de que el status diga active y que las reglas SSH, HTTP y HTTPS estén listadas como ALLOW.

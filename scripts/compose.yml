@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  db:
+    image: docker.io/library/mariadb:10.6
+    environment:
+      MYSQL_ROOT_PASSWORD: 'f2m_+Vm3cV*j'
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wpuser
+      MYSQL_PASSWORD: '!'
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - webnet
+
+  wordpress:
+    image: docker.io/library/wordpress:php8.1-fpm
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: wpuser
+      WORDPRESS_DB_PASSWORD: '!Age#Uck?Imple3Oon'
+      WORDPRESS_DB_NAME: wordpress
+    volumes:
+      - wp_data:/var/www/html
+    networks:
+      - webnet
+    depends_on:
+      - db
+
+  nginx:
+    image: docker.io/library/nginx:alpine
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - wp_data:/var/www/html
+    networks:
+      - webnet
+    depends_on:
+      - wordpress
+
+volumes:
+  db_data:
+    name: www_db_data
+    driver: local
+  wp_data:
+    name: www_wp_data
+    driver: local
+
+networks:
+  webnet:
+    driver: bridge
+

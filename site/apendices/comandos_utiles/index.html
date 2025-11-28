@@ -71,6 +71,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#caracteristicas-clave-de-podman" class="md-skip">
+          Saltar a contenido
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -781,6 +786,20 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Comandos Útiles
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -792,6 +811,52 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#arquitectura-sin-demonio-daemonlessseguridad-a-diferencia-de-docker-podman-no-utiliza-un-demonio-central-daemon-que-se-ejecuta-como-root-en-su-lugar-utiliza-un-modelo-de-arquitectura-fork-exec-donde-el-comando-podman-inicia-directamente-el-proceso-del-contenedor-que-a-su-vez-utiliza-runc-el-tiempo-de-ejecucion-ociventaja-esto-elimina-el-riesgo-de-que-un-atacante-que-comprometa-el-daemon-obtenga-privilegios-de-root-en-el-sistema-operativo-host" class="md-nav__link">
+    <span class="md-ellipsis">
+      Arquitectura Sin Demonio (Daemonless)Seguridad: A diferencia de Docker, Podman no utiliza un demonio central (daemon) que se ejecuta como root. En su lugar, utiliza un modelo de arquitectura fork-exec, donde el comando podman inicia directamente el proceso del contenedor, que a su vez utiliza runc (el tiempo de ejecución OCI).Ventaja: Esto elimina el riesgo de que un atacante que comprometa el daemon obtenga privilegios de root en el sistema operativo host.
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contenedores-sin-privilegios-rootless-containersseguridad-la-caracteristica-mas-destacada-de-podman-es-su-capacidad-para-ejecutar-contenedores-como-un-usuario-normal-sin-requerir-privilegios-de-rootfuncionamiento-esto-se-logra-utilizando-los-namespaces-de-usuario-de-linux-mapeando-el-uid-de-root-dentro-del-contenedor-a-un-uid-sin-privilegios-en-el-sistema-host-si-el-contenedor-es-comprometido-el-atacante-solo-tiene-los-bajos-privilegios-del-usuario-host" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contenedores Sin Privilegios (Rootless Containers)Seguridad: La característica más destacada de Podman es su capacidad para ejecutar contenedores como un usuario normal, sin requerir privilegios de root.Funcionamiento: Esto se logra utilizando los namespaces de usuario de Linux, mapeando el UID de root dentro del contenedor a un UID sin privilegios en el sistema host. Si el contenedor es comprometido, el atacante solo tiene los bajos privilegios del usuario host.
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#soporte-para-podsorquestacion-local-podman-es-compatible-con-la-idea-de-pods-una-caracteristica-central-de-kubernetes-un-pod-es-un-grupo-de-uno-o-mas-contenedores-que-comparten-recursos-como-el-namespace-de-red-el-almacenamiento-local-y-el-ipckubernetes-podman-puede-generar-archivos-yaml-de-kubernetes-directamente-a-partir-de-contenedores-o-pods-en-ejecucion-simplificando-la-transicion-del-desarrollo-local-a-la-orquestacion-en-clusteres4-compatibilidad-con-dockerinterfaz-cli-podman-utiliza-comandos-identicos-o-casi-identicos-a-los-de-docker-por-ejemplo-podman-run-podman-ps-podman-images-lo-que-permite-a-los-usuarios-con-experiencia-en-docker-cambiar-a-podman-rapidamenteimagenes-podman-puede-usar-y-construir-imagenes-de-contenedor-compatibles-con-docker-y-oci" class="md-nav__link">
+    <span class="md-ellipsis">
+      Soporte para PodsOrquestación Local: Podman es compatible con la idea de Pods, una característica central de Kubernetes. Un Pod es un grupo de uno o más contenedores que comparten recursos como el namespace de red, el almacenamiento local y el IPC.Kubernetes: Podman puede generar archivos YAML de Kubernetes directamente a partir de contenedores o Pods en ejecución, simplificando la transición del desarrollo local a la orquestación en clústeres.4. Compatibilidad con DockerInterfaz CLI: Podman utiliza comandos idénticos o casi idénticos a los de Docker (por ejemplo, podman run, podman ps, podman images), lo que permite a los usuarios con experiencia en Docker cambiar a Podman rápidamente.Imágenes: Podman puede usar y construir imágenes de contenedor compatibles con Docker y OCI.
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -822,6 +887,43 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#arquitectura-sin-demonio-daemonlessseguridad-a-diferencia-de-docker-podman-no-utiliza-un-demonio-central-daemon-que-se-ejecuta-como-root-en-su-lugar-utiliza-un-modelo-de-arquitectura-fork-exec-donde-el-comando-podman-inicia-directamente-el-proceso-del-contenedor-que-a-su-vez-utiliza-runc-el-tiempo-de-ejecucion-ociventaja-esto-elimina-el-riesgo-de-que-un-atacante-que-comprometa-el-daemon-obtenga-privilegios-de-root-en-el-sistema-operativo-host" class="md-nav__link">
+    <span class="md-ellipsis">
+      Arquitectura Sin Demonio (Daemonless)Seguridad: A diferencia de Docker, Podman no utiliza un demonio central (daemon) que se ejecuta como root. En su lugar, utiliza un modelo de arquitectura fork-exec, donde el comando podman inicia directamente el proceso del contenedor, que a su vez utiliza runc (el tiempo de ejecución OCI).Ventaja: Esto elimina el riesgo de que un atacante que comprometa el daemon obtenga privilegios de root en el sistema operativo host.
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contenedores-sin-privilegios-rootless-containersseguridad-la-caracteristica-mas-destacada-de-podman-es-su-capacidad-para-ejecutar-contenedores-como-un-usuario-normal-sin-requerir-privilegios-de-rootfuncionamiento-esto-se-logra-utilizando-los-namespaces-de-usuario-de-linux-mapeando-el-uid-de-root-dentro-del-contenedor-a-un-uid-sin-privilegios-en-el-sistema-host-si-el-contenedor-es-comprometido-el-atacante-solo-tiene-los-bajos-privilegios-del-usuario-host" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contenedores Sin Privilegios (Rootless Containers)Seguridad: La característica más destacada de Podman es su capacidad para ejecutar contenedores como un usuario normal, sin requerir privilegios de root.Funcionamiento: Esto se logra utilizando los namespaces de usuario de Linux, mapeando el UID de root dentro del contenedor a un UID sin privilegios en el sistema host. Si el contenedor es comprometido, el atacante solo tiene los bajos privilegios del usuario host.
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#soporte-para-podsorquestacion-local-podman-es-compatible-con-la-idea-de-pods-una-caracteristica-central-de-kubernetes-un-pod-es-un-grupo-de-uno-o-mas-contenedores-que-comparten-recursos-como-el-namespace-de-red-el-almacenamiento-local-y-el-ipckubernetes-podman-puede-generar-archivos-yaml-de-kubernetes-directamente-a-partir-de-contenedores-o-pods-en-ejecucion-simplificando-la-transicion-del-desarrollo-local-a-la-orquestacion-en-clusteres4-compatibilidad-con-dockerinterfaz-cli-podman-utiliza-comandos-identicos-o-casi-identicos-a-los-de-docker-por-ejemplo-podman-run-podman-ps-podman-images-lo-que-permite-a-los-usuarios-con-experiencia-en-docker-cambiar-a-podman-rapidamenteimagenes-podman-puede-usar-y-construir-imagenes-de-contenedor-compatibles-con-docker-y-oci" class="md-nav__link">
+    <span class="md-ellipsis">
+      Soporte para PodsOrquestación Local: Podman es compatible con la idea de Pods, una característica central de Kubernetes. Un Pod es un grupo de uno o más contenedores que comparten recursos como el namespace de red, el almacenamiento local y el IPC.Kubernetes: Podman puede generar archivos YAML de Kubernetes directamente a partir de contenedores o Pods en ejecución, simplificando la transición del desarrollo local a la orquestación en clústeres.4. Compatibilidad con DockerInterfaz CLI: Podman utiliza comandos idénticos o casi idénticos a los de Docker (por ejemplo, podman run, podman ps, podman images), lo que permite a los usuarios con experiencia en Docker cambiar a Podman rápidamente.Imágenes: Podman puede usar y construir imágenes de contenedor compatibles con Docker y OCI.
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -840,8 +942,6 @@
   
 
 
-  <h1>Comandos Útiles</h1>
-
 <p>🛠️ Comandos Útiles y de Referencia
 Este apéndice contiene una lista de comandos esenciales para la gestión diaria y la solución de problemas (troubleshooting) de los componentes clave de la infraestructura.</p>
 <ol>
@@ -849,76 +949,93 @@ Este apéndice contiene una lista de comandos esenciales para la gestión diaria
 Estos comandos se ejecutan en la consola de root del servidor XCP-ng (el host de virtualización, no dentro de la VM Debian).</li>
 </ol>
 <p>Verificar el estado del host:</p>
-<p> </p>
-<p>xe host-list
-Verificar el estado de las VMs:</p>
-<p> </p>
-<p>xe vm-list
-Encender una VM (usando el nombre):</p>
-<p> </p>
-<p>xe vm-start vm=[Nombre de la VM]
-Apagar una VM (apagado limpio):</p>
-<p> </p>
-<p>xe vm-shutdown vm=[Nombre de la VM]
-Verificar el estado de los Storage Repositories (SR):</p>
-<p> </p>
-<p>xe sr-list
-2. 🐳 Gestión de Contenedores (Podman)
-Estos comandos se ejecutan dentro de la VM Debian como tu usuario estándar (admin), en modo rootless.</p>
+<pre><code>xe host-list
+</code></pre>
+<p>Verificar el estado de las VMs:</p>
+<pre><code>xe vm-list
+</code></pre>
+<p>Encender una VM (usando el nombre):</p>
+<pre><code>xe vm-start vm=[Nombre de la VM]
+</code></pre>
+<p>Apagar una VM (apagado limpio):</p>
+<pre><code>xe vm-shutdown vm=[Nombre de la VM]
+</code></pre>
+<p>Verificar el estado de los Storage Repositories (SR):</p>
+<pre><code>xe sr-list
+</code></pre>
+<ol>
+<li>🐳 Gestión de Contenedores (Podman)
+Estos comandos se ejecutan dentro de la VM Debian como tu usuario estándar (admin), en modo rootless.</li>
+</ol>
 <p>Verificar todos los contenedores (activos e inactivos):</p>
-<p> </p>
-<p>podman ps -a
-Verificar todas las imágenes descargadas:</p>
-<p> </p>
-<p>podman images
-Verificar las redes de Podman:</p>
-<p> </p>
-<p>podman network ls
-Detener el stack completo (en el directorio del podman-compose.yml):</p>
-<p> </p>
-<p>podman-compose down
-Reiniciar el stack:</p>
-<p> </p>
-<p>podman-compose restart
-Ver logs de un contenedor (ej: WordPress):</p>
-<p> </p>
-<p>podman logs -f wordpress_app
-Ejecutar un comando dentro de un contenedor (ej:   en NGINX):</p>
-<p> </p>
-<p>podman exec -it nginx_proxy /bin/ 
-Limpiar contenedores y volúmenes no utilizados (¡Usar con precaución!):</p>
-<p> </p>
-<p>podman system prune
-3. 🛡️ Monitoreo y Correo (Postfix/Cron/Cloudflared)
-Estos comandos se ejecutan en la VM Debian para verificar el estado de los servicios de monitoreo y acceso seguro.</p>
+<pre><code>podman ps -a
+</code></pre>
+<p>Verificar todas las imágenes descargadas:</p>
+<pre><code>podman images
+</code></pre>
+<p>Verificar las redes de Podman:</p>
+<pre><code>podman network ls
+</code></pre>
+<p>Detener el stack completo (en el directorio del podman-compose.yml):</p>
+<pre><code>podman-compose down
+</code></pre>
+<p>Reiniciar el stack:</p>
+<pre><code>podman-compose restart
+</code></pre>
+<p>Ver logs de un contenedor (ej: WordPress):</p>
+<pre><code>podman logs -f wordpress_app
+</code></pre>
+<p>Ejecutar un comando dentro de un contenedor (ej:   en NGINX):</p>
+<pre><code>podman exec -it nginx_proxy /bin/ 
+</code></pre>
+<p>Limpiar contenedores y volúmenes no utilizados (¡Usar con precaución!):</p>
+<pre><code>podman system prune
+</code></pre>
+<ol>
+<li>🛡️ Monitoreo y Correo (Postfix/Cron/Cloudflared)
+Estos comandos se ejecutan en la VM Debian para verificar el estado de los servicios de monitoreo y acceso seguro.</li>
+</ol>
 <p>A. Cloudflare Tunnel
 Verificar el estado del servicio cloudflared:</p>
-<p> </p>
-<p>sudo systemctl status cloudflared
-Ver logs del servicio cloudflared:</p>
-<p> </p>
-<p>sudo journalctl -u cloudflared -f
-B. Postfix (Correo)
+<pre><code>sudo systemctl status cloudflared
+</code></pre>
+<p>Ver logs del servicio cloudflared:</p>
+<pre><code>sudo journalctl -u cloudflared -f
+</code></pre>
+<p>B. Postfix (Correo)
 Verificar la cola de correo (mensajes pendientes de envío):</p>
-<p> </p>
-<p>mailq
-Vaciar la cola de correo (forzar el envío):</p>
-<p> </p>
-<p>sudo postfix flush
-Verificar los logs de correo:</p>
-<p> </p>
-<p>tail -f /var/log/mail.log
-C. Cron y Escaneo
+<pre><code>mailq
+</code></pre>
+<p>Vaciar la cola de correo (forzar el envío):</p>
+<pre><code>sudo postfix flush
+</code></pre>
+<p>Verificar los logs de correo:</p>
+<pre><code>tail -f /var/log/mail.log
+</code></pre>
+<p>C. Cron y Escaneo
 Verificar la crontab de root:</p>
-<p> </p>
-<p>sudo crontab -l
-Ejecutar el script de escaneo manualmente (para pruebas):</p>
-<p> </p>
-<p>sudo /home/admin/scripts/infra-scan/infra_scan.sh
-Verificar el log de escaneo:</p>
-<p> </p>
-<p>tail -f /home/admin/scripts/infra-scan/scan_log.txt
-🐳 Características Clave de PodmanPodman destaca por su enfoque en la seguridad y la arquitectura descentralizada.1. Arquitectura Sin Demonio (Daemonless)Seguridad: A diferencia de Docker, Podman no utiliza un demonio central (daemon) que se ejecuta como root. En su lugar, utiliza un modelo de arquitectura fork-exec, donde el comando podman inicia directamente el proceso del contenedor, que a su vez utiliza runc (el tiempo de ejecución OCI).Ventaja: Esto elimina el riesgo de que un atacante que comprometa el daemon obtenga privilegios de root en el sistema operativo host.2. Contenedores Sin Privilegios (Rootless Containers)Seguridad: La característica más destacada de Podman es su capacidad para ejecutar contenedores como un usuario normal, sin requerir privilegios de root.Funcionamiento: Esto se logra utilizando los namespaces de usuario de Linux, mapeando el UID de root dentro del contenedor a un UID sin privilegios en el sistema host. Si el contenedor es comprometido, el atacante solo tiene los bajos privilegios del usuario host.3. Soporte para PodsOrquestación Local: Podman es compatible con la idea de Pods, una característica central de Kubernetes. Un Pod es un grupo de uno o más contenedores que comparten recursos como el namespace de red, el almacenamiento local y el IPC.Kubernetes: Podman puede generar archivos YAML de Kubernetes directamente a partir de contenedores o Pods en ejecución, simplificando la transición del desarrollo local a la orquestación en clústeres.4. Compatibilidad con DockerInterfaz CLI: Podman utiliza comandos idénticos o casi idénticos a los de Docker (por ejemplo, podman run, podman ps, podman images), lo que permite a los usuarios con experiencia en Docker cambiar a Podman rápidamente.Imágenes: Podman puede usar y construir imágenes de contenedor compatibles con Docker y OCI.🛠️ Comandos Básicos de PodmanLa CLI de Podman es intuitiva y compatible con los flujos de trabajo de Docker:TareaComando de PodmanDescripciónEjecutarpodman run [OPCIONES] [IMAGEN]Crea y ejecuta un nuevo contenedor a partir de una imagen.Listarpodman ps -aMuestra todos los contenedores (activos e inactivos).Imágenespodman imagesMuestra las imágenes descargadas localmente.Detenerpodman stop [NOMBRE/ID]Detiene un contenedor en ejecución.Eliminarpodman rm [NOMBRE/ID]Elimina un contenedor detenido.Logspodman logs -f [NOMBRE/ID]Muestra la salida de registro de un contenedor en tiempo real.Crear Podpodman pod create [OPCIONES]Crea un nuevo Pod para agrupar contenedores.🆚 Podman vs. Docker (Resumen)CaracterísticaPodmanDockerArquitecturaSin demonio (Daemonless). Comunicación directa con runc.Requiere un demonio (Docker Daemon) que se ejecuta como root.SeguridadAlto, centrado en el modo Rootless (sin privilegios de root).Requiere root para la gestión del daemon.OrquestaciónSoporte nativo para Pods (Kubernetes).Se basa en Docker Compose o herramientas externas (Kubernetes/Swarm).IntegraciónIntegración nativa con Systemd de Linux para el ciclo de vida de los contenedores.Requiere envoltorios o configuraciones externas para Systemd.Podman es especialmente valorado en entornos de alta seguridad y para desarrolladores que desean una forma sencilla y segura de replicar entornos de Kubernetes de forma local.</p>
+<pre><code>sudo crontab -l
+</code></pre>
+<p>Ejecutar el script de escaneo manualmente (para pruebas):</p>
+<pre><code>sudo /home/admin/scripts/infra-scan/infra_scan.sh
+</code></pre>
+<p>Verificar el log de escaneo:</p>
+<pre><code>tail -f /home/admin/scripts/infra-scan/scan_log.txt
+</code></pre>
+<h1 id="caracteristicas-clave-de-podman">🐳 Características Clave de Podman<a class="headerlink" href="#caracteristicas-clave-de-podman" title="Permanent link">&para;</a></h1>
+<p>Podman destaca por su enfoque en la seguridad y la arquitectura descentralizada.</p>
+<ol>
+<li>
+<h2 id="arquitectura-sin-demonio-daemonlessseguridad-a-diferencia-de-docker-podman-no-utiliza-un-demonio-central-daemon-que-se-ejecuta-como-root-en-su-lugar-utiliza-un-modelo-de-arquitectura-fork-exec-donde-el-comando-podman-inicia-directamente-el-proceso-del-contenedor-que-a-su-vez-utiliza-runc-el-tiempo-de-ejecucion-ociventaja-esto-elimina-el-riesgo-de-que-un-atacante-que-comprometa-el-daemon-obtenga-privilegios-de-root-en-el-sistema-operativo-host">Arquitectura Sin Demonio (Daemonless)Seguridad: A diferencia de Docker, Podman no utiliza un demonio central (daemon) que se ejecuta como root. En su lugar, utiliza un modelo de arquitectura fork-exec, donde el comando podman inicia directamente el proceso del contenedor, que a su vez utiliza runc (el tiempo de ejecución OCI).Ventaja: Esto elimina el riesgo de que un atacante que comprometa el daemon obtenga privilegios de root en el sistema operativo host.<a class="headerlink" href="#arquitectura-sin-demonio-daemonlessseguridad-a-diferencia-de-docker-podman-no-utiliza-un-demonio-central-daemon-que-se-ejecuta-como-root-en-su-lugar-utiliza-un-modelo-de-arquitectura-fork-exec-donde-el-comando-podman-inicia-directamente-el-proceso-del-contenedor-que-a-su-vez-utiliza-runc-el-tiempo-de-ejecucion-ociventaja-esto-elimina-el-riesgo-de-que-un-atacante-que-comprometa-el-daemon-obtenga-privilegios-de-root-en-el-sistema-operativo-host" title="Permanent link">&para;</a></h2>
+</li>
+<li>
+<h2 id="contenedores-sin-privilegios-rootless-containersseguridad-la-caracteristica-mas-destacada-de-podman-es-su-capacidad-para-ejecutar-contenedores-como-un-usuario-normal-sin-requerir-privilegios-de-rootfuncionamiento-esto-se-logra-utilizando-los-namespaces-de-usuario-de-linux-mapeando-el-uid-de-root-dentro-del-contenedor-a-un-uid-sin-privilegios-en-el-sistema-host-si-el-contenedor-es-comprometido-el-atacante-solo-tiene-los-bajos-privilegios-del-usuario-host">Contenedores Sin Privilegios (Rootless Containers)Seguridad: La característica más destacada de Podman es su capacidad para ejecutar contenedores como un usuario normal, sin requerir privilegios de root.Funcionamiento: Esto se logra utilizando los namespaces de usuario de Linux, mapeando el UID de root dentro del contenedor a un UID sin privilegios en el sistema host. Si el contenedor es comprometido, el atacante solo tiene los bajos privilegios del usuario host.<a class="headerlink" href="#contenedores-sin-privilegios-rootless-containersseguridad-la-caracteristica-mas-destacada-de-podman-es-su-capacidad-para-ejecutar-contenedores-como-un-usuario-normal-sin-requerir-privilegios-de-rootfuncionamiento-esto-se-logra-utilizando-los-namespaces-de-usuario-de-linux-mapeando-el-uid-de-root-dentro-del-contenedor-a-un-uid-sin-privilegios-en-el-sistema-host-si-el-contenedor-es-comprometido-el-atacante-solo-tiene-los-bajos-privilegios-del-usuario-host" title="Permanent link">&para;</a></h2>
+</li>
+<li>
+<h2 id="soporte-para-podsorquestacion-local-podman-es-compatible-con-la-idea-de-pods-una-caracteristica-central-de-kubernetes-un-pod-es-un-grupo-de-uno-o-mas-contenedores-que-comparten-recursos-como-el-namespace-de-red-el-almacenamiento-local-y-el-ipckubernetes-podman-puede-generar-archivos-yaml-de-kubernetes-directamente-a-partir-de-contenedores-o-pods-en-ejecucion-simplificando-la-transicion-del-desarrollo-local-a-la-orquestacion-en-clusteres4-compatibilidad-con-dockerinterfaz-cli-podman-utiliza-comandos-identicos-o-casi-identicos-a-los-de-docker-por-ejemplo-podman-run-podman-ps-podman-images-lo-que-permite-a-los-usuarios-con-experiencia-en-docker-cambiar-a-podman-rapidamenteimagenes-podman-puede-usar-y-construir-imagenes-de-contenedor-compatibles-con-docker-y-oci">Soporte para PodsOrquestación Local: Podman es compatible con la idea de Pods, una característica central de Kubernetes. Un Pod es un grupo de uno o más contenedores que comparten recursos como el namespace de red, el almacenamiento local y el IPC.Kubernetes: Podman puede generar archivos YAML de Kubernetes directamente a partir de contenedores o Pods en ejecución, simplificando la transición del desarrollo local a la orquestación en clústeres.4. Compatibilidad con DockerInterfaz CLI: Podman utiliza comandos idénticos o casi idénticos a los de Docker (por ejemplo, podman run, podman ps, podman images), lo que permite a los usuarios con experiencia en Docker cambiar a Podman rápidamente.Imágenes: Podman puede usar y construir imágenes de contenedor compatibles con Docker y OCI.<a class="headerlink" href="#soporte-para-podsorquestacion-local-podman-es-compatible-con-la-idea-de-pods-una-caracteristica-central-de-kubernetes-un-pod-es-un-grupo-de-uno-o-mas-contenedores-que-comparten-recursos-como-el-namespace-de-red-el-almacenamiento-local-y-el-ipckubernetes-podman-puede-generar-archivos-yaml-de-kubernetes-directamente-a-partir-de-contenedores-o-pods-en-ejecucion-simplificando-la-transicion-del-desarrollo-local-a-la-orquestacion-en-clusteres4-compatibilidad-con-dockerinterfaz-cli-podman-utiliza-comandos-identicos-o-casi-identicos-a-los-de-docker-por-ejemplo-podman-run-podman-ps-podman-images-lo-que-permite-a-los-usuarios-con-experiencia-en-docker-cambiar-a-podman-rapidamenteimagenes-podman-puede-usar-y-construir-imagenes-de-contenedor-compatibles-con-docker-y-oci" title="Permanent link">&para;</a></h2>
+</li>
+</ol>
+<p>🛠️ Comandos Básicos de PodmanLa CLI de Podman es intuitiva y compatible con los flujos de trabajo de Docker:TareaComando de PodmanDescripciónEjecutarpodman run [OPCIONES] [IMAGEN]Crea y ejecuta un nuevo contenedor a partir de una imagen.Listarpodman ps -aMuestra todos los contenedores (activos e inactivos).Imágenespodman imagesMuestra las imágenes descargadas localmente.Detenerpodman stop [NOMBRE/ID]Detiene un contenedor en ejecución.Eliminarpodman rm [NOMBRE/ID]Elimina un contenedor detenido.Logspodman logs -f [NOMBRE/ID]Muestra la salida de registro de un contenedor en tiempo real.Crear Podpodman pod create [OPCIONES]Crea un nuevo Pod para agrupar contenedores.🆚 Podman vs. Docker (Resumen)CaracterísticaPodmanDockerArquitecturaSin demonio (Daemonless). Comunicación directa con runc.Requiere un demonio (Docker Daemon) que se ejecuta como root.SeguridadAlto, centrado en el modo Rootless (sin privilegios de root).Requiere root para la gestión del daemon.OrquestaciónSoporte nativo para Pods (Kubernetes).Se basa en Docker Compose o herramientas externas (Kubernetes/Swarm).IntegraciónIntegración nativa con Systemd de Linux para el ciclo de vida de los contenedores.Requiere envoltorios o configuraciones externas para Systemd.Podman es especialmente valorado en entornos de alta seguridad y para desarrolladores que desean una forma sencilla y segura de replicar entornos de Kubernetes de forma local.</p>
 
 
 

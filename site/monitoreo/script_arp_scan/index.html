@@ -857,28 +857,28 @@ Este script   se encarga de monitorear la red local para detectar nuevos disposi
 </ol>
 <p>7.1. Instalación de arp-scan
 La herramienta arp-scan es necesaria para escanear la red a nivel ARP y obtener información precisa sobre los hosts conectados, incluso si tienen un firewall activo a nivel IP.</p>
-<p> </p>
 <h1 id="instalar-arp-scan">Instalar arp-scan<a class="headerlink" href="#instalar-arp-scan" title="Permanent link">&para;</a></h1>
-<p>sudo apt install -y arp-scan</p>
+<pre><code>sudo apt install -y arp-scan
+</code></pre>
 <h1 id="nota-arp-scan-debe-ejecutarse-con-privilegios-de-root-sudo">Nota: arp-scan debe ejecutarse con privilegios de root (sudo)<a class="headerlink" href="#nota-arp-scan-debe-ejecutarse-con-privilegios-de-root-sudo" title="Permanent link">&para;</a></h1>
 <p>7.2. Creación de la Lista de Referencia
 Necesitas un archivo que contenga la lista de dispositivos "conocidos" en tu infraestructura. Este archivo será la base de la comparación.</p>
-<p>Realizar el primer escaneo de la red (como root): Ajusta el rango de red (192.168.1.0/24) a tu subred.</p>
-<p> </p>
-<p>sudo arp-scan --localnet | grep -E '([0-9A-Fa-f]{2}:){5}[0-9A-Fa-f]{2}' | awk '{print $2, $1}' | sort &gt; ~/scripts/infra-scan/known_devices.txt
+<p>Realizar el primer escaneo de la red (como root): Ajusta el rango de red (192.168.1.0/24) a tu subred.
+<code>sudo arp-scan --localnet | grep -E '([0-9A-Fa-f]{2}:){5}[0-9A-Fa-f]{2}' | awk '{print $2, $1}' | sort &gt; ~/scripts/infra-scan/known_devices.txt</code>
 Este comando escanea, filtra solo las líneas con direcciones MAC, invierte el orden (MAC primero) y guarda la lista ordenada.</p>
 <p>Verificar el contenido:</p>
-<p> </p>
-<p>cat ~/scripts/infra-scan/known_devices.txt
-El formato de cada línea debe ser: [Dirección IP] [Dirección MAC].</p>
+<pre><code>cat ~/scripts/infra-scan/known_devices.txt
+</code></pre>
+<p>El formato de cada línea debe ser: [Dirección IP] [Dirección MAC].</p>
 <p>7.3. Desarrollo del Script   (infra_scan.sh)
 Crea el directorio y el archivo del script.</p>
-<p> </p>
-<p>mkdir -p ~/scripts/infra-scan
-nano ~/scripts/infra-scan/infra_scan.sh
-Añade el siguiente código al archivo. Asegúrate de reemplazar las variables con tus valores (dirección IP, correo).</p>
-<p> </p>
-<h1 id="bin ">!/bin/ <a class="headerlink" href="#bin " title="Permanent link">&para;</a></h1>
+<p>``
+mkdir -p ~/scripts/infra-scan
+nano ~/scripts/infra-scan/infra_scan.sh</p>
+<pre><code>Añade el siguiente código al archivo. Asegúrate de reemplazar las variables con tus valores (dirección IP, correo).
+
+</code></pre>
+<h1 id="binbash">!/bin/bash<a class="headerlink" href="#binbash" title="Permanent link">&para;</a></h1>
 <h1 id="-variables-de-configuracion-">--- VARIABLES DE CONFIGURACIÓN ---<a class="headerlink" href="#-variables-de-configuracion-" title="Permanent link">&para;</a></h1>
 <p>SUBNET="192.168.1.0/24"
 KNOWN_DEVICES_FILE="/home/admin/scripts/infra-scan/known_devices.txt"
@@ -922,15 +922,16 @@ fi</p>
 <h1 id="si-no-quieres-que-se-actualice-automaticamente-comenta-la-linea-de-abajo-y-actualiza-manualmente-el-archivo-known_devicestxt">Si no quieres que se actualice automáticamente, comenta la línea de abajo y actualiza manualmente el archivo known_devices.txt<a class="headerlink" href="#si-no-quieres-que-se-actualice-automaticamente-comenta-la-linea-de-abajo-y-actualiza-manualmente-el-archivo-known_devicestxt" title="Permanent link">&para;</a></h1>
 <h1 id="cat-temp_current_scan-known_devices_file">cat $TEMP_CURRENT_SCAN &gt; $KNOWN_DEVICES_FILE<a class="headerlink" href="#cat-temp_current_scan-known_devices_file" title="Permanent link">&para;</a></h1>
 <h1 id="5-limpieza">5. Limpieza<a class="headerlink" href="#5-limpieza" title="Permanent link">&para;</a></h1>
-<p>rm $TEMP_CURRENT_SCAN
-7.4. Permisos de Ejecución
-Otorga permisos de ejecución al script:</p>
-<p> </p>
-<p>chmod +x ~/scripts/infra-scan/infra_scan.sh
-7.5. Prueba Manual
-Antes de automatizar con cron, prueba el script manualmente como root (ya que arp-scan lo requiere):</p>
-<p> </p>
+<p>rm $TEMP_CURRENT_SCAN</p>
+<pre><code>7.4. Permisos de Ejecución
+Otorga permisos de ejecución al script:
+</code></pre>
+<p>chmod +x ~/scripts/infra-scan/infra_scan.sh</p>
+<pre><code>7.5. Prueba Manual
+Antes de automatizar con cron, prueba el script manualmente como root (ya que arp-scan lo requiere):
+</code></pre>
 <p>sudo ~/scripts/infra-scan/infra_scan.sh
+```
 Si tienes cambios en la red o borraste known_devices.txt, deberías recibir un correo.</p>
 
 

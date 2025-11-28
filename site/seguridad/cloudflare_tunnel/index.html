@@ -861,28 +861,23 @@ Dominio Activo: Tu dominio debe estar utilizando los servidores de nombres de Cl
 <p>5.2. Instalación del Cliente cloudflared
 Instalaremos el cliente que gestionará el túnel en tu VM Debian Trixie.</p>
 <p>Descargar el Repositorio de Cloudflare:</p>
-<p> </p>
 <p>curl -fsSL https://pkg.cloudflare.com/pubkey.gpg | sudo gpg --dearmor -o /usr/share/keyrings/cloudflare.gpg
 echo 'deb [signed-by=/usr/share/keyrings/cloudflare.gpg] https://pkg.cloudflare.com/cloudflared trixie main' | sudo tee /etc/apt/sources.list.d/cloudflared.list
 Actualizar e Instalar:</p>
-<p> </p>
 <p>sudo apt update
 sudo apt install -y cloudflared
 5.3. Creación y Configuración del Tunnel
 La configuración se realiza en dos partes: autenticación y definición del túnel (rutas).</p>
 <p>A. Autenticación
 Autentica tu cloudflared con tu cuenta de Cloudflare. Se te pedirá iniciar sesión en el navegador.</p>
-<p> </p>
 <p>cloudflared tunnel login
 Se abrirá una URL en tu terminal. Pégala en tu navegador, inicia sesión en Cloudflare y selecciona tu dominio.</p>
 <p>B. Crear el Túnel
 Asigna un nombre a tu túnel y crea la configuración local.</p>
 <p>Crear el Túnel:</p>
-<p> </p>
 <p>cloudflared tunnel create wp-tunnel</p>
 <h1 id="esto-te-dara-un-id-de-tunel-unico-que-necesitaras">(Esto te dará un ID de túnel único que necesitarás)<a class="headerlink" href="#esto-te-dara-un-id-de-tunel-unico-que-necesitaras" title="Permanent link">&para;</a></h1>
 <p>Crear el Archivo de Configuración (config.yml): Crea el directorio de configuración para cloudflared y el archivo config.yml.</p>
-<p> </p>
 <p>sudo mkdir /etc/cloudflared
 sudo nano /etc/cloudflared/config.yml
 Pega la siguiente configuración, asegurándote de reemplazar <TUNNEL-ID> con el ID único que obtuviste en el paso anterior:</p>
@@ -898,20 +893,16 @@ credentials-file: /root/.cloudflared/<TUNNEL-ID>.json</p>
 Aquí, http://localhost:80 se refiere al puerto del host donde está escuchando tu contenedor NGINX.</p>
 <p>C. Mapeo DNS y Túnel
 Conecta el túnel a tu dominio en el panel de Cloudflare.</p>
-<p> </p>
 <p>cloudflared tunnel route dns wp-tunnel web.tudominio.com
 Esto crea automáticamente el registro DNS de tipo CNAME en tu zona de Cloudflare, apuntando a tu túnel.</p>
 <p>5.4. Ejecución del Tunnel como Servicio
 Ejecuta el cliente cloudflared como un servicio persistente.</p>
 <p>Instalar el Servicio del Sistema (Systemd):</p>
-<p> </p>
 <p>sudo cloudflared tunnel run --overwrite-service
 Iniciar y Habilitar el Servicio:</p>
-<p> </p>
 <p>sudo systemctl start cloudflared
 sudo systemctl enable cloudflared
 Verificar el Estado:</p>
-<p> </p>
 <p>sudo systemctl status cloudflared
 El estado debe mostrarse como active (running).</p>
 <p>Una vez que el servicio esté activo, tu sitio web de WordPress será accesible a través de web.tudominio.com sin que hayas abierto un solo puerto en tu router o firewall local. Todo el tráfico pasa a través de la infraestructura segura de Cloudflare.</p>

@@ -850,7 +850,6 @@ Este documento detalla la creación y ejecución del stack de tres contenedores 
 </ol>
 <p>4.1. Estructura de Directorios
 Trabajaremos dentro del directorio de nuestro usuario (admin en este ejemplo).</p>
-<p> </p>
 <p>cd ~
 mkdir -p projects/wordpress-stack
 cd projects/wordpress-stack
@@ -858,7 +857,6 @@ Dentro de este directorio, crearemos nuestro archivo de orquestación y una carp
 <p>4.2. Creación del Archivo de Configuración de NGINX
 Aunque NGINX actuará como proxy inverso, necesita un archivo de configuración simple para redirigir el tráfico al contenedor de WordPress.</p>
 <p>Crear el directorio de configuración:</p>
-<p> </p>
 <p>mkdir -p nginx/conf.d
 Crear el archivo default.conf (nginx/conf.d/default.conf):</p>
 <p>Nginx</p>
@@ -933,11 +931,9 @@ Una vez que el archivo podman-compose.yml esté listo, despliega el stack en mod
 <p>podman-compose up -d</p>
 <p>4.5. Verificación
 Verificar el estado de los contenedores:</p>
-<p> </p>
 <p>podman ps
 Deberías ver los tres contenedores (mariadb_wp, wordpress_app, nginx_proxy) con el estado Up.</p>
 <p>Verificar el log de WordPress (opcional):</p>
-<p> </p>
 <p>podman logs -f wordpress_app
 Esto confirmará que WordPress se ha conectado correctamente a la base de datos MariaDB.</p>
 <p>Acceso Local: Si la red local lo permite, intenta acceder al sitio desde tu máquina local usando la IP de la VM: http://192.168.1.XX. Deberías ver la pantalla de configuración inicial de WordPress.</p>

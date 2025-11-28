@@ -879,35 +879,28 @@ Sigue el proceso de instalación estándar de Debian, prestando atención a los 
 <p>Selección de Software: Desmarca cualquier entorno de escritorio (GNOME, KDE, etc.) ya que este será un servidor sin interfaz gráfica. Asegúrate de que solo estén marcados "servidor SSH" y "utilidades estándar del sistema".</p>
 <p>2.3. Configuración Post-Instalación
 Una vez que la instalación haya finalizado y hayas reiniciado la VM, accede a ella a través de SSH usando el usuario estándar que creaste:</p>
-<p> </p>
 <p>ssh admin@192.168.1.XX
 A. Actualización del Sistema
 Es fundamental mantener el sistema actualizado:</p>
-<p> </p>
 <p>sudo apt update
 sudo apt upgrade -y
 B. Instalación de Herramientas Esenciales
 Instala herramientas que facilitarán la gestión y la configuración posterior:</p>
-<p> </p>
 <p>sudo apt install -y vim curl wget net-tools
 C. Configuración de Firewall (UFW)
 Instala y configura el firewall básico para permitir solo el tráfico necesario:</p>
 <p>Instalar UFW:</p>
-<p> </p>
 <p>sudo apt install -y ufw
 Permitir tráfico esencial:</p>
-<p> </p>
 <h1 id="permitir-ssh-para-la-administracion-remota">Permitir SSH para la administración remota<a class="headerlink" href="#permitir-ssh-para-la-administracion-remota" title="Permanent link">&para;</a></h1>
 <p>sudo ufw allow ssh</p>
 <h1 id="permitir-http-y-https-para-los-contenedores-web-que-escuchan-en-el-host">Permitir HTTP y HTTPS (para los contenedores web que escuchan en el host)<a class="headerlink" href="#permitir-http-y-https-para-los-contenedores-web-que-escuchan-en-el-host" title="Permanent link">&para;</a></h1>
 <p>sudo ufw allow http
 sudo ufw allow https
 Habilitar UFW:</p>
-<p> </p>
 <p>sudo ufw enable</p>
 <h1 id="confirma-con-y">Confirma con 'y'<a class="headerlink" href="#confirma-con-y" title="Permanent link">&para;</a></h1>
 <p>Verificar el estado:</p>
-<p> </p>
 <p>sudo ufw status
 Asegúrate de que el status diga active y que las reglas SSH, HTTP y HTTPS estén listadas como ALLOW.</p>
 

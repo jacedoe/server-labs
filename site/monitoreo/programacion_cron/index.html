@@ -845,14 +845,19 @@
   <h1>4.3. Programación con Cron</h1>
 
 <ol>
-<li>⏲️ Programación de Tareas con CronEl servicio cron en Linux se utiliza para programar comandos o scripts para que se ejecuten automáticamente en un momento o intervalo regular. Lo utilizaremos para ejecutar el script de escaneo de infraestructura (infra_scan.sh) periódicamente.8.1. Entendiendo la CrontabCada usuario en el sistema puede tener su propia tabla de cron (crontab). Como nuestro script utiliza sudo (porque arp-scan necesita privilegios de root), la forma más segura y confiable es programarlo directamente en la crontab de root.El formato básico de una línea de crontab es:[MINUTO] [HORA] [DÍA_DEL_MES] [MES] [DÍA_DE_LA_SEMANA] [COMANDO_A_EJECUTAR]
-8.2. Configuración de la Tarea ProgramadaEditar la Crontab de Root:Usa el siguiente comando para abrir el archivo de programación del usuario root: sudo crontab -e
-Si es la primera vez, se te pedirá seleccionar un editor (ej: nano).Añadir la Tarea de Escaneo:Añade la siguiente línea al final del archivo. Este ejemplo programa el script para que se ejecute cada 5 minutos:Fragmento de código# Tarea: Escaneo de Infraestructura cada 5 minutos
-<em>/5 * * * * /home/admin/scripts/infra-scan/infra_scan.sh
-CampoValorDescripciónMinuto</em>/5Ejecutar cada 5 minutos (0, 5, 10, 15...)Hora<em>Cada horaDía del Mes</em>Cada día del mesMes<em>Cada mesDía de la Semana</em>Cada día de la semanaComando/home/admin/...La ruta completa del scriptAlternativa (Ejecución Diaria): Si prefieres un escaneo menos frecuente, puedes usar, por ejemplo, 0 2 * * * para ejecutarlo todos los días a las 2:00 AM.Guardar y Salir:Guarda el archivo (en nano, Ctrl+O, Enter, y luego Ctrl+X). cron cargará automáticamente el nuevo horario.8.3. Verificación de la EjecuciónPara asegurarte de que la tarea se está ejecutando correctamente, puedes hacer dos cosas:Revisar el Log del Script:El script está diseñado para escribir una entrada en un archivo de log cada vez que se ejecuta. tail -f /home/admin/scripts/infra-scan/scan_log.txt
-Espera 5 minutos y deberías ver una nueva línea con la marca de tiempo de la ejecución.Revisar el Log del Sistema (opcional):En sistemas Debian, los eventos de cron a menudo se registran en el log principal: grep CRON /var/log/syslog
-Busca entradas que confirmen que la línea de comando fue iniciada por cron.</li>
+<li>⏲️ Programación de Tareas con CronEl servicio cron en Linux se utiliza para programar comandos o scripts para que se ejecuten automáticamente en un momento o intervalo regular. Lo utilizaremos para ejecutar el script de escaneo de infraestructura (infra_scan.sh) periódicamente.</li>
 </ol>
+<p>8.1. Entendiendo la CrontabCada usuario en el sistema puede tener su propia tabla de cron (crontab). Como nuestro script utiliza sudo (porque arp-scan necesita privilegios de root), la forma más segura y confiable es programarlo directamente en la crontab de root.El formato básico de una línea de crontab es:[MINUTO] [HORA] [DÍA_DEL_MES] [MES] [DÍA_DE_LA_SEMANA] [COMANDO_A_EJECUTAR]</p>
+<p>8.2. Configuración de la Tarea ProgramadaEditar la Crontab de Root:Usa el siguiente comando para abrir el archivo de programación del usuario root: sudo crontab -e
+Si es la primera vez, se te pedirá seleccionar un editor (ej: nano).Añadir la Tarea de Escaneo:Añade la siguiente línea al final del archivo. Este ejemplo programa el script para que se ejecute cada 5 minutos:Fragmento de código</p>
+<pre><code># Tarea: Escaneo de Infraestructura cada 5 minutos
+*/5 * * * * /home/admin/scripts/infra-scan/infra_scan.sh
+</code></pre>
+<p>CampoValorDescripciónMinuto<em>/5Ejecutar cada 5 minutos (0, 5, 10, 15...)Hora</em>Cada horaDía del Mes<em>Cada día del mesMes</em>Cada mesDía de la Semana*Cada día de la semanaComando/home/admin/...La ruta completa del scriptAlternativa (Ejecución Diaria): Si prefieres un escaneo menos frecuente, puedes usar, por ejemplo, 0 2 * * * para ejecutarlo todos los días a las 2:00 AM.Guardar y Salir:Guarda el archivo (en nano, Ctrl+O, Enter, y luego Ctrl+X). cron cargará automáticamente el nuevo horario.8.3. Verificación de la EjecuciónPara asegurarte de que la tarea se está ejecutando correctamente, puedes hacer dos cosas:Revisar el Log del Script:El script está diseñado para escribir una entrada en un archivo de log cada vez que se ejecuta. </p>
+<pre><code>tail -f /home/admin/scripts/infra-scan/scan_log.txt
+</code></pre>
+<p>Espera 5 minutos y deberías ver una nueva línea con la marca de tiempo de la ejecución.Revisar el Log del Sistema (opcional):En sistemas Debian, los eventos de cron a menudo se registran en el log principal: grep CRON /var/log/syslog
+Busca entradas que confirmen que la línea de comando fue iniciada por cron.</p>
 
 
 
