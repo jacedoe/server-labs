@@ -8,9 +8,9 @@ description: Documentación paso a paso para el despliegue de VM con XO-Lite, co
 
 # 🏡 Bienvenido a Server Labs
 
-Esta documentación te guiará paso a paso en la creación de tu infraestructura web y monitoreo con **XO-Lite**, **Podman**, **WordPress**, **NGINX**, **MariaDB**, y servicios de monitoreo automatizado.  
+Esta documentación te guiará paso a paso en la creación de tu infraestructura con **XO-Lite**, **Podman**, **WordPress**, **NGINX**, **MariaDB**, . 
 
-> Sigue la guía según tu objetivo: despliegue, seguridad, monitoreo o referencia de comandos útiles.
+> Sigue la guía según tu objetivo: despliegue, seguridad, o referencia de comandos útiles.
 
 ---
 
@@ -35,10 +35,6 @@ Esta documentación te guiará paso a paso en la creación de tu infraestructura
 ---
 
 ## 🛡️ 4. Monitoreo Automatizado
-
-- **Configuración de Postfix:** [Instalación y setup](monitoreo/instalacion_postfix.md)  
-- **Script de Escaneo (arp-scan):** [Configuración y uso](monitoreo/script_arp_scan.md)  
-- **Programación con Cron:** [Tareas automatizadas](monitoreo/programacion_cron.md)
 
 ---
 

@@ -62,3 +62,16 @@ mkdir -p ~/data/wordpress
 mkdir -p ~/data/mariadb
 ```
 Con Podman y su entorno rootless instalados, la red interna configurada y las carpetas de datos creadas, estamos listos para pasar al despliegue del stack de WordPress.
+
+# 🐳 Características Clave de Podman
+Podman destaca por su enfoque en la seguridad y la arquitectura descentralizada.
+
+1. ## Arquitectura Sin Demonio (Daemonless)
+Seguridad: A diferencia de Docker, Podman no utiliza un demonio central (daemon) que se ejecuta como root. En su lugar, utiliza un modelo de arquitectura fork-exec, donde el comando podman inicia directamente el proceso del contenedor, que a su vez utiliza runc (el tiempo de ejecución OCI).Ventaja: Esto elimina el riesgo de que un atacante que comprometa el daemon obtenga privilegios de root en el sistema operativo host.
+
+2. ## Contenedores Sin Privilegios (Rootless Containers)
+Seguridad: La característica más destacada de Podman es su capacidad para ejecutar contenedores como un usuario normal, sin requerir privilegios de root.Funcionamiento: Esto se logra utilizando los namespaces de usuario de Linux, mapeando el UID de root dentro del contenedor a un UID sin privilegios en el sistema host. Si el contenedor es comprometido, el atacante solo tiene los bajos privilegios del usuario host.
+
+3. ## Soporte para Pods 
+Orquestación Local: Podman es compatible con la idea de Pods, una característica central de Kubernetes. Un Pod es un grupo de uno o más contenedores que comparten recursos como el namespace de red, el almacenamiento local y el IPC.Kubernetes: Podman puede generar archivos YAML de Kubernetes directamente a partir de contenedores o Pods en ejecución, simplificando la transición del desarrollo local a la orquestación en clústeres.4. Compatibilidad con DockerInterfaz CLI: Podman utiliza comandos idénticos o casi idénticos a los de Docker (por ejemplo, podman run, podman ps, podman images), lo que permite a los usuarios con experiencia en Docker cambiar a Podman rápidamente.Imágenes: Podman puede usar y construir imágenes de contenedor compatibles con Docker y OCI.
+
