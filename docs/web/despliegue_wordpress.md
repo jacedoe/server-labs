@@ -1,20 +1,25 @@
-4. Despliegue del Sitio Web con Podman Compose
-Este documento detalla la creación y ejecución del stack de tres contenedores (MariaDB, WordPress y NGINX) utilizando podman-compose. Este método asegura que los servicios se orquesten correctamente, se comuniquen a través de una red interna y persistan sus datos.
+## 4. Despliegue del Sitio Web con Podman Compose
+
+Este documento detalla la creación y ejecución del stack de tres contenedores (MariaDB, WordPress y NGINX) utilizando podman-compose para pruebas antes del despliege en producción. Este método asegura que los servicios se orquesten correctamente, se comuniquen a través de una red interna y persistan sus datos.
 
 4.1. Estructura de Directorios
 Trabajaremos dentro del directorio de nuestro usuario (admin en este ejemplo).
 
+```
 cd ~
 mkdir -p projects/wordpress-stack
 cd projects/wordpress-stack
 Dentro de este directorio, crearemos nuestro archivo de orquestación y una carpeta para los archivos de configuración de NGINX.
+```
 
 4.2. Creación del Archivo de Configuración de NGINX
 Aunque NGINX actuará como proxy inverso, necesita un archivo de configuración simple para redirigir el tráfico al contenedor de WordPress.
 
 Crear el directorio de configuración:
-
+```
 mkdir -p nginx/conf.d
+```
+
 Crear el archivo default.conf (nginx/conf.d/default.conf):
 
 Nginx
@@ -96,18 +101,21 @@ networks:
 
 4.4. Despliegue de los Servicios
 Una vez que el archivo podman-compose.yml esté listo, despliega el stack en modo detached (segundo plano):
-
+```
 podman-compose up -d
+```
 
 4.5. Verificación
 Verificar el estado de los contenedores:
-
+```
 podman ps
+```
 Deberías ver los tres contenedores (mariadb_wp, wordpress_app, nginx_proxy) con el estado Up.
 
 Verificar el log de WordPress (opcional):
-
+```
 podman logs -f wordpress_app
+```
 Esto confirmará que WordPress se ha conectado correctamente a la base de datos MariaDB.
 
 Acceso Local: Si la red local lo permite, intenta acceder al sitio desde tu máquina local usando la IP de la VM: http://192.168.1.XX. Deberías ver la pantalla de configuración inicial de WordPress.

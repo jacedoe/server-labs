@@ -1,16 +1,14 @@
-3. Preparación del Entorno para Contenedores con Podman
+# 3. Preparación del Entorno para Contenedores con Podman
 Podman es una herramienta de gestión de contenedores daemonless (sin demonio), lo que lo convierte en una opción más ligera y segura que Docker, especialmente para entornos rootless (sin privilegios de root).
 
 3.1. Instalación de Podman y Podman-Compose
 Podman está disponible en los repositorios de Debian Trixie (12).
-```
-Instalar Podman y podman-compose:
-```
-# Podman (el motor de contenedores)
 
+```
 sudo apt install -y podman
-
+```
 # Podman-compose (para orquestación multi-contenedor, similar a docker-compose)
+
 ```
 sudo apt install -y podman-compose
 ```
@@ -35,6 +33,7 @@ podman info
 Configuración del Registro de Contenedores: Si planeas utilizar registros no oficiales, edita el archivo de registros:
 
 # Opcional: Para permitir imágenes no firmadas o de otros registros
+
 ```
 sudo vim /etc/containers/registries.conf
 ```
@@ -45,6 +44,7 @@ A. Crear una Red Dedicada
 La red interna permitirá que los contenedores se comuniquen usando sus nombres de servicio.
 
 # Crea una nueva red Podman llamada 'web_net'
+
 ```
 podman network create web_net
 ```
