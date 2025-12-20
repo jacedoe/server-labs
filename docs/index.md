@@ -18,17 +18,18 @@ Esta documentación te guiará paso a paso en la creación de tu infraestructura
 
 - **Servidor XO-Lite:** [Instalación de XO-Lite](preparacion/instalacion_xo_lite.md)  
 - **Despliegue VM Debian Trixie:** [Guía paso a paso](preparacion/despliegue_vm_debian.md)
+- **Despliegue VM Alpine Linux:** [Guía paso a paso](preparacion/despliegue_vm_debian.md)
 
 ---
 
 ## 🐳 2. Plataforma Web con Podman
 
 - **Preparación de Podman:** [Configuración del entorno](web/preparacion_podman.md)  
-- **Despliegue de WordPress Stack:** [Deploy completo](web/despliegue_wordpress.md)
+- **Despliegue de WordPress Stack:** [Despliegue completo](web/despliegue_wordpress.md)
 
 ---
 
-## 🔒 3. Acceso y Seguridad
+## 🔒 3. Despliegue en producción de sitio web con Alpine/Nginx
 
 - **Cloudflare Tunnel:** [Configuración segura](seguridad/cloudflare_tunnel.md)
 

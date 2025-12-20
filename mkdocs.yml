@@ -61,18 +61,15 @@ nav:
   - ⚙️ 1. Preparación de la Infraestructura:
       - 1.1. Servidor XO-Lite: preparacion/instalacion_xo_lite.md
       - 1.2. Despliegue VM Debian Trixie: preparacion/despliegue_vm_debian.md
+      - 1.3. Despliegue VM Alpine LInux: preparacion/despliegue_vm_alpine.md
 
-  - 🐳 2. Plataforma Web con Podman:
+  - 🐳 2. Plataforma Web con Podman (Debian):
       - 2.1. Preparación de Podman: web/preparacion_podman.md
       - 2.2. Despliegue de WordPress Stack: web/despliegue_wordpress.md
 
-  - 🔒 3. Acceso y Seguridad:
-      - 3.1. Cloudflare Tunnel: seguridad/cloudflare_tunnel.md
-
-  - 🛡️ 4. Monitoreo Automatizado:
-      - 4.1. Configuración de Postfix: monitoreo/instalacion_postfix.md
-      - 4.2. Script de escaneo con arp-scan: monitoreo/script_arp_scan.md
-      - 4.3. Programación con Cron: monitoreo/programacion_cron.md
+  - 🔒 3. Despliegue en producción de sitio web con Alpine/Nginx:
+      - 3.1. Configuración del stack Nginx-MariaDB-WordPress: web/nginx_config.md
+      - 3.2. Cloudflare Tunnel: seguridad/cloudflare_tunnel.md
 
   - 📚 Apéndices:
       - Comandos Útiles: apendices/comandos_utiles.md
