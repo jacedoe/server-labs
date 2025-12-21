@@ -42,13 +42,13 @@ hugo: Generador de un sitio web estático
 
 mariadb: Base de datos para almacenar la información de WordPress.
 
-wordpress: Creación de un sitio web totlamente funcional con WordPress.
+wordpress: Creación de un sitio web totalmente funcional con WordPress.
 
 ### 5. Conexión Segura con Cloudflare Tunnel
 
 Registro y configuración inicial en el dashboard de Cloudflare.
 
-Instalación del cliente cloudflared en la VM Debian.
+Instalación del cliente cloudflared en la VM Debian y Alpine Linux.
 
 Creación del Tunnel (conexión segura saliente).
 

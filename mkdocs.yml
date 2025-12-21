@@ -10,7 +10,7 @@ site_description: >
 #        TEMA Y ESTILO
 # ============================
 theme:
-  name: mkdocs
+  name: readthedocs
   language: es
   palette:
     primary: deep purple
