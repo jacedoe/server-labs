@@ -1,4 +1,4 @@
-site_name: Guía de Infraestructura Web y Monitoreo 🚀
+site_name: Guía de Infraestructura Xen, Linux y contenedores
 site_url: https://jacedoe.github.io/server-labs/
 repo_url: https://github.com/jacedoe/server-labs
 repo_name: server-labs
@@ -10,7 +10,7 @@ site_description: >
 #        TEMA Y ESTILO
 # ============================
 theme:
-  name: material
+  name: mkdocs
   language: es
   palette:
     primary: deep purple
