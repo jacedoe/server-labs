@@ -1,4 +1,4 @@
-# Infraestructura VM con XO-Lite, Nginx, Podman y Docker.
+# Guía de Infraestructura XenServer, Linux y contenedores.
 
 Este repositorio contiene la documentación, configuraciones y scripts para el despliegue de máquinas virtuales (VM) en un entorno XO-Lite, la configuración de un sitio web basado en NGINX, MariaDB, WordPress que será desplegado de manera nativa.
 Asimismo se desplegarán contenedores Podman (Debian) o Docker (Alpine Linux) para desarrollo.
@@ -17,8 +17,9 @@ podman-compose/: Archivos de configuración para el despliegue de contenedores.
 README.md: Resumen general del proyecto (este archivo).
 
 ## Componentes Principales de la Infraestructura
-### 1. Plataforma de Virtualización: XO-Lite
-Objetivo: Instalación y configuración inicial del servidor XO-Lite (XCP-ng/XenServer web interface).
+
+### 1. Plataforma de Virtualización: XCP-ng
+Objetivo: Instalación y configuración inicial del servidor XCP-ng/XenServer web interface.
 
 Puntos Clave: Instalación del hypervisor base, configuración de red, y preparación del entorno para el despliegue de la máquina virtual invitada (Guest VM).
 
@@ -27,17 +28,23 @@ Sistema Operativo
 - Instalación y configuración inicial de Debian 13 "Trixie".
 - Instalación y configuración inicial de Alpine Linux.
 
-### 3. Entorno Web con Contenedores Podman
+### 3. Entorno Web con Contenedores Podman para pruebas en Debian
+- Preparación del stack con Podman
+- Despliegue del sitio web con Wordpress
+
+### 4. Entorno Web en producción en Alpine Linux
 
 #### Servicios
 
 nginx: Proxy inverso y servidor web para manejar el tráfico.
 
+hugo: Generador de un sitio web estático
+
 mariadb: Base de datos para almacenar la información de WordPress.
 
 wordpress: Creación de un sitio web totlamente funcional con WordPress.
 
-### 3. Conexión Segura con Cloudflare Tunnel
+### 5. Conexión Segura con Cloudflare Tunnel
 
 Registro y configuración inicial en el dashboard de Cloudflare.
 
@@ -49,6 +56,8 @@ Configuración de las rutas (CNAME/A records) para mapear el dominio al servicio
 
 Ventajas de usar el Tunnel (eliminación de la apertura de puertos, protección DDoS de Cloudflare).
 
-### 4. Podman y Docker
+### 4. Desarrollo con Docker en Alpine Linux
 
-Puntos Clave: Creación de volúmenes persistentes, configuración de redes internas de Podman y Docker, y el archivo compose.yml para la orquestación de los servicios.
+- Plex Media Server
+- Torproxy
+- Privoxy
