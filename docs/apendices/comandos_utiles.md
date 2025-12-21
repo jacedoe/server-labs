@@ -1,8 +1,8 @@
 🛠️ Comandos Útiles y de Referencia
 Este apéndice contiene una lista de comandos esenciales para la gestión diaria y la solución de problemas (troubleshooting) de los componentes clave de la infraestructura.
 
-1. ⚙️ Gestión de la Máquina Virtual (XO-Lite/XCP-ng Console)
-Estos comandos se ejecutan en la consola de root del servidor XCP-ng (el host de virtualización, no dentro de la VM Debian).
+1. ⚙️ Gestión de la Máquina Virtual (XCP-ng Console)
+Estos comandos se ejecutan en la consola de root del servidor XCP-ng.
 
 Verificar el estado del host:
 ```
@@ -23,6 +23,25 @@ xe vm-shutdown vm=[Nombre de la VM]
 Verificar el estado de los Storage Repositories (SR):
 ```
 xe sr-list
+```
+
+1.2. Ejemplo de redimensionamiento de una VM Alpine Linux de 20 GiB a 40 GiB
+
+Ejecutar en el host Xen
+```
+xe vm-shutdown vm=VM
+xe vm-disk-list vm=VM
+xe vdi-resize uuid=VDI_UUID disk-size=40GiB
+xe vm-start vm=VM
+
+```
+Ejecutar en la VM Alpine
+```
+apk add util-linux e2fsprogs
+growpart /dev/xvda 3
+resize2fs /dev/xvda3
+df -h
+
 ```
 2. 🐳 Gestión de Contenedores (Podman)
 Estos comandos se ejecutan dentro de la VM Debian como tu usuario estándar (admin), en modo rootless.
@@ -59,8 +78,8 @@ Limpiar contenedores y volúmenes no utilizados (¡Usar con precaución!):
 ```
 podman system prune
 ```
-3. 🛡️ Monitoreo y Correo (Postfix/Cron/Cloudflared)
-Estos comandos se ejecutan en la VM Debian para verificar el estado de los servicios de monitoreo y acceso seguro.
+3. 🛡️ Cloudflared
+Estos comandos se ejecutan en la VM Debian para verificar el estado de los servicios.
 
 A. Cloudflare Tunnel
 Verificar el estado del servicio cloudflared:
@@ -70,32 +89,6 @@ sudo systemctl status cloudflared
 Ver logs del servicio cloudflared:
 ```
 sudo journalctl -u cloudflared -f
-```
-B. Postfix (Correo)
-Verificar la cola de correo (mensajes pendientes de envío):
-```
-mailq
-```
-Vaciar la cola de correo (forzar el envío):
-```
-sudo postfix flush
-```
-Verificar los logs de correo:
-```
-tail -f /var/log/mail.log
-```
-C. Cron y Escaneo
-Verificar la crontab de root:
-```
-sudo crontab -l
-```
-Ejecutar el script de escaneo manualmente (para pruebas):
-```
-sudo /home/admin/scripts/infra-scan/infra_scan.sh
-```
-Verificar el log de escaneo:
-```
-tail -f /home/admin/scripts/infra-scan/scan_log.txt
 ```
 
 🛠️ 
