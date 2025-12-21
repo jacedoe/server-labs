@@ -2,42 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://jacedoe.github.io/server-labs/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-12-21</lastmod>
+         <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://jacedoe.github.io/server-labs/apendices/comandos_utiles/</loc>
-         <lastmod>2025-11-28</lastmod>
-    </url>
-    <url>
-         <loc>https://jacedoe.github.io/server-labs/monitoreo/instalacion_postfix/</loc>
-         <lastmod>2025-11-28</lastmod>
-    </url>
-    <url>
-         <loc>https://jacedoe.github.io/server-labs/monitoreo/programacion_cron/</loc>
-         <lastmod>2025-11-28</lastmod>
-    </url>
-    <url>
-         <loc>https://jacedoe.github.io/server-labs/monitoreo/script_arp_scan/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-12-21</lastmod>
+         <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://jacedoe.github.io/server-labs/preparacion/despliegue_vm_debian/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-12-21</lastmod>
+         <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://jacedoe.github.io/server-labs/preparacion/instalacion_xo_lite/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-12-21</lastmod>
+         <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://jacedoe.github.io/server-labs/seguridad/cloudflare_tunnel/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-12-21</lastmod>
+         <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://jacedoe.github.io/server-labs/web/despliegue_wordpress/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-12-21</lastmod>
+         <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://jacedoe.github.io/server-labs/web/preparacion_podman/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-12-21</lastmod>
+         <changefreq>daily</changefreq>
     </url>
 </urlset>
