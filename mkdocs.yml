@@ -3,8 +3,8 @@ site_url: https://jacedoe.github.io/server-labs/
 repo_url: https://github.com/jacedoe/server-labs
 repo_name: server-labs
 site_description: >
-  Documentación paso a paso para el despliegue de VM con XO-Lite,
-  contenedores Podman (NGINX, MariaDB, WordPress) y servicios de monitoreo.
+  Documentación paso a paso para el despliegue de VM con XCP-ng,
+  contenedores Podman (NGINX, MariaDB, WordPress).
 
 # ============================
 #        TEMA Y ESTILO
@@ -12,18 +12,6 @@ site_description: >
 theme:
   name: readthedocs
   language: es
-  palette:
-    primary: deep purple
-    accent: indigo
-  features:
-    - navigation.tabs
-    - navigation.sections
-    - search.suggest
-    - search.highlight
-    - toc.follow
-    - content.code.copy     # añade botón “copiar”
-    - content.action.edit   # botón editar en GitHub
-    - content.code.annotate # anotaciones en código
 
 # ============================
 #    EXTENSIONES MARKDOWN
@@ -59,7 +47,7 @@ nav:
   - 🏡 Inicio: index.md
 
   - ⚙️ 1. Preparación de la Infraestructura:
-      - 1.1. Servidor XO-Lite: preparacion/instalacion_xo_lite.md
+      - 1.1. Servidor XCP-ng: preparacion/instalacion_xo_lite.md
       - 1.2. Despliegue VM Debian Trixie: preparacion/despliegue_vm_debian.md
       - 1.3. Despliegue VM Alpine LInux: preparacion/despliegue_vm_alpine.md
 

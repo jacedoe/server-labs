@@ -1,6 +1,6 @@
 # Guía de Infraestructura XenServer, Linux y contenedores.
 
-Este repositorio contiene la documentación, configuraciones y scripts para el despliegue de máquinas virtuales (VM) en un entorno XO-Lite, la configuración de un sitio web basado en NGINX, MariaDB, WordPress que será desplegado de manera nativa.
+Este repositorio contiene la documentación, configuraciones y scripts para el despliegue de máquinas virtuales (VM) en un entorno XCP-ng, la configuración de un sitio web basado en NGINX, MariaDB, WordPress que será desplegado de manera nativa.
 Asimismo se desplegarán contenedores Podman (Debian) o Docker (Alpine Linux) para desarrollo.
 
 Para este laboratorio se han utilizado las distribuciones Alpine Linux y Debian Trixie.

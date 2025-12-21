@@ -1,8 +1,8 @@
-# ⚙️ Instalación y Configuración del Servidor XO-Lite
+# ⚙️ Instalación y Configuración del Servidor XCP-ng
 
-Esta guía detalla el proceso para establecer la plataforma de virtualización utilizando **XO-Lite**, la interfaz web ligera y moderna para gestionar el hypervisor **XCP-ng** (o XenServer).  
+Esta guía detalla el proceso para establecer la plataforma de virtualización utilizando **XCP-ng**, la interfaz web ligera y moderna para gestionar el hypervisor **XCP-ng** (o XenServer).  
 
-> Nota: XO-Lite **no es el hypervisor**, sino la interfaz de gestión. Primero se instala XCP-ng y luego se accede a su interfaz web integrada.
+> Nota: XCP-ng **no es el hypervisor**, sino la interfaz de gestión. Primero se instala XCP-ng y luego se accede a su interfaz web integrada.
 
 ---
 
@@ -21,7 +21,7 @@ Antes de comenzar, asegúrate de contar con:
 
 ## 🖥️ 2. Instalación del Hypervisor XCP-ng
 
-La instalación del hypervisor es el paso fundamental para acceder a XO-Lite.
+La instalación del hypervisor es el paso fundamental para acceder a XCP-ng.
 
 ### 2.1 Arranque desde el medio de instalación
 
@@ -37,7 +37,7 @@ Inicia el servidor usando la imagen ISO o USB de XCP-ng. El asistente te guiará
 
 ---
 
-## 🌐 3. Acceso Inicial a la Interfaz XO-Lite
+## 🌐 3. Acceso Inicial a la Interfaz XCP-ng
 
 Tras reiniciar el servidor:
 
@@ -55,16 +55,16 @@ https://192.168.1.10
 !!! info "Certificado autofirmado"
     Es probable que tu navegador muestre una advertencia de seguridad. Acepta el certificado para continuar.
 
-### 3.3 Inicio de sesión en XO-Lite
+### 3.3 Inicio de sesión en XCP-ng
 
 - **Usuario:** `root`  
 - **Contraseña:** La que configuraste durante la instalación de XCP-ng
 
 ---
 
-## ⚙️ 4. Configuración Post-Instalación en XO-Lite
+## ⚙️ 4. Configuración Post-Instalación en XCP-ng
 
-Dentro de XO-Lite, realiza estas configuraciones básicas:
+Dentro de XCP-ng, realiza estas configuraciones básicas:
 
 ### 4.1 Configuración de Red
 
@@ -83,12 +83,12 @@ Dentro de XO-Lite, realiza estas configuraciones básicas:
 
 ### 4.3 Actualizaciones
 
-XO-Lite facilita la aplicación de parches y actualizaciones del hypervisor.  
+XCP-ng facilita la aplicación de parches y actualizaciones del hypervisor.  
 Asegúrate de que XCP-ng esté **actualizado** antes de desplegar tus VMs.
 
 ---
 
-> ✅ Con la instalación y configuración básica de XO-Lite completada, tu hypervisor XCP-ng está listo para administrar máquinas virtuales de forma eficiente y segura.
+> ✅ Con la instalación y configuración básica de XCP-ng completada, tu hypervisor XCP-ng está listo para administrar máquinas virtuales de forma eficiente y segura.
 
 ---
 

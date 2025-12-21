@@ -1,10 +1,10 @@
 2. Despliegue y Configuración de la VM Debian Trixie
-Una vez que el servidor XCP-ng/XO-Lite está operativo, el siguiente paso es crear y configurar nuestra Máquina Virtual (VM) invitada que servirá como host para Podman y los servicios de monitoreo.
+Una vez que el servidor XCP-ng/XCP-ng está operativo, el siguiente paso es crear y configurar nuestra Máquina Virtual (VM) invitada que servirá como host para Podman y los servicios de monitoreo.
 
-2.1. Creación de la VM en XO-Lite
-Utilizaremos la interfaz XO-Lite para iniciar el proceso de creación de la nueva VM.
+2.1. Creación de la VM en XCP-ng
+Utilizaremos la interfaz XCP-ng para iniciar el proceso de creación de la nueva VM.
 
-Navegar al Asistente: En XO-Lite, dirígete a la sección de VMs y selecciona la opción para crear una nueva máquina virtual.
+Navegar al Asistente: En XCP-ng, dirígete a la sección de VMs y selecciona la opción para crear una nueva máquina virtual.
 
 Selección de Plantilla (Template):
 
@@ -24,7 +24,7 @@ Configuración de Red: Asegúrate de que la VM esté conectada a la red virtual 
 
 Instalación del SO:
 
-Carga la imagen ISO de instalación de Debian 12 "Trixie" en la biblioteca de ISOs de XO-Lite y selecciónala para el primer arranque de la VM.
+Carga la imagen ISO de instalación de Debian 12 "Trixie" en la biblioteca de ISOs de XCP-ng y selecciónala para el primer arranque de la VM.
 
 Inicio de la VM: Enciende la VM y la consola se abrirá, mostrando el instalador de Debian.
 

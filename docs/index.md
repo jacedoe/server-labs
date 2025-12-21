@@ -3,12 +3,12 @@ title: Guía de Infraestructura Web y Monitoreo 🚀
 icon: material/home
 hide:
   - toc
-description: Documentación paso a paso para el despliegue de VM con XO-Lite, contenedores Podman (NGINX, MariaDB, WordPress) y servicios de monitoreo.
+description: Documentación paso a paso para el despliegue de VM con XCP-ng, contenedores Podman (NGINX, MariaDB, WordPress) y servicios de monitoreo.
 ---
 
 # 🏡 Bienvenido a Server Labs
 
-Esta documentación te guiará paso a paso en la creación de tu infraestructura con **XO-Lite**, **Podman**, **WordPress**, **NGINX**, **MariaDB**, . 
+Esta documentación te guiará paso a paso en la creación de tu infraestructura con **XCP-ng**, **Podman**, **WordPress**, **NGINX**, **MariaDB**, . 
 
 > Sigue la guía según tu objetivo: despliegue, seguridad, o referencia de comandos útiles.
 
@@ -16,7 +16,7 @@ Esta documentación te guiará paso a paso en la creación de tu infraestructura
 
 ## ⚙️ 1. Preparación de la Infraestructura
 
-- **Servidor XO-Lite:** [Instalación de XO-Lite](preparacion/instalacion_xo_lite.md)  
+- **Servidor XCP-ng:** [Instalación de XCP-ng](preparacion/instalacion_xo_lite.md)  
 - **Despliegue VM Debian Trixie:** [Guía paso a paso](preparacion/despliegue_vm_debian.md)
 - **Despliegue VM Alpine Linux:** [Guía paso a paso](preparacion/despliegue_vm_debian.md)
 
