@@ -12,7 +12,7 @@ mkdocs.yml: Archivo de configuración principal para MkDocs.
 
 scripts/: Directorio para almacenar los scripts de configuración y mantenimiento.
 
-podman-compose/: Archivos de configuración para el despliegue de contenedores.
+compose/: Archivos de configuración para el despliegue de contenedores.
 
 README.md: Resumen general del proyecto (este archivo).
 
@@ -56,7 +56,7 @@ Configuración de las rutas (CNAME/A records) para mapear el dominio al servicio
 
 Ventajas de usar el Tunnel (eliminación de la apertura de puertos, protección DDoS de Cloudflare).
 
-### 4. Desarrollo con Docker en Alpine Linux
+### 6. Desarrollo con Docker en Alpine Linux
 
 - Plex Media Server
 - Torproxy

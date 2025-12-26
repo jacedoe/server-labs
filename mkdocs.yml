@@ -35,18 +35,14 @@ extra:
 nav:
   - 🏡 Inicio: index.md
 
-  - ⚙️ 1. Preparación de la Infraestructura:
+  - 🔒 1. Preparación de la Infraestructura:
       - 1.1. Servidor XCP-ng: preparacion/instalacion_xo_lite.md
-      - 1.2. Despliegue VM Debian Trixie: preparacion/despliegue_vm_debian.md
-      - 1.3. Despliegue VM Alpine LInux: preparacion/despliegue_vm_alpine.md
+      - 1.2. Despliegue VM Alpine LInux: preparacion/instalacion_alpine.md
 
-  - 🐳 2. Plataforma Web con Podman (Debian):
-      - 2.1. Preparación de Podman: web/preparacion_podman.md
-      - 2.2. Despliegue de WordPress Stack: web/despliegue_wordpress.md
-
-  - 🔒 3. Despliegue en producción de sitio web con Alpine/Nginx:
-      - 3.1. Configuración del stack Nginx-MariaDB-WordPress: web/nginx_config.md
-      - 3.2. Cloudflare Tunnel: seguridad/cloudflare_tunnel.md
+  - 🔒 2. Despliegue en producción de sitio web:
+      - 2.1. Intalación de Nginx y Hugo: web/nginx_conf.md
+      - 2.2. Configuración del stack Nginx-MariaDB-WordPress: web/despliegue_stack_web.md
+      - 2.3. Cloudflare Tunnel: seguridad/cloudflare_tunnel.md
 
   - 📚 Apéndices:
       - Comandos Útiles: apendices/comandos_utiles.md
