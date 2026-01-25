@@ -6,9 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         
-        <link rel="canonical" href="https://jacedoe.github.io/server-labs/apendices/comandos_utiles/">
+        <link rel="canonical" href="https://jacedoe.github.io/server-labs/web/despliegue_stack_web/">
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Comandos Útiles - Guía de Infraestructura Xen, Linux y contenedores</title>
+        <title>2.2. Configuración del stack Nginx-MariaDB-WordPress - Guía de Infraestructura Xen, Linux y contenedores</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/fontawesome.min.css" rel="stylesheet">
         <link href="../../css/brands.min.css" rel="stylesheet">
@@ -51,15 +51,15 @@
                                 </ul>
                             </li>
                             <li class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">🔒 2. Despliegue en producción de sitio web</a>
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">🔒 2. Despliegue en producción de sitio web</a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../../web/nginx_conf/" class="dropdown-item">2.1. Intalación de Nginx y Hugo</a>
+    <a href="../nginx_conf/" class="dropdown-item">2.1. Intalación de Nginx y Hugo</a>
 </li>
                                     
 <li>
-    <a href="../../web/despliegue_stack_web/" class="dropdown-item">2.2. Configuración del stack Nginx-MariaDB-WordPress</a>
+    <a href="./" class="dropdown-item active" aria-current="page">2.2. Configuración del stack Nginx-MariaDB-WordPress</a>
 </li>
                                     
 <li>
@@ -68,11 +68,11 @@
                                 </ul>
                             </li>
                             <li class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">📚 Apéndices</a>
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">📚 Apéndices</a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="./" class="dropdown-item active" aria-current="page">Comandos Útiles</a>
+    <a href="../../apendices/comandos_utiles/" class="dropdown-item">Comandos Útiles</a>
 </li>
                                 </ul>
                             </li>
@@ -88,17 +88,17 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../../seguridad/cloudflare_tunnel/" class="nav-link">
+                                <a rel="prev" href="../nginx_conf/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" class="nav-link disabled">
+                                <a rel="next" href="../../seguridad/cloudflare_tunnel/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="https://github.com/jacedoe/server-labs/edit/master/docs/apendices/comandos_utiles.md" class="nav-link">Edit on server-labs
+                                <a href="https://github.com/jacedoe/server-labs/edit/master/docs/web/despliegue_stack_web.md" class="nav-link">Edit on server-labs
                                     </a>
                             </li>
                     </ul>
@@ -123,82 +123,7 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<p>🛠️ Comandos Útiles y de Referencia
-Este apéndice contiene una lista de comandos esenciales para la gestión diaria y la solución de problemas (troubleshooting) de los componentes clave de la infraestructura.</p>
-<ol>
-<li>⚙️ Gestión de la Máquina Virtual (XCP-ng Console)
-Estos comandos se ejecutan en la consola de root del servidor XCP-ng.</li>
-</ol>
-<p>Verificar el estado del host:</p>
-<pre><code>xe host-list
-</code></pre>
-<p>Verificar el estado de las VMs:</p>
-<pre><code>xe vm-list
-</code></pre>
-<p>Encender una VM (usando el nombre):</p>
-<pre><code>xe vm-start vm=[Nombre de la VM]
-</code></pre>
-<p>Apagar una VM (apagado limpio):</p>
-<pre><code>xe vm-shutdown vm=[Nombre de la VM]
-</code></pre>
-<p>Verificar el estado de los Storage Repositories (SR):</p>
-<pre><code>xe sr-list
-</code></pre>
-<p>1.2. Ejemplo de redimensionamiento de una VM Alpine Linux de 20 GiB a 40 GiB</p>
-<p>Ejecutar en el host Xen</p>
-<pre><code>xe vm-shutdown vm=VM
-xe vm-disk-list vm=VM
-xe vdi-resize uuid=VDI_UUID disk-size=40GiB
-xe vm-start vm=VM
-
-</code></pre>
-<p>Ejecutar en la VM Alpine</p>
-<pre><code>apk add util-linux e2fsprogs
-growpart /dev/xvda 3
-resize2fs /dev/xvda3
-df -h
-
-</code></pre>
-<ol>
-<li>🐳 Gestión de Contenedores (Podman)
-Estos comandos se ejecutan dentro de la VM Debian como tu usuario estándar (admin), en modo rootless.</li>
-</ol>
-<p>Verificar todos los contenedores (activos e inactivos):</p>
-<pre><code>podman ps -a
-</code></pre>
-<p>Verificar todas las imágenes descargadas:</p>
-<pre><code>podman images
-</code></pre>
-<p>Verificar las redes de Podman:</p>
-<pre><code>podman network ls
-</code></pre>
-<p>Detener el stack completo (en el directorio del podman-compose.yml):</p>
-<pre><code>podman-compose down
-</code></pre>
-<p>Reiniciar el stack:</p>
-<pre><code>podman-compose restart
-</code></pre>
-<p>Ver logs de un contenedor (ej: WordPress):</p>
-<pre><code>podman logs -f wordpress_app
-</code></pre>
-<p>Ejecutar un comando dentro de un contenedor (ej:   en NGINX):</p>
-<pre><code>podman exec -it nginx_proxy /bin/ 
-</code></pre>
-<p>Limpiar contenedores y volúmenes no utilizados (¡Usar con precaución!):</p>
-<pre><code>podman system prune
-</code></pre>
-<ol>
-<li>🛡️ Cloudflared
-Estos comandos se ejecutan en la VM Debian para verificar el estado de los servicios.</li>
-</ol>
-<p>A. Cloudflare Tunnel
-Verificar el estado del servicio cloudflared:</p>
-<pre><code>sudo systemctl status cloudflared
-</code></pre>
-<p>Ver logs del servicio cloudflared:</p>
-<pre><code>sudo journalctl -u cloudflared -f
-</code></pre>
-<p>🛠️ </p></div>
+</div>
             </div>
         </div>
 

@@ -6,9 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         
-        <link rel="canonical" href="https://jacedoe.github.io/server-labs/apendices/comandos_utiles/">
+        <link rel="canonical" href="https://jacedoe.github.io/server-labs/preparacion/instalacion_alpine/">
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Comandos Útiles - Guía de Infraestructura Xen, Linux y contenedores</title>
+        <title>1.2. Despliegue VM Alpine LInux - Guía de Infraestructura Xen, Linux y contenedores</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/fontawesome.min.css" rel="stylesheet">
         <link href="../../css/brands.min.css" rel="stylesheet">
@@ -38,15 +38,15 @@
                                 <a href="../.." class="nav-link">🏡 Inicio</a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">🔒 1. Preparación de la Infraestructura</a>
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">🔒 1. Preparación de la Infraestructura</a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../../preparacion/instalacion_xo_lite/" class="dropdown-item">1.1. Servidor XCP-ng</a>
+    <a href="../instalacion_xo_lite/" class="dropdown-item">1.1. Servidor XCP-ng</a>
 </li>
                                     
 <li>
-    <a href="../../preparacion/instalacion_alpine/" class="dropdown-item">1.2. Despliegue VM Alpine LInux</a>
+    <a href="./" class="dropdown-item active" aria-current="page">1.2. Despliegue VM Alpine LInux</a>
 </li>
                                 </ul>
                             </li>
@@ -68,11 +68,11 @@
                                 </ul>
                             </li>
                             <li class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">📚 Apéndices</a>
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">📚 Apéndices</a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="./" class="dropdown-item active" aria-current="page">Comandos Útiles</a>
+    <a href="../../apendices/comandos_utiles/" class="dropdown-item">Comandos Útiles</a>
 </li>
                                 </ul>
                             </li>
@@ -88,17 +88,17 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../../seguridad/cloudflare_tunnel/" class="nav-link">
+                                <a rel="prev" href="../instalacion_xo_lite/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" class="nav-link disabled">
+                                <a rel="next" href="../../web/nginx_conf/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="https://github.com/jacedoe/server-labs/edit/master/docs/apendices/comandos_utiles.md" class="nav-link">Edit on server-labs
+                                <a href="https://github.com/jacedoe/server-labs/edit/master/docs/preparacion/instalacion_alpine.md" class="nav-link">Edit on server-labs
                                     </a>
                             </li>
                     </ul>
@@ -118,87 +118,139 @@
     
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#12-despliegue-vm-alpine-linux" class="nav-link">1.2. Despliegue VM Alpine Linux</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
         </ul>
     </div>
 </div></div>
                     <div class="col-md-9" role="main">
 
-<p>🛠️ Comandos Útiles y de Referencia
-Este apéndice contiene una lista de comandos esenciales para la gestión diaria y la solución de problemas (troubleshooting) de los componentes clave de la infraestructura.</p>
-<ol>
-<li>⚙️ Gestión de la Máquina Virtual (XCP-ng Console)
-Estos comandos se ejecutan en la consola de root del servidor XCP-ng.</li>
-</ol>
-<p>Verificar el estado del host:</p>
-<pre><code>xe host-list
+<h1 id="12-despliegue-vm-alpine-linux">1.2. Despliegue VM Alpine Linux<a class="headerlink" href="#12-despliegue-vm-alpine-linux" title="Permanent link">&para;</a></h1>
+<p>Este apartado describe el proceso completo para desplegar una máquina virtual con Alpine Linux sobre un servidor XCP-ng, así como su configuración inicial para dejarla lista para administración remota y uso de contenedores con Docker.</p>
+<h3 id="121-requisitos-previos">1.2.1. Requisitos previos<a class="headerlink" href="#121-requisitos-previos" title="Permanent link">&para;</a></h3>
+<p>Antes de comenzar, asegúrate de contar con:</p>
+<p>Servidor XCP-ng correctamente instalado y operativo</p>
+<p>Acceso a Xen Orchestra (XO Lite o completo)</p>
+<p>Imagen ISO de Alpine Linux (Standard x86_64)</p>
+<p>Conectividad de red funcional</p>
+<p>Conocimientos básicos de consola Linux</p>
+<h3 id="122-creacion-de-la-maquina-virtual-en-xcp-ng">1.2.2. Creación de la máquina virtual en XCP-ng<a class="headerlink" href="#122-creacion-de-la-maquina-virtual-en-xcp-ng" title="Permanent link">&para;</a></h3>
+<p>Accede a Xen Orchestra</p>
+<p>Selecciona New VM</p>
+<p>Elige la plantilla:</p>
+<p>Other install media</p>
+<p>Asigna los recursos recomendados:</p>
+<p>CPU: 1–2 vCPU</p>
+<p>RAM: 512 MB (mínimo) / 1 GB recomendado</p>
+<p>Disco: 8–16 GB</p>
+<p>Adjunta la ISO de Alpine Linux</p>
+<p>Configura la interfaz de red (bridge por defecto)</p>
+<p>Finaliza y arranca la VM</p>
+<h3 id="123-instalacion-base-de-alpine-linux">1.2.3. Instalación base de Alpine Linux<a class="headerlink" href="#123-instalacion-base-de-alpine-linux" title="Permanent link">&para;</a></h3>
+<p>En la consola de la VM, inicia sesión como:</p>
+<p>login: root</p>
+<p>Ejecuta el instalador:</p>
+<p>setup-alpine</p>
+<p>Responde a las preguntas principales:</p>
+<p>Teclado: es o us</p>
+<p>Hostname: (ej. alpine-vm)</p>
+<p>Red: DHCP (recomendado)</p>
+<p>Zona horaria: Europe/Madrid (o la correspondiente)</p>
+<p>Repositorio: por defecto</p>
+<p>Disco: sys</p>
+<p>Modo: standard</p>
+<p>Confirma la instalación y espera a que finalice.</p>
+<p>Reinicia el sistema:</p>
+<p>reboot</p>
+<h3 id="124-configuracion-del-acceso-por-ssh">1.2.4. Configuración del acceso por SSH<a class="headerlink" href="#124-configuracion-del-acceso-por-ssh" title="Permanent link">&para;</a></h3>
+<p>Instala el servidor OpenSSH:</p>
+<pre><code>apk add openssh
 </code></pre>
-<p>Verificar el estado de las VMs:</p>
-<pre><code>xe vm-list
+<p>Habilita el servicio:</p>
+<pre><code>rc-update add sshd
+rc-service sshd start
 </code></pre>
-<p>Encender una VM (usando el nombre):</p>
-<pre><code>xe vm-start vm=[Nombre de la VM]
+<p>Verifica que el servicio esté activo:</p>
+<pre><code>rc-service sshd status
 </code></pre>
-<p>Apagar una VM (apagado limpio):</p>
-<pre><code>xe vm-shutdown vm=[Nombre de la VM]
+<p>(Opcional pero recomendado) Edita la configuración:</p>
+<pre><code>vi /etc/ssh/sshd_config
 </code></pre>
-<p>Verificar el estado de los Storage Repositories (SR):</p>
-<pre><code>xe sr-list
+<p>Asegúrate de:</p>
+<pre><code>PermitRootLogin no
+PasswordAuthentication yes
 </code></pre>
-<p>1.2. Ejemplo de redimensionamiento de una VM Alpine Linux de 20 GiB a 40 GiB</p>
-<p>Ejecutar en el host Xen</p>
-<pre><code>xe vm-shutdown vm=VM
-xe vm-disk-list vm=VM
-xe vdi-resize uuid=VDI_UUID disk-size=40GiB
-xe vm-start vm=VM
-
+<p>Reinicia SSH:</p>
+<pre><code>rc-service sshd restart
 </code></pre>
-<p>Ejecutar en la VM Alpine</p>
-<pre><code>apk add util-linux e2fsprogs
-growpart /dev/xvda 3
-resize2fs /dev/xvda3
-df -h
-
+<h3 id="125-creacion-de-un-nuevo-usuario">1.2.5. Creación de un nuevo usuario<a class="headerlink" href="#125-creacion-de-un-nuevo-usuario" title="Permanent link">&para;</a></h3>
+<p>Crea un usuario (ejemplo: admin):</p>
+<pre><code>adduser admin
 </code></pre>
-<ol>
-<li>🐳 Gestión de Contenedores (Podman)
-Estos comandos se ejecutan dentro de la VM Debian como tu usuario estándar (admin), en modo rootless.</li>
-</ol>
-<p>Verificar todos los contenedores (activos e inactivos):</p>
-<pre><code>podman ps -a
+<p>Añádelo a los grupos necesarios:</p>
+<pre><code>addgroup admin wheel
 </code></pre>
-<p>Verificar todas las imágenes descargadas:</p>
-<pre><code>podman images
+<p>Verifica:</p>
+<pre><code>id admin
 </code></pre>
-<p>Verificar las redes de Podman:</p>
-<pre><code>podman network ls
+<h3 id="126-configuracion-de-doas-sudo-en-alpine">1.2.6. Configuración de doas (sudo en Alpine)<a class="headerlink" href="#126-configuracion-de-doas-sudo-en-alpine" title="Permanent link">&para;</a></h3>
+<p>Alpine utiliza doas en lugar de sudo.</p>
+<p>Instala doas:</p>
+<pre><code>apk add doas
 </code></pre>
-<p>Detener el stack completo (en el directorio del podman-compose.yml):</p>
-<pre><code>podman-compose down
+<p>Edita el archivo de configuración:</p>
+<pre><code>vi /etc/doas.conf
 </code></pre>
-<p>Reiniciar el stack:</p>
-<pre><code>podman-compose restart
+<p>Añade la siguiente línea:</p>
+<pre><code>permit persist :wheel
 </code></pre>
-<p>Ver logs de un contenedor (ej: WordPress):</p>
-<pre><code>podman logs -f wordpress_app
+<p>Asegura permisos correctos:</p>
+<pre><code>chmod 0400 /etc/doas.conf
 </code></pre>
-<p>Ejecutar un comando dentro de un contenedor (ej:   en NGINX):</p>
-<pre><code>podman exec -it nginx_proxy /bin/ 
+<p>Cambia al nuevo usuario y prueba:</p>
+<pre><code>su - admin
+doas apk update
 </code></pre>
-<p>Limpiar contenedores y volúmenes no utilizados (¡Usar con precaución!):</p>
-<pre><code>podman system prune
+<h3 id="127-instalacion-de-herramientas-basicas">1.2.7. Instalación de herramientas básicas<a class="headerlink" href="#127-instalacion-de-herramientas-basicas" title="Permanent link">&para;</a></h3>
+<p>Instala utilidades comunes para administración:</p>
+<pre><code>doas apk add \
+  curl \
+  wget \
+  vim \
+  btop \
+  bash \
+  git \
+  ca-certificates
 </code></pre>
-<ol>
-<li>🛡️ Cloudflared
-Estos comandos se ejecutan en la VM Debian para verificar el estado de los servicios.</li>
-</ol>
-<p>A. Cloudflare Tunnel
-Verificar el estado del servicio cloudflared:</p>
-<pre><code>sudo systemctl status cloudflared
+<p>Establece Bash como shell por defecto (opcional):</p>
+<pre><code>doas chsh -s /bin/bash admin
 </code></pre>
-<p>Ver logs del servicio cloudflared:</p>
-<pre><code>sudo journalctl -u cloudflared -f
+<h3 id="128-instalacion-y-configuracion-de-docker">1.2.8. Instalación y configuración de Docker<a class="headerlink" href="#128-instalacion-y-configuracion-de-docker" title="Permanent link">&para;</a></h3>
+<p>Instala Docker:</p>
+<pre><code>doas apk add docker
 </code></pre>
-<p>🛠️ </p></div>
+<p>Habilita el servicio:</p>
+<pre><code>doas rc-update add docker
+doas rc-service docker start
+</code></pre>
+<p>Añade el usuario al grupo docker:</p>
+<pre><code>doas addgroup admin docker
+</code></pre>
+<p>Cierra sesión y vuelve a entrar para aplicar cambios.</p>
+<p>Verifica la instalación:</p>
+<pre><code>docker version
+docker run hello-world
+</code></pre>
+<h3 id="129-configuracion-final-recomendada">1.2.9. Configuración final recomendada<a class="headerlink" href="#129-configuracion-final-recomendada" title="Permanent link">&para;</a></h3>
+<p>Actualiza el sistema:</p>
+<pre><code>doas apk update &amp;&amp; doas apk upgrade
+</code></pre>
+<p>Configura IP estática (opcional):</p>
+<pre><code>vi /etc/network/interfaces
+</code></pre></div>
             </div>
         </div>
 

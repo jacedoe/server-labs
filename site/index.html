@@ -1,144 +1,174 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="description" content="Documentación paso a paso para el despliegue de VM con XCP-ng, contenedores Podman (NGINX, MariaDB, WordPress).
-" /><link rel="canonical" href="https://jacedoe.github.io/server-labs/" />
-      <link rel="shortcut icon" href="img/favicon.ico" />
-    <title>Guía de Infraestructura Xen, Linux y contenedores</title>
-    <link rel="stylesheet" href="css/theme.css" />
-    <link rel="stylesheet" href="css/theme_extra.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
-    
-      <script>
-        // Current page data
-        var mkdocs_page_name = "\ud83c\udfe1 Inicio";
-        var mkdocs_page_input_path = "index.md";
-        var mkdocs_page_url = "/server-labs/";
-      </script>
-    
-    <!--[if lt IE 9]>
-      <script src="js/html5shiv.min.js"></script>
-    <![endif]-->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
-      <script>hljs.highlightAll();</script> 
-</head>
-
-<body class="wy-body-for-nav" role="document">
-
-  <div class="wy-grid-for-nav">
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
-    <div class="wy-side-scroll">
-      <div class="wy-side-nav-search">
-          <a href="." class="icon icon-home"> Guía de Infraestructura Xen, Linux y contenedores
-        </a><div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
-      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
-  </form>
-</div>
-      </div>
-
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul class="current">
-                <li class="toctree-l1 current"><a class="reference internal current" href=".">🏡 Inicio</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#1-preparacion-de-la-infraestructura">⚙️ 1. Preparación de la Infraestructura</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#2-plataforma-web-con-podman">🐳 2. Plataforma Web con Podman</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#3-despliegue-en-produccion-de-sitio-web-con-alpinenginx">🔒 3. Despliegue en producción de sitio web con Alpine/Nginx</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#4-monitoreo-automatizado">🛡️ 4. Monitoreo Automatizado</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#apendices">📚 Apéndices</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#recursos-adicionales">🔗 Recursos Adicionales</a>
-    </li>
-    </ul>
-                </li>
-              </ul>
-              <p class="caption"><span class="caption-text">⚙️ 1. Preparación de la Infraestructura</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="preparacion/instalacion_xo_lite/">1.1. Servidor XCP-ng</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="preparacion/despliegue_vm_debian/">1.2. Despliegue VM Debian Trixie</a>
-                  </li>
-                  <li class="toctree-l1"><a class="" href="preparacion/despliegue_vm_alpine.md">1.3. Despliegue VM Alpine LInux</a>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">🐳 2. Plataforma Web con Podman (Debian)</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="web/preparacion_podman/">2.1. Preparación de Podman</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="web/despliegue_wordpress/">2.2. Despliegue de WordPress Stack</a>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">🔒 3. Despliegue en producción de sitio web con Alpine/Nginx</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="" href="web/nginx_config.md">3.1. Configuración del stack Nginx-MariaDB-WordPress</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="seguridad/cloudflare_tunnel/">3.2. Cloudflare Tunnel</a>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">📚 Apéndices</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="apendices/comandos_utiles/">Comandos Útiles</a>
-                  </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="" href="guia-de-estilo.md">📘 Guía de Estilo (Oficial)</a>
-                </li>
-              </ul>
-      </div>
-    </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href=".">Guía de Infraestructura Xen, Linux y contenedores</a>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Documentación paso a paso para el despliegue de VM con XCP-ng, contenedores Podman (NGINX, MariaDB, WordPress).
+">
         
-      </nav>
-      <div class="wy-nav-content">
-        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
-  <ul class="wy-breadcrumbs">
-    <li><a href="." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">🏡 Inicio</li>
-    <li class="wy-breadcrumbs-aside">
-          <a href="https://github.com/jacedoe/server-labs/edit/master/docs/index.md">Edit on server-labs</a>
-    </li>
-  </ul>
-  <hr/>
-</div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-            <div class="section" itemprop="articleBody">
-              
-                <h1 id="bienvenido-a-server-labs">🏡 Bienvenido a Server Labs<a class="headerlink" href="#bienvenido-a-server-labs" title="Permanent link">&para;</a></h1>
-<p>Esta documentación te guiará paso a paso en la creación de tu infraestructura con <strong>XCP-ng</strong>, <strong>Podman</strong>, <strong>WordPress</strong>, <strong>NGINX</strong>, <strong>MariaDB</strong>, . </p>
+        <link rel="canonical" href="https://jacedoe.github.io/server-labs/">
+        <link rel="shortcut icon" href="img/favicon.ico">
+        <title>Guía de Infraestructura Xen, Linux y contenedores</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/fontawesome.min.css" rel="stylesheet">
+        <link href="css/brands.min.css" rel="stylesheet">
+        <link href="css/solid.min.css" rel="stylesheet">
+        <link href="css/v4-font-face.min.css" rel="stylesheet">
+        <link href="css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body class="homepage">
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href=".">Guía de Infraestructura Xen, Linux y contenedores</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href="." class="nav-link active" aria-current="page">🏡 Inicio</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">🔒 1. Preparación de la Infraestructura</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="preparacion/instalacion_xo_lite/" class="dropdown-item">1.1. Servidor XCP-ng</a>
+</li>
+                                    
+<li>
+    <a href="preparacion/instalacion_alpine/" class="dropdown-item">1.2. Despliegue VM Alpine LInux</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">🔒 2. Despliegue en producción de sitio web</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="web/nginx_conf/" class="dropdown-item">2.1. Intalación de Nginx y Hugo</a>
+</li>
+                                    
+<li>
+    <a href="web/despliegue_stack_web/" class="dropdown-item">2.2. Configuración del stack Nginx-MariaDB-WordPress</a>
+</li>
+                                    
+<li>
+    <a href="seguridad/cloudflare_tunnel/" class="dropdown-item">2.3. Cloudflare Tunnel</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">📚 Apéndices</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="apendices/comandos_utiles/" class="dropdown-item">Comandos Útiles</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a href="guia-de-estilo.md" class="nav-link">📘 Guía de Estilo (Oficial)</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" class="nav-link disabled">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="preparacion/instalacion_xo_lite/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/jacedoe/server-labs/edit/master/docs/index.md" class="nav-link">Edit on server-labs
+                                    </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#bienvenido-a-server-labs" class="nav-link">🏡 Bienvenido a Server Labs</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#1-preparacion-de-la-infraestructura" class="nav-link">⚙️ 1. Preparación de la Infraestructura</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#2-despliegue-en-produccion-de-sitio-web" class="nav-link">🔒 2. Despliegue en producción de sitio web</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#3-contenedores-docker-en-accion" class="nav-link">🛡️ 3. Contenedores docker en acción</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#apendices" class="nav-link">📚 Apéndices</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#recursos-adicionales" class="nav-link">🔗 Recursos Adicionales</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="bienvenido-a-server-labs">🏡 Bienvenido a Server Labs<a class="headerlink" href="#bienvenido-a-server-labs" title="Permanent link">&para;</a></h1>
+<p>Esta documentación te guiará paso a paso en la creación de tu infraestructura con <strong>XCP-ng</strong>, <strong>Linux</strong> y <strong>Contenedores Docker</strong>. </p>
 <blockquote>
-<p>Sigue la guía según tu objetivo: despliegue, seguridad, o referencia de comandos útiles.</p>
+<p>Sigue la guía según tu objetivo: despliegue de VM, contenedores o referencia de comandos útiles.</p>
 </blockquote>
 <hr />
 <h2 id="1-preparacion-de-la-infraestructura">⚙️ 1. Preparación de la Infraestructura<a class="headerlink" href="#1-preparacion-de-la-infraestructura" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>Servidor XCP-ng:</strong> <a href="preparacion/instalacion_xo_lite/">Instalación de XCP-ng</a>  </li>
-<li><strong>Despliegue VM Debian Trixie:</strong> <a href="preparacion/despliegue_vm_debian/">Guía paso a paso</a></li>
-<li><strong>Despliegue VM Alpine Linux:</strong> <a href="preparacion/despliegue_vm_debian/">Guía paso a paso</a></li>
+<li><strong>Despliegue VM Alpine Linux:</strong> <a href="preparacion/instalacion_alpine/">Guía paso a paso</a></li>
 </ul>
 <hr />
-<h2 id="2-plataforma-web-con-podman">🐳 2. Plataforma Web con Podman<a class="headerlink" href="#2-plataforma-web-con-podman" title="Permanent link">&para;</a></h2>
+<h2 id="2-despliegue-en-produccion-de-sitio-web">🔒 2. Despliegue en producción de sitio web<a class="headerlink" href="#2-despliegue-en-produccion-de-sitio-web" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Preparación de Podman:</strong> <a href="web/preparacion_podman/">Configuración del entorno</a>  </li>
-<li><strong>Despliegue de WordPress Stack:</strong> <a href="web/despliegue_wordpress/">Despliegue completo</a></li>
-</ul>
-<hr />
-<h2 id="3-despliegue-en-produccion-de-sitio-web-con-alpinenginx">🔒 3. Despliegue en producción de sitio web con Alpine/Nginx<a class="headerlink" href="#3-despliegue-en-produccion-de-sitio-web-con-alpinenginx" title="Permanent link">&para;</a></h2>
-<ul>
+<li><strong>Instalación y configuración de Nginx y Hugo</strong> <a href="web/nginx_conf/">Despliegue completo</a></li>
+<li><strong>Configuración del stack Alpine-Nginx-MariaDB-WordPress</strong> <a href="web/despliegue_stack_web/">Despliegue completo</a></li>
 <li><strong>Cloudflare Tunnel:</strong> <a href="seguridad/cloudflare_tunnel/">Configuración segura</a></li>
 </ul>
 <hr />
-<h2 id="4-monitoreo-automatizado">🛡️ 4. Monitoreo Automatizado<a class="headerlink" href="#4-monitoreo-automatizado" title="Permanent link">&para;</a></h2>
+<h2 id="3-contenedores-docker-en-accion">🛡️ 3. <strong>Contenedores docker en acción</strong><a class="headerlink" href="#3-contenedores-docker-en-accion" title="Permanent link">&para;</a></h2>
 <hr />
 <h2 id="apendices">📚 Apéndices<a class="headerlink" href="#apendices" title="Permanent link">&para;</a></h2>
 <ul>
@@ -154,54 +184,87 @@
 <hr />
 <blockquote>
 <p>💡 Tip: Usa la barra de búsqueda de la página para encontrar cualquier comando, archivo o sección.</p>
-</blockquote>
-              
+</blockquote></div>
             </div>
-          </div><footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="preparacion/instalacion_xo_lite/" class="btn btn-neutral float-right" title="1.1. Servidor XCP-ng">Next <span class="icon icon-circle-arrow-right"></span></a>
-    </div>
-
-  <hr/>
-
-  <div role="contentinfo">
-    <!-- Copyright etc -->
-  </div>
-
-  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
-</footer>
-          
         </div>
-      </div>
 
-    </section>
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = ".",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="js/base.js"></script>
+        <script src="search/main.js"></script>
 
-  </div>
-
-  <div class="rst-versions" role="note" aria-label="Versions">
-  <span class="rst-current-version" data-toggle="rst-current-version">
-    
-    
-    
-      <span><a href="preparacion/instalacion_xo_lite/" style="color: #fcfcfc">Next &raquo;</a></span>
-    
-  </span>
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
 </div>
-    <script src="js/jquery-3.6.0.min.js"></script>
-    <script>var base_url = ".";</script>
-    <script src="js/theme_extra.js"></script>
-    <script src="js/theme.js"></script>
-      <script src="search/main.js"></script>
-    <script>
-        jQuery(function () {
-            SphinxRtdTheme.Navigation.enable(true);
-        });
-    </script>
 
-</body>
+    </body>
 </html>
 
 <!--
-MkDocs version : 1.5.3
-Build Date UTC : 2025-12-21 20:30:27.723228+00:00
+MkDocs version : 1.6.1
+Build Date UTC : 2026-01-25 19:37:48.680207+00:00
 -->

@@ -10,7 +10,7 @@ site_description: >
 #        TEMA Y ESTILO
 # ============================
 theme:
-  name: readthedocs
+  name: mkdocs 
 
 # ============================
 #    EXTENSIONES MARKDOWN
