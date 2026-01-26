@@ -1,8 +1,8 @@
-# 1.2. Despliegue VM Alpine Linux
+# 1. Despliegue VM Alpine Linux
 
 Este apartado describe el proceso completo para desplegar una máquina virtual con Alpine Linux sobre un servidor XCP-ng, así como su configuración inicial para dejarla lista para administración remota y uso de contenedores con Docker.
 
-### 1.2.1. Requisitos previos
+### 2. Requisitos previos
 
 Antes de comenzar, asegúrate de contar con:
 
@@ -16,7 +16,7 @@ Conectividad de red funcional
 
 Conocimientos básicos de consola Linux
 
-### 1.2.2. Creación de la máquina virtual en XCP-ng
+### 3. Creación de la máquina virtual en XCP-ng
 
 Accede a Xen Orchestra
 
@@ -40,7 +40,7 @@ Configura la interfaz de red (bridge por defecto)
 
 Finaliza y arranca la VM
 
-### 1.2.3. Instalación base de Alpine Linux
+### 4. Instalación base de Alpine Linux
 
 En la consola de la VM, inicia sesión como:
 
@@ -74,7 +74,7 @@ Reinicia el sistema:
 
 reboot
 
-### 1.2.4. Configuración del acceso por SSH
+### 5. Configuración del acceso por SSH
 
 Instala el servidor OpenSSH:
 ```
@@ -107,7 +107,7 @@ Reinicia SSH:
 ```
 rc-service sshd restart
 ```
-### 1.2.5. Creación de un nuevo usuario
+### 6. Creación de un nuevo usuario
 
 Crea un usuario (ejemplo: admin):
 ```
@@ -123,7 +123,7 @@ Verifica:
 ```
 id admin
 ```
-### 1.2.6. Configuración de doas (sudo en Alpine)
+### 7. Configuración de doas (sudo en Alpine)
 
 Alpine utiliza doas en lugar de sudo.
 
@@ -152,7 +152,7 @@ Cambia al nuevo usuario y prueba:
 su - admin
 doas apk update
 ```
-### 1.2.7. Instalación de herramientas básicas
+### 8. Instalación de herramientas básicas
 
 Instala utilidades comunes para administración:
 ```
@@ -170,7 +170,7 @@ Establece Bash como shell por defecto (opcional):
 ```
 doas chsh -s /bin/bash admin
 ```
-### 1.2.8. Instalación y configuración de Docker
+### 9. Instalación y configuración de Docker
 
 Instala Docker:
 ```
@@ -195,7 +195,7 @@ Verifica la instalación:
 docker version
 docker run hello-world
 ```
-### 1.2.9. Configuración final recomendada
+### 10. Configuración final recomendada
 
 Actualiza el sistema:
 ```

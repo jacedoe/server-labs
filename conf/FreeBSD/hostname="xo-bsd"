@@ -1,0 +1,26 @@
+hostname="xo-bsd"
+keymap="es.kbd"
+ifconfig_xn0="DHCP"
+ifconfig_xn0_ipv6="inet6 accept_rtadv"
+sshd_enable="YES"
+moused_nondefault_enable="NO"
+# Set dumpdev to "AUTO" to enable crash dumps, "NO" to disable
+dumpdev="AUTO"
+# Added Samba service
+samba_server_enable="YES"
+# Added ZFS
+zfs_enable="YES"
+zfs_import_enable="YES"
+# --- Optimización Xen (XCP-ng) ---
+xe_guest_stats_enable="YES"
+
+# --- Stack Web (Equivalente a tu Alpine) ---
+nginx_enable="YES"
+php_fpm_enable="YES"
+mysql_enable="YES"      # Si instalas MariaDB
+
+# --- Cloudflare Tunnel ---
+cloudflared_enable="YES"
+cloudflared_mode="tunnel"
+cloudflared_conf="/usr/local/etc/cloudflared/config.yml"
+

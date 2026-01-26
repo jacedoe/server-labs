@@ -1,53 +1,62 @@
-# Guía de Infraestructura XenServer, Linux y FreeBSD.
+🚀 Server Labs: Infraestructura Híbrida sobre XCP-ng
 
-Este repositorio contiene la documentación, configuraciones y scripts para el despliegue de máquinas virtuales (VM) en un entorno XCP-ng, la configuración de un sitio web basado en NGINX, MariaDB, WordPress que será desplegado de manera nativa.
+Este repositorio documenta el despliegue, configuración y mantenimiento de un ecosistema de servidores nativos sobre Alpine Linux, optimizados para el hosting de aplicaciones estáticas (Hugo) y dinámicas (WordPress), con acceso seguro mediante Cloudflare Tunnel.
+🏗️ Arquitectura del Sistema
 
-Para este laboratorio se han utilizado las distribuciones Alpine Linux y FreeBSD 15.
+La infraestructura se basa en la eficiencia y la seguridad "Zero Trust", eliminando la exposición directa de puertos al exterior.
+1. Capa de Virtualización (Hypervisor)
 
-Estructura del Proyecto
-docs/: Contiene toda la documentación fuente en formato Markdown, la cual será utilizada por MkDocs para generar el sitio web estático.
+    XCP-ng: Servidor de virtualización empresarial basado en Xen. Elegido por su estabilidad y gestión de recursos críticos.
 
-mkdocs.yml: Archivo de configuración principal para MkDocs.
+    Estrategia: Segmentación de servicios en VMs ligeras para facilitar backups y escalabilidad.
 
-scripts/: Directorio para almacenar los scripts de configuración y mantenimiento.
+2. Sistema Base (OS)
 
-compose/: Archivos de configuración para el despliegue de contenedores.
+    Alpine Linux: Instalación nativa (no-containerized).
 
-README.md: Resumen general del proyecto (este archivo).
+    Justificación: Consumo mínimo de RAM (apenas 50MB en reposo), superficie de ataque reducida y gestión mediante OpenRC.
 
-## Componentes Principales de la Infraestructura
+    Servicios: Nginx (Web), PHP 8.4 (Procesamiento), MariaDB (Datos), Cloudflared (Acceso).
 
-### 1. Plataforma de Virtualización: XCP-ng
-Objetivo: Instalación y configuración inicial del servidor XCP-ng/XenServer web interface.
+3. Stack de Aplicaciones
 
-Puntos Clave: Instalación del hypervisor base, configuración de red, y preparación del entorno para el despliegue de la máquina virtual invitada (Guest VM).
+    Sitio Principal: merceponsautora.com - Generado con Hugo (Estático). Servido en puerto 8080.
 
-### 2. Máquina Virtual Invitada
-Sistema Operativo
-- Instalación y configuración inicial de Alpine Linux.
-- Instalación y configuración inicial de FreeBSD.
+    Blog: blog.merceponsautora.com - Implementado en WordPress (Dinámico). Servido en puerto 80 vía PHP-FPM 8.4 (Unix Socket).
 
-### 3. Entorno Web en producción en Alpine Linux
+🔒 Conectividad y Seguridad
 
-nginx: Proxy inverso y servidor web para manejar el tráfico.
+El tráfico se gestiona mediante un Cloudflare Tunnel nativo, lo que permite:
 
-hugo: Generador de un sitio web estático
+    Ocultar la IP pública del servidor.
 
-mariadb: Base de datos para almacenar la información de WordPress.
+    Gestión de SSL/TLS automática desde el borde (Edge).
 
-wordpress: Creación de un sitio web totalmente funcional con WordPress.
+    Configuración de reglas de acceso sin necesidad de abrir puertos en el firewall local.
 
-### 4. Conexión Segura con Cloudflare Tunnel
+🛠️ Guía de Despliegue Rápido (Cheatsheet)
+Instalación de dependencias en Alpine:
+Bash
 
-Registro y configuración inicial en el dashboard de Cloudflare.
+apk update
+apk add nginx php84-fpm php84-mysqli mariadb cloudflared
 
-Instalación del cliente cloudflared en la VM Debian y Alpine Linux.
+Gestión de servicios (OpenRC):
+Bash
 
-Creación del Tunnel (conexión segura saliente).
+rc-service nginx start
+rc-service php-fpm84 start
+rc-service cloudflared start
 
-Configuración de las rutas (CNAME/A records) para mapear el dominio al servicio interno (por ejemplo a NGINX).
+Backup Automatizado:
 
-Ventajas de usar el Tunnel (eliminación de la apertura de puertos, protección DDoS de Cloudflare).
+El sistema cuenta con un script en /usr/local/bin/backup_mercepons.sh que realiza snapshots diarios de la DB y los archivos de Hugo, manteniendo una rotación de 7 días.
+🔮 Futuro y Portabilidad
 
-### 5. Configuración de FreeBSD como servidor
-### 6. Respaldo y restauración
+Este proyecto ha sido diseñado bajo el principio de agnosticismo de plataforma. Aunque actualmente reside en Alpine Linux, la configuración nativa (sin la opacidad de Docker) facilita la migración hacia:
+
+    FreeBSD: Aprovechando Jails y ZFS para una mayor integridad de datos.
+
+    Otras Distros: Migración directa de los archivos de configuración de Nginx y PHP-FPM.
+
+    "La simplicidad es la máxima sofisticación." — Este laboratorio es la prueba de que un stack nativo bien configurado supera en rendimiento y mantenimiento a soluciones más complejas.

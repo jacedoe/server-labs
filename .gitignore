@@ -1,0 +1,16 @@
+# macOS especifico
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Archivos con prefijo ._ (AppleDouble files)
+._*
+
+# Archivos temporales de carpetas
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent

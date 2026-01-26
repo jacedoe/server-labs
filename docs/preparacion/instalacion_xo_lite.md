@@ -6,7 +6,7 @@ Esta guía detalla el proceso para establecer la plataforma de virtualización u
 
 ---
 
-## 📋 1.1. Prerrequisitos
+## 📋 1. Prerrequisitos
 
 Antes de comenzar, asegúrate de contar con:
 
@@ -19,11 +19,11 @@ Antes de comenzar, asegúrate de contar con:
 
 ---
 
-## 🖥️ 1.1.1 Instalación del Hypervisor XCP-ng
+## 🖥️ 2. Instalación del Hypervisor XCP-ng
 
 La instalación del hypervisor es el paso fundamental para acceder a XCP-ng.
 
-### 1.1.2 Arranque desde el medio de instalación
+### 3. Arranque desde el medio de instalación
 
 Inicia el servidor usando la imagen ISO o USB de XCP-ng. El asistente te guiará paso a paso:
 
@@ -37,15 +37,15 @@ Inicia el servidor usando la imagen ISO o USB de XCP-ng. El asistente te guiará
 
 ---
 
-## 🌐 1.1.3. Acceso Inicial a la Interfaz XCP-ng
+## 🌐 4. Acceso Inicial a la Interfaz XCP-ng
 
 Tras reiniciar el servidor:
 
-### 1.1.4. Obtener la Dirección IP
+### 5. Obtener la Dirección IP
 
 La consola de XCP-ng mostrará la IP asignada (ejemplo: `192.168.1.10`).
 
-### 1.1.5. Acceder desde el navegador
+### 6. Acceder desde el navegador
 
 Abre un navegador web y navega a:
 
@@ -55,23 +55,23 @@ https://192.168.1.10
 !!! info "Certificado autofirmado"
     Es probable que tu navegador muestre una advertencia de seguridad. Acepta el certificado para continuar.
 
-### 1.1.6. Inicio de sesión en XCP-ng
+### 7. Inicio de sesión en XCP-ng
 
 - **Usuario:** `root`  
 - **Contraseña:** La que configuraste durante la instalación de XCP-ng
 
 ---
 
-## ⚙️ 1.1.7. Configuración Post-Instalación en XCP-ng
+## ⚙️ 8. Configuración Post-Instalación en XCP-ng
 
 Dentro de XCP-ng, realiza estas configuraciones básicas:
 
-### 1.1.8. Configuración de Red
+### 9. Configuración de Red
 
 - Verifica que la interfaz de red (NIC) tenga la **IP, máscara y gateway** correctos.  
 - Configura redes virtuales o VLANs si es necesario.
 
-### 1.1.9. Configuración de Almacenamiento (Storage)
+### 10. Configuración de Almacenamiento (Storage)
 
 - Crea un **SR (Storage Repository)** para alojar las máquinas virtuales.  
 - Ejemplos de opciones comunes:  
@@ -81,7 +81,7 @@ Dentro de XCP-ng, realiza estas configuraciones básicas:
 !!! tip
     Si instalaste en un disco pequeño y tienes un disco más grande para VMs, crea un SR separado en ese disco para optimizar el rendimiento.
 
-### 1.1.10. Actualizaciones
+### 11. Actualizaciones
 
 XCP-ng facilita la aplicación de parches y actualizaciones del hypervisor.  
 Asegúrate de que XCP-ng esté **actualizado** antes de desplegar tus VMs.

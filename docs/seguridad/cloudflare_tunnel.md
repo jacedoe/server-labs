@@ -1,83 +1,106 @@
-## 5. Conexión Segura con Cloudflare Tunnel
-Cloudflare Tunnel (anteriormente conocido como Argo Tunnel) crea una conexión saliente segura entre tu VM (servidor local) y la red de Cloudflare. Esto permite que el tráfico web llegue a tus contenedores sin exponer directamente tu IP pública o requerir configuraciones complejas de firewall o redirección de puertos (port forwarding).
+Para cerrar el círculo de tu infraestructura en Alpine Linux, el túnel de Cloudflare (cloudflared) es la pieza clave: es lo que permite que tu servidor sea accesible desde internet sin abrir puertos en tu router y gestionando el SSL de forma automática.
 
-5.1. Prerrequisitos en Cloudflare
-Dominio Activo: Tu dominio debe estar utilizando los servidores de nombres de Cloudflare.
+Al no usar contenedores, instalaremos el binario de forma nativa y lo configuraremos como un servicio de OpenRC.
+🛠️ Guía de Instalación: Cloudflare Tunnel en Alpine Linux
+1. Instalación del binario
 
-Registro DNS: Asegúrate de tener un registro A o CNAME en Cloudflare para el subdominio que usarás (ej: web.tudominio.com). El valor de la IP puede ser ficticio, ya que el Tunnel lo anulará.
+Alpine no siempre tiene la versión más reciente en sus repositorios oficiales, por lo que lo ideal es descargar el binario directamente de Cloudflare.
+Bash
 
-5.2. Instalación del Cliente cloudflared
-Instalaremos el cliente que gestionará el túnel en tu VM Debian Trixie.
+# Instalar dependencias necesarias
+apk add libc6-compat
 
-Descargar el Repositorio de Cloudflare:
-````
-curl -fsSL https://pkg.cloudflare.com/pubkey.gpg | sudo gpg --dearmor -o /usr/share/keyrings/cloudflare.gpg
-echo 'deb [signed-by=/usr/share/keyrings/cloudflare.gpg] https://pkg.cloudflare.com/cloudflared trixie main' | sudo tee /etc/apt/sources.list.d/cloudflared.list
-````
-Actualizar e Instalar:
-````
-sudo apt update
-sudo apt install -y cloudflared
-````
-5.3. Creación y Configuración del Tunnel
-La configuración se realiza en dos partes: autenticación y definición del túnel (rutas).
+# Descargar el binario (arquitectura x86_64 para XCP-ng)
+wget https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64
 
-A. Autenticación
-Autentica tu cloudflared con tu cuenta de Cloudflare. Se te pedirá iniciar sesión en el navegador.
-````
+# Mover y dar permisos
+chmod +x cloudflared-linux-amd64
+mv cloudflared-linux-amd64 /usr/local/bin/cloudflared
+
+# Verificar instalación
+cloudflared --version
+
+2. Autenticación y Creación del Túnel
+
+Desde la terminal de tu servidor, ejecuta el login (esto te dará un enlace que debes abrir en tu navegador):
+Bash
+
 cloudflared tunnel login
-````
-Se abrirá una URL en tu terminal. Pégala en tu navegador, inicia sesión en Cloudflare y selecciona tu dominio.
 
-B. Crear el Túnel
-Asigna un nombre a tu túnel y crea la configuración local.
+Una vez autorizado, crea el túnel para tu infraestructura:
+Bash
 
-Crear el Túnel:
-```
-cloudflared tunnel create wp-tunnel
-```
-### (Esto te dará un ID de túnel único que necesitarás)
-Crear el Archivo de Configuración (config.yml): Crea el directorio de configuración para cloudflared y el archivo config.yml. 
-```
-sudo mkdir /etc/cloudflared
-sudo nano /etc/cloudflared/config.yml
-```
-Pega la siguiente configuración, asegurándote de reemplazar <TUNNEL-ID> con el ID único que obtuviste en el paso anterior:
-````
-tunnel: <TUNNEL-ID>
-credentials-file: /root/.cloudflared/<TUNNEL-ID>.json
+# Nombre sugerido: server-labs
+cloudflared tunnel create server-labs
+
+Esto generará un archivo .json en ~/.cloudflared/. Anota el ID del túnel.
+3. Configuración del archivo config.yml
+
+Crea el archivo de configuración que redirigirá el tráfico a los puertos de Nginx que definimos antes:
+Bash
+
+mkdir -p /etc/cloudflared
+vi /etc/cloudflared/config.yml
+
+Contenido del archivo:
+YAML
+
+tunnel: TU_TUNNEL_ID
+credentials-file: /etc/cloudflared/TU_TUNNEL_ID.json
+
 ingress:
-  # Regla 1: Tráfico del dominio al puerto 80 del servidor local.
-  - hostname: web.tudominio.com # Reemplaza con tu dominio
+  # Sitio principal (Hugo)
+  - hostname: merceponsautora.com
+    service: http://localhost:8080
+  - hostname: www.merceponsautora.com
+    service: http://localhost:8080
+
+  # Blog (WordPress)
+  - hostname: blog.merceponsautora.com
     service: http://localhost:80
-  # Regla final: Bloquea cualquier otra petición no mapeada.
-  - service: http_status:404 
-````
-Aquí, http://localhost:80 se refiere al puerto del host donde está escuchando tu contenedor NGINX.
 
-C. Mapeo DNS y Túnel
-Conecta el túnel a tu dominio en el panel de Cloudflare.
-````
-cloudflared tunnel route dns wp-tunnel web.tudominio.com
-````
-Esto crea automáticamente el registro DNS de tipo CNAME en tu zona de Cloudflare, apuntando a tu túnel.
+  # Regla por defecto (404 si no coincide nada)
+  - service: http_status:404
 
-5.4. Ejecución del Tunnel como Servicio
-Ejecuta el cliente cloudflared como un servicio persistente.
+No olvides mover el archivo .json de credenciales a /etc/cloudflared/ para que sea accesible globalmente.
+4. Configuración como Servicio nativo (OpenRC)
 
-Instalar el Servicio del Sistema (Systemd):
-````
-sudo cloudflared tunnel run --overwrite-service
-````
-Iniciar y Habilitar el Servicio:
-````
-sudo systemctl start cloudflared
-sudo systemctl enable cloudflared
-````
-Verificar el Estado:
-````
-sudo systemctl status cloudflared
-````
-El estado debe mostrarse como active (running).
+Para que el túnel arranque solo al iniciar la VM en XCP-ng, crearemos un script de servicio para Alpine.
 
-Una vez que el servicio esté activo, tu sitio web de WordPress será accesible a través de web.tudominio.com sin que hayas abierto un solo puerto en tu router o firewall local. Todo el tráfico pasa a través de la infraestructura segura de Cloudflare.
+    Crea el archivo de servicio: vi /etc/init.d/cloudflared
+
+    Pega este contenido:
+
+Bash
+
+#!/sbin/openrc-run
+
+name="cloudflared"
+description="Cloudflare Tunnel"
+command="/usr/local/bin/cloudflared"
+command_args="tunnel --config /etc/cloudflared/config.yml run"
+command_background="yes"
+pidfile="/run/${RC_SVCNAME}.pid"
+output_log="/var/log/cloudflared.log"
+error_log="/var/log/cloudflared.err"
+
+depend() {
+    need net
+    after firewall
+}
+
+    Da permisos y activa el servicio:
+
+Bash
+
+chmod +x /etc/init.d/cloudflared
+rc-update add cloudflared default
+rc-service cloudflared start
+
+5. Configuración en el Panel de Cloudflare (DNS)
+
+El último paso es decirle a Cloudflare que use el túnel para tus dominios. Puedes hacerlo desde la web de Cloudflare o por comando:
+Bash
+
+cloudflared tunnel route dns server-labs merceponsautora.com
+cloudflared tunnel route dns server-labs blog.merceponsautora.com
