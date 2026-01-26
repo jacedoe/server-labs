@@ -1,148 +1,315 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://jacedoe.github.io/server-labs/web/despliegue_stack_web/" />
-      <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>2.2. Configuración del stack Nginx-MariaDB-WordPress - Guía de Infraestructura Xen, Linux y contenedores</title>
-    <link rel="stylesheet" href="../../css/theme.css" />
-    <link rel="stylesheet" href="../../css/theme_extra.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
-    
-      <script>
-        // Current page data
-        var mkdocs_page_name = "2.2. Configuraci\u00f3n del stack Nginx-MariaDB-WordPress";
-        var mkdocs_page_input_path = "web/despliegue_stack_web.md";
-        var mkdocs_page_url = "/server-labs/web/despliegue_stack_web/";
-      </script>
-    
-    <!--[if lt IE 9]>
-      <script src="../../js/html5shiv.min.js"></script>
-    <![endif]-->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
-      <script>hljs.highlightAll();</script> 
-</head>
-
-<body class="wy-body-for-nav" role="document">
-
-  <div class="wy-grid-for-nav">
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
-    <div class="wy-side-scroll">
-      <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> Guía de Infraestructura Xen, Linux y contenedores
-        </a><div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
-  </form>
-</div>
-      </div>
-
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../..">🏡 Inicio</a>
-                </li>
-              </ul>
-              <p class="caption"><span class="caption-text">🔒 1. Preparación de la Infraestructura</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../preparacion/instalacion_xo_lite/">1.1. Servidor XCP-ng</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../preparacion/instalacion_alpine/">1.2. Despliegue VM Alpine LInux</a>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">🔒 2. Despliegue en producción de sitio web</span></p>
-              <ul class="current">
-                  <li class="toctree-l1"><a class="reference internal" href="../nginx_conf/">2.1. Intalación de Nginx y Hugo</a>
-                  </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="#">2.2. Configuración del stack Nginx-MariaDB-WordPress</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../seguridad/cloudflare_tunnel/">2.3. Cloudflare Tunnel</a>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">📚 Apéndices</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../apendices/comandos_utiles/">Comandos Útiles</a>
-                  </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="" href="../../guia-de-estilo.md">📘 Guía de Estilo (Oficial)</a>
-                </li>
-              </ul>
-      </div>
-    </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">Guía de Infraestructura Xen, Linux y contenedores</a>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
-      </nav>
-      <div class="wy-nav-content">
-        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
-  <ul class="wy-breadcrumbs">
-    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
-          <li class="breadcrumb-item">🔒 2. Despliegue en producción de sitio web</li>
-      <li class="breadcrumb-item active">2.2. Configuración del stack Nginx-MariaDB-WordPress</li>
-    <li class="wy-breadcrumbs-aside">
-          <a href="https://github.com/jacedoe/server-labs/edit/master/docs/web/despliegue_stack_web.md">Edit on server-labs</a>
-    </li>
-  </ul>
-  <hr/>
-</div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-            <div class="section" itemprop="articleBody">
-              
-                
-              
+        
+        <link rel="canonical" href="https://jacedoe.github.io/server-labs/web/despliegue_stack_web/">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>2.2. Configuración del stack Nginx-MariaDB-WordPress - Guía de Infraestructura Xen, Linux y contenedores</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../../css/brands.min.css" rel="stylesheet">
+        <link href="../../css/solid.min.css" rel="stylesheet">
+        <link href="../../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">Guía de Infraestructura Xen, Linux y contenedores</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href="../.." class="nav-link">🏡 Inicio</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">🔒 1. Preparación de la Infraestructura</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../preparacion/instalacion_xo_lite/" class="dropdown-item">1.1. Servidor XCP-ng</a>
+</li>
+                                    
+<li>
+    <a href="../../preparacion/instalacion_alpine/" class="dropdown-item">1.2. Despliegue VM Alpine LInux</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">🔒 2. Despliegue en producción de sitio web</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../nginx_conf/" class="dropdown-item">2.1. Intalación de Nginx y Hugo</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">2.2. Configuración del stack Nginx-MariaDB-WordPress</a>
+</li>
+                                    
+<li>
+    <a href="../../seguridad/cloudflare_tunnel/" class="dropdown-item">2.3. Cloudflare Tunnel</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">📚 Apéndices</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../apendices/comandos_utiles/" class="dropdown-item">Comandos Útiles</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../guia-de-estilo.md" class="nav-link">📘 Guía de Estilo (Oficial)</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../nginx_conf/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../../seguridad/cloudflare_tunnel/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/jacedoe/server-labs/edit/master/docs/web/despliegue_stack_web.md" class="nav-link">Edit on server-labs
+                                    </a>
+                            </li>
+                    </ul>
+                </div>
             </div>
-          </div><footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../nginx_conf/" class="btn btn-neutral float-left" title="2.1. Intalación de Nginx y Hugo"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../../seguridad/cloudflare_tunnel/" class="btn btn-neutral float-right" title="2.3. Cloudflare Tunnel">Next <span class="icon icon-circle-arrow-right"></span></a>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
     </div>
 
-  <hr/>
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#actualizar-repositorios" class="nav-link">Actualizar repositorios</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#instalar-php-84-y-modulos-necesarios" class="nav-link">Instalar PHP 8.4 y módulos necesarios</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#instalar-mariadb" class="nav-link">Instalar MariaDB</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#configurar-directorios-e-instalar-base-de-datos-inicial" class="nav-link">Configurar directorios e instalar base de datos inicial</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#arrancar-servicio" class="nav-link">Arrancar servicio</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#configuracion-de-seguridad-poner-password-de-root" class="nav-link">Configuración de seguridad (poner password de root)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#crear-directorio-y-descargar" class="nav-link">Crear directorio y descargar</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#configurar-permisos-para-que-nginx-y-php-puedan-escribir-subir-fotos-etc" class="nav-link">Configurar permisos para que Nginx y PHP puedan escribir (subir fotos, etc)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
 
-  <div role="contentinfo">
-    <!-- Copyright etc -->
-  </div>
+<p>📝 Guía de Despliegue: WordPress + PHP 8.4 en Alpine Linux</p>
+<p>Esta guía detalla la instalación del stack dinámico para blog.merceponsautora.com.
+1. Instalación de PHP 8.4 y Extensiones</p>
+<p>Alpine es modular. Para que WordPress funcione correctamente, necesitamos el motor de PHP y sus extensiones de procesamiento de imágenes y base de datos.
+Bash</p>
+<h1 id="actualizar-repositorios">Actualizar repositorios<a class="headerlink" href="#actualizar-repositorios" title="Permanent link">&para;</a></h1>
+<p>apk update</p>
+<h1 id="instalar-php-84-y-modulos-necesarios">Instalar PHP 8.4 y módulos necesarios<a class="headerlink" href="#instalar-php-84-y-modulos-necesarios" title="Permanent link">&para;</a></h1>
+<p>apk add php84 php84-fpm php84-mysqli php84-json php84-openssl php84-curl \
+    php84-zlib php84-xml php84-phar php84-intl php84-dom php84-xmlreader \
+    php84-ctype php84-session php84-mbstring php84-gd php84-iconv</p>
+<ol>
+<li>Configuración de PHP-FPM (El Socket)</li>
+</ol>
+<p>Para que coincida con tu configuración de Nginx, debemos decirle a PHP que escuche en el archivo de socket que definiste: /var/run/php-fpm84.sock.</p>
+<pre><code>Edita el archivo de configuración: vi /etc/php84/php-fpm.d/www.conf
 
-  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
-</footer>
-          
+Modifica estas líneas:
+Ini, TOML
+</code></pre>
+<p>listen = /var/run/php-fpm84.sock
+listen.owner = nginx
+listen.group = nginx
+listen.mode = 0660</p>
+<p>Habilita y arranca el servicio:
+Bash</p>
+<pre><code>rc-update add php-fpm84 default
+rc-service php-fpm84 start
+</code></pre>
+<ol>
+<li>Base de Datos (MariaDB)</li>
+</ol>
+<p>Instalaremos MariaDB de forma nativa para gestionar el contenido del blog.
+Bash</p>
+<h1 id="instalar-mariadb">Instalar MariaDB<a class="headerlink" href="#instalar-mariadb" title="Permanent link">&para;</a></h1>
+<p>apk add mariadb mariadb-client</p>
+<h1 id="configurar-directorios-e-instalar-base-de-datos-inicial">Configurar directorios e instalar base de datos inicial<a class="headerlink" href="#configurar-directorios-e-instalar-base-de-datos-inicial" title="Permanent link">&para;</a></h1>
+<p>mysql_install_db --user=mysql --datadir=/var/lib/mysql</p>
+<h1 id="arrancar-servicio">Arrancar servicio<a class="headerlink" href="#arrancar-servicio" title="Permanent link">&para;</a></h1>
+<p>rc-update add mariadb default
+rc-service mariadb start</p>
+<h1 id="configuracion-de-seguridad-poner-password-de-root">Configuración de seguridad (poner password de root)<a class="headerlink" href="#configuracion-de-seguridad-poner-password-de-root" title="Permanent link">&para;</a></h1>
+<p>mysql_secure_installation</p>
+<p>Crear la base de datos para el blog:
+SQL</p>
+<p>-- Accede con: mysql -u root -p
+CREATE DATABASE db_mercepons_blog;
+CREATE USER 'user_blog'@'localhost' IDENTIFIED BY 'tu_password_seguro';
+GRANT ALL PRIVILEGES ON db_mercepons_blog.* TO 'user_blog'@'localhost';
+FLUSH PRIVILEGES;
+EXIT;</p>
+<ol>
+<li>Instalación de WordPress</li>
+</ol>
+<p>Descargamos la última versión directamente en la ruta que definiste en tu Nginx (/var/www/blog).
+Bash</p>
+<h1 id="crear-directorio-y-descargar">Crear directorio y descargar<a class="headerlink" href="#crear-directorio-y-descargar" title="Permanent link">&para;</a></h1>
+<p>mkdir -p /var/www/blog
+cd /var/www/blog
+wget https://wordpress.org/latest.tar.gz
+tar -xzvf latest.tar.gz --strip-components=1
+rm latest.tar.gz</p>
+<h1 id="configurar-permisos-para-que-nginx-y-php-puedan-escribir-subir-fotos-etc">Configurar permisos para que Nginx y PHP puedan escribir (subir fotos, etc)<a class="headerlink" href="#configurar-permisos-para-que-nginx-y-php-puedan-escribir-subir-fotos-etc" title="Permanent link">&para;</a></h1>
+<p>chown -R nginx:nginx /var/www/blog</p>
+<ol>
+<li>Configuración del wp-config.php</li>
+</ol>
+<p>Crea el archivo de configuración uniendo WordPress con tu base de datos:
+Bash</p>
+<p>cp wp-config-sample.php wp-config.php
+vi wp-config.php</p>
+<p>Ajusta los valores con el nombre de la DB y el usuario que creamos en el paso 3.</p></div>
+            </div>
         </div>
-      </div>
 
-    </section>
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js"></script>
+        <script src="../../search/main.js"></script>
 
-  </div>
-
-  <div class="rst-versions" role="note" aria-label="Versions">
-  <span class="rst-current-version" data-toggle="rst-current-version">
-    
-        <span>
-          <a href="https://github.com/jacedoe/server-labs" class="fa fa-code-fork" style="color: #fcfcfc"> server-labs</a>
-        </span>
-    
-    
-      <span><a href="../nginx_conf/" style="color: #fcfcfc">&laquo; Previous</a></span>
-    
-    
-      <span><a href="../../seguridad/cloudflare_tunnel/" style="color: #fcfcfc">Next &raquo;</a></span>
-    
-  </span>
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
 </div>
-    <script src="../../js/jquery-3.6.0.min.js"></script>
-    <script>var base_url = "../..";</script>
-    <script src="../../js/theme_extra.js"></script>
-    <script src="../../js/theme.js"></script>
-      <script src="../../search/main.js"></script>
-    <script>
-        jQuery(function () {
-            SphinxRtdTheme.Navigation.enable(true);
-        });
-    </script>
 
-</body>
+    </body>
 </html>
