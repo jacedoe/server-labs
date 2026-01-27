@@ -92,6 +92,3 @@ Asegúrate de que XCP-ng esté **actualizado** antes de desplegar tus VMs.
 
 ---
 
-➡️ **Siguiente paso recomendado:**  
-Continúa con la preparación del entorno para contenedores:  
-[Preparación de Podman](../web/preparacion_podman.md)

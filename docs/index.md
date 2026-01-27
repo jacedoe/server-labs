@@ -33,7 +33,6 @@ Esta documentación te guiará paso a paso en la creación de tu infraestructura
 ## 📚 Apéndices
 
 - **Comandos Útiles:** [Referencia rápida](apendices/comandos_utiles.md)  
-- **Guía de Estilo (Oficial):** [Normas de documentación](guia-de-estilo.md)
 
 ---
 
