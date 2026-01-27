@@ -6,33 +6,32 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Documentación paso a paso para el despliegue de VM con XCP-ng, Alpine Linux y puesta en marcha de un sito web en producción (NGINX, MariaDB, WordPress).">
+        <meta name="description" content="Documentación paso a paso para el despliegue de VM con XCP-ng, Alpine Linx, FreeBSD, NGINX, Hugo, MariaDB y WordPress.
+">
       
       
       
-        <link rel="canonical" href="https://jacedoe.github.io/server-labs/">
+        <link rel="canonical" href="https://jacedoe.github.io/server-labs/apendices/notas/">
       
       
-      
-        <link rel="next" href="preparacion/instalacion_xo_lite/">
       
       
         
       
       
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
     
     
       
-        <title>Guía de Infraestructura Web y desarrollo 🚀 - Guía de Infraestructura Xen, Linux y contenedores</title>
+        <title>Notas - Guía de Infraestructura Xen, Linux y contenedores</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -51,7 +50,7 @@
       
     
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -75,11 +74,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#bienvenido-a-server-labs" class="md-skip">
-          Saltar a contenido
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -90,7 +84,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Cabecera">
-    <a href="." title="Guía de Infraestructura Xen, Linux y contenedores" class="md-header__button md-logo" aria-label="Guía de Infraestructura Xen, Linux y contenedores" data-md-component="logo">
+    <a href="../.." title="Guía de Infraestructura Xen, Linux y contenedores" class="md-header__button md-logo" aria-label="Guía de Infraestructura Xen, Linux y contenedores" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -110,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Guía de Infraestructura Web y desarrollo 🚀
+              Notas
             
           </span>
         </div>
@@ -219,11 +213,9 @@
   
   
   
-    
   
-  
-    <li class="md-tabs__item md-tabs__item--active">
-      <a href="." class="md-tabs__link">
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
         
   
   
@@ -246,7 +238,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="preparacion/instalacion_xo_lite/" class="md-tabs__link">
+        <a href="../../preparacion/instalacion_xo_lite/" class="md-tabs__link">
           
   
   
@@ -266,7 +258,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="web/nginx_conf/" class="md-tabs__link">
+        <a href="../../web/nginx_conf/" class="md-tabs__link">
           
   
   
@@ -286,7 +278,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="apendices/comandos_utiles/" class="md-tabs__link">
+        <a href="../comandos_utiles/" class="md-tabs__link">
           
   
   
@@ -309,8 +301,6 @@
           
             
               
-                
-              
               <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
@@ -322,7 +312,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegación" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="Guía de Infraestructura Xen, Linux y contenedores" class="md-nav__button md-logo" aria-label="Guía de Infraestructura Xen, Linux y contenedores" data-md-component="logo">
+    <a href="../.." title="Guía de Infraestructura Xen, Linux y contenedores" class="md-nav__button md-logo" aria-label="Guía de Infraestructura Xen, Linux y contenedores" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -349,39 +339,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
-  
-  <span class="md-ellipsis">
-    
-  
-    🏡 Inicio
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -399,70 +360,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Tabla de contenidos
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1-preparacion-de-la-infraestructura" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ⚙️ 1. Preparación de la Infraestructura
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-despliegue-en-produccion-de-sitio-web" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🔒 2. Despliegue en producción de sitio web
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#apendices" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📚 Apéndices
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#recursos-adicionales" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🔗 Recursos Adicionales
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -526,7 +423,7 @@
   
   
     <li class="md-nav__item">
-      <a href="preparacion/instalacion_xo_lite/" class="md-nav__link">
+      <a href="../../preparacion/instalacion_xo_lite/" class="md-nav__link">
         
   
   
@@ -554,7 +451,7 @@
   
   
     <li class="md-nav__item">
-      <a href="preparacion/instalacion_alpine/" class="md-nav__link">
+      <a href="../../preparacion/instalacion_alpine/" class="md-nav__link">
         
   
   
@@ -641,7 +538,7 @@
   
   
     <li class="md-nav__item">
-      <a href="web/nginx_conf/" class="md-nav__link">
+      <a href="../../web/nginx_conf/" class="md-nav__link">
         
   
   
@@ -669,7 +566,7 @@
   
   
     <li class="md-nav__item">
-      <a href="web/despliegue_stack_web/" class="md-nav__link">
+      <a href="../../web/despliegue_stack_web/" class="md-nav__link">
         
   
   
@@ -697,7 +594,7 @@
   
   
     <li class="md-nav__item">
-      <a href="seguridad/cloudflare_tunnel/" class="md-nav__link">
+      <a href="../../seguridad/cloudflare_tunnel/" class="md-nav__link">
         
   
   
@@ -784,7 +681,7 @@
   
   
     <li class="md-nav__item">
-      <a href="apendices/comandos_utiles/" class="md-nav__link">
+      <a href="../comandos_utiles/" class="md-nav__link">
         
   
   
@@ -820,9 +717,7 @@
             
             
               
-                
-              
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" hidden>
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -831,60 +726,6 @@
   
   
   
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Tabla de contenidos
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1-preparacion-de-la-infraestructura" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ⚙️ 1. Preparación de la Infraestructura
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-despliegue-en-produccion-de-sitio-web" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🔒 2. Despliegue en producción de sitio web
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#apendices" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📚 Apéndices
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#recursos-adicionales" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🔗 Recursos Adicionales
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
   
 </nav>
                   </div>
@@ -898,60 +739,58 @@
               <article class="md-content__inner md-typeset">
                 
                   
-  
-
-
-
-  
-  
-
-
-<h1 id="bienvenido-a-server-labs">🏡 Bienvenido a Server Labs<a class="headerlink" href="#bienvenido-a-server-labs" title="Permanent link">&para;</a></h1>
-<p>Esta documentación te guiará paso a paso en la creación de tu infraestructura con <strong>XCP-ng</strong>, <strong>Linux</strong> y <strong>Contenedores Docker</strong>. </p>
-<blockquote>
-<p>Sigue la guía según tu objetivo: despliegue de VM, contenedores o referencia de comandos útiles.</p>
-</blockquote>
-<hr />
-<h2 id="1-preparacion-de-la-infraestructura">⚙️ 1. Preparación de la Infraestructura<a class="headerlink" href="#1-preparacion-de-la-infraestructura" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>Servidor XCP-ng:</strong> <a href="preparacion/instalacion_xo_lite/">Instalación de XCP-ng</a>  </li>
-<li><strong>Despliegue VM Alpine Linux:</strong> <a href="preparacion/instalacion_alpine/">Guía paso a paso</a></li>
-</ul>
-<hr />
-<h2 id="2-despliegue-en-produccion-de-sitio-web">🔒 2. Despliegue en producción de sitio web<a class="headerlink" href="#2-despliegue-en-produccion-de-sitio-web" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>Instalación y configuración de Nginx y Hugo</strong> <a href="web/nginx_conf/">Despliegue completo</a></li>
-<li><strong>Configuración del stack Alpine-Nginx-MariaDB-WordPress</strong> <a href="web/despliegue_stack_web/">Despliegue completo</a></li>
-<li><strong>Cloudflare Tunnel:</strong> <a href="seguridad/cloudflare_tunnel/">Configuración segura</a></li>
-</ul>
-<hr />
-<h2 id="apendices">📚 Apéndices<a class="headerlink" href="#apendices" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>Comandos Útiles:</strong> <a href="apendices/comandos_utiles/">Referencia rápida</a>  </li>
-</ul>
-<hr />
-<h2 id="recursos-adicionales">🔗 Recursos Adicionales<a class="headerlink" href="#recursos-adicionales" title="Permanent link">&para;</a></h2>
-<ul>
-<li><a href="https://github.com/jacedoe/server-labs">Repositorio GitHub del proyecto</a>  </li>
-</ul>
-<hr />
-<blockquote>
-<p>💡 Tip: Usa la barra de búsqueda de la página para encontrar cualquier comando, archivo o sección.</p>
-</blockquote>
-
-
-
-
-
 
 
   
   
 
 
+  <h1>Notas</h1>
+
+<p>🐳 Gestión de Contenedores (Podman)</p>
+<p>Estos comandos se ejecutan dentro de la VM Debian como tu usuario estándar (admin), en modo rootless.</p>
+<p>Verificar todos los contenedores (activos e inactivos):
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>podman ps -a
+</code></pre></div>
+Verificar todas las imágenes descargadas:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>podman images
+</code></pre></div>
+Verificar las redes de Podman:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>podman network ls
+</code></pre></div>
+Detener el stack completo (en el directorio del podman-compose.yml):
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>podman-compose down
+</code></pre></div>
+Reiniciar el stack:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>podman-compose restart
+</code></pre></div>
+Ver logs de un contenedor (ej: WordPress):
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>podman logs -f wordpress_app
+</code></pre></div>
+Ejecutar un comando dentro de un contenedor (ej:   en NGINX):
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>podman exec -it nginx_proxy /bin/ 
+</code></pre></div>
+Limpiar contenedores y volúmenes no utilizados (¡Usar con precaución!):
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>podman system prune
+</code></pre></div>
+🛡️ Cloudflared</p>
+<p>Estos comandos se ejecutan en la VM Debian para verificar el estado de los servicios.</p>
+<p>A. Cloudflare Tunnel
+Verificar el estado del servicio cloudflared:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>sudo systemctl status cloudflared
+</code></pre></div>
+Ver logs del servicio cloudflared:
+```
+sudo journalctl -u cloudflared -f</p>
 
 
-  
+
+
+
+
+
+
+
 
 
 
@@ -1008,10 +847,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.tabs", "navigation.sections", "content.code.copy"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
     
     
-      <script src="assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>
