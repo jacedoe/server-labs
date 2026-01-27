@@ -3,7 +3,7 @@ title: Guía de Infraestructura Web y desarrollo 🚀
 icon: material/home
 hide:
   - toc
-description: Documentación paso a paso para el despliegue de VM con XCP-ng, contenedores Docker y puesta en marcha de un sito web en producción (NGINX, MariaDB, WordPress).
+description: Documentación paso a paso para el despliegue de VM con XCP-ng, Alpine Linux y puesta en marcha de un sito web en producción (NGINX, MariaDB, WordPress).
 ---
 
 # 🏡 Bienvenido a Server Labs
@@ -27,9 +27,6 @@ Esta documentación te guiará paso a paso en la creación de tu infraestructura
 - **Configuración del stack Alpine-Nginx-MariaDB-WordPress** [Despliegue completo](web/despliegue_stack_web.md)
 - **Cloudflare Tunnel:** [Configuración segura](seguridad/cloudflare_tunnel.md)
 
----
-
-## 🛡️ 3. **Contenedores docker en acción**
 
 ---
 
@@ -43,7 +40,6 @@ Esta documentación te guiará paso a paso en la creación de tu infraestructura
 ## 🔗 Recursos Adicionales
 
 - [Repositorio GitHub del proyecto](https://github.com/jacedoe/server-labs)  
-- [Abrir un Issue o Pull Request](https://github.com/jacedoe/server-labs/issues)
 
 ---
 

@@ -118,12 +118,159 @@
     
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#reiniciar-nginx-tras-cambios-en-la-config" class="nav-link">Reiniciar Nginx tras cambios en la config</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#verificar-que-el-socket-de-php-fpm-este-activo" class="nav-link">Verificar que el socket de PHP-FPM esté activo</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#logs-de-error-en-tiempo-real" class="nav-link">Logs de error en tiempo real</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#actualizar-indices-de-paquetes" class="nav-link">Actualizar índices de paquetes</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#instalar-nginx" class="nav-link">Instalar nginx</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#anadir-nginx-al-inicio-automatico" class="nav-link">Añadir Nginx al inicio automático</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#iniciar-el-servicio-por-primera-vez" class="nav-link">Iniciar el servicio por primera vez</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#comprobar-el-estado" class="nav-link">Comprobar el estado</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#asegurate-de-que-el-usuario-nginx-tiene-acceso-a-tus-webs" class="nav-link">Asegúrate de que el usuario nginx tiene acceso a tus webs</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#permisos-recomendados-para-directorios-y-archivos" class="nav-link">Permisos recomendados para directorios y archivos</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#verificar-sintaxis-esto-te-ahorra-muchos-dolores-de-cabeza" class="nav-link">Verificar sintaxis (esto te ahorra muchos dolores de cabeza)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#si-el-test-es-exitoso-recarga-sin-cortar-conexiones-activas" class="nav-link">Si el test es exitoso, recarga sin cortar conexiones activas</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
         </ul>
     </div>
 </div></div>
                     <div class="col-md-9" role="main">
 
-</div>
+<p>🌐 Arquitectura de Servidor: Merce Pons</p>
+<p>Esta sección documenta la implementación nativa en Alpine Linux para la infraestructura de la escritora Merce Pons.
+Esquema de Flujo de Datos
+1. Configuración de Nginx</p>
+<p>La configuración se divide en dos bloques lógicos para optimizar el rendimiento y la seguridad.
+A. Sitio Principal (Hugo - Estático)</p>
+<pre><code>Puerto: 8080 (Configurado para recibir tráfico del Túnel de Cloudflare).
+
+Directorio raíz: /var/www/mercepons/public.
+
+Estrategia: Entrega directa de archivos con fallback 404. Al ser Hugo, no requiere procesamiento de lenguaje de lado del servidor, lo que garantiza una carga instantánea.
+</code></pre>
+<p>B. Blog (WordPress - Dinámico)</p>
+<pre><code>Puerto: 80.
+
+Procesamiento PHP: Se utiliza PHP-FPM 8.4 a través de un socket Unix (/var/run/php-fpm84.sock), lo cual es más eficiente que TCP en instalaciones nativas de Alpine.
+
+Parámetros Críticos de Proxy: * fastcgi_param HTTPS on;: Crucial para evitar bucles de redirección (Mixed Content) ya que SSL termina en Cloudflare.
+
+    HTTP_X_FORWARDED_PROTO: Permite que WordPress reconozca que el usuario final navega de forma segura.
+</code></pre>
+<ol>
+<li>Manual de Mantenimiento (SysAdmin)
+Gestión de Servicios en Alpine (OpenRC)</li>
+</ol>
+<p>Para reiniciar o aplicar cambios en la configuración:
+Bash</p>
+<h1 id="reiniciar-nginx-tras-cambios-en-la-config">Reiniciar Nginx tras cambios en la config<a class="headerlink" href="#reiniciar-nginx-tras-cambios-en-la-config" title="Permanent link">&para;</a></h1>
+<p>rc-service nginx restart</p>
+<h1 id="verificar-que-el-socket-de-php-fpm-este-activo">Verificar que el socket de PHP-FPM esté activo<a class="headerlink" href="#verificar-que-el-socket-de-php-fpm-este-activo" title="Permanent link">&para;</a></h1>
+<p>ls -l /var/run/php-fpm84.sock</p>
+<h1 id="logs-de-error-en-tiempo-real">Logs de error en tiempo real<a class="headerlink" href="#logs-de-error-en-tiempo-real" title="Permanent link">&para;</a></h1>
+<p>tail -f /var/log/nginx/error.log</p>
+<p>Despliegue de Actualizaciones</p>
+<pre><code>Hugo: Al ejecutar hugo en tu entorno de desarrollo, el contenido se sincroniza con /var/www/mercepons/public.
+
+WordPress: El núcleo y plugins se mantienen mediante el panel o wp-cli nativo en Alpine.
+</code></pre>
+<ol>
+<li>
+<p>Optimizaciones Implementadas</p>
+<p>Caché Agresiva: Se ha configurado un tiempo de expiración máximo (expires max) para archivos estáticos (js, css, imágenes), reduciendo la latencia y el ancho de banda del servidor.</p>
+<p>Seguridad: Bloqueo explícito de archivos .htaccess y archivos ocultos, reduciendo la superficie de ataque.</p>
+<p>Silencio de Logs: Se desactivan los logs para favicon.ico y robots.txt para evitar el llenado innecesario de archivos de log.</p>
+</li>
+</ol>
+<p>🛠️ Paso 1: Instalación del paquete</p>
+<p>Como Alpine es minimalista, primero asegúrate de tener los repositorios actualizados.
+Bash</p>
+<h1 id="actualizar-indices-de-paquetes">Actualizar índices de paquetes<a class="headerlink" href="#actualizar-indices-de-paquetes" title="Permanent link">&para;</a></h1>
+<p>apk update</p>
+<h1 id="instalar-nginx">Instalar nginx<a class="headerlink" href="#instalar-nginx" title="Permanent link">&para;</a></h1>
+<p>apk add nginx</p>
+<p>⚙️ Paso 2: Gestión del Servicio (OpenRC)</p>
+<p>Alpine no usa systemd, usa OpenRC. Estos son los comandos que necesitas para que Nginx arranque siempre con el servidor:
+Bash</p>
+<h1 id="anadir-nginx-al-inicio-automatico">Añadir Nginx al inicio automático<a class="headerlink" href="#anadir-nginx-al-inicio-automatico" title="Permanent link">&para;</a></h1>
+<p>rc-update add nginx default</p>
+<h1 id="iniciar-el-servicio-por-primera-vez">Iniciar el servicio por primera vez<a class="headerlink" href="#iniciar-el-servicio-por-primera-vez" title="Permanent link">&para;</a></h1>
+<p>rc-service nginx start</p>
+<h1 id="comprobar-el-estado">Comprobar el estado<a class="headerlink" href="#comprobar-el-estado" title="Permanent link">&para;</a></h1>
+<p>rc-service nginx status</p>
+<p>📂 Paso 3: Estructura de archivos en Alpine</p>
+<p>A diferencia de Debian/Ubuntu, Alpine organiza los archivos de forma ligeramente distinta:</p>
+<pre><code>Configuración principal: /etc/nginx/nginx.conf
+
+Configuraciones de sitios: /etc/nginx/http.d/ (Aquí es donde debes crear tus archivos .conf como el de Merce Pons).
+
+Logs: /var/log/nginx/
+
+Directorio web por defecto: /var/lib/nginx/html (Aunque tú estás usando /var/www/).
+</code></pre>
+<p>👤 Paso 4: Usuarios y Permisos</p>
+<p>Nginx en Alpine corre bajo el usuario nginx por defecto. Para que pueda leer tus carpetas de Hugo y WordPress:
+Bash</p>
+<h1 id="asegurate-de-que-el-usuario-nginx-tiene-acceso-a-tus-webs">Asegúrate de que el usuario nginx tiene acceso a tus webs<a class="headerlink" href="#asegurate-de-que-el-usuario-nginx-tiene-acceso-a-tus-webs" title="Permanent link">&para;</a></h1>
+<p>chown -R nginx:nginx /var/www/mercepons
+chown -R nginx:nginx /var/www/blog</p>
+<h1 id="permisos-recomendados-para-directorios-y-archivos">Permisos recomendados para directorios y archivos<a class="headerlink" href="#permisos-recomendados-para-directorios-y-archivos" title="Permanent link">&para;</a></h1>
+<p>find /var/www/ -type d -exec chmod 755 {} \;
+find /var/www/ -type f -exec chmod 644 {} \;</p>
+<p>🚀 Paso 5: Verificación y Carga</p>
+<p>Cada vez que edites tu configuración (como el archivo que me pasaste antes), nunca reinicies sin probar primero:
+Bash</p>
+<h1 id="verificar-sintaxis-esto-te-ahorra-muchos-dolores-de-cabeza">Verificar sintaxis (esto te ahorra muchos dolores de cabeza)<a class="headerlink" href="#verificar-sintaxis-esto-te-ahorra-muchos-dolores-de-cabeza" title="Permanent link">&para;</a></h1>
+<p>nginx -t</p>
+<h1 id="si-el-test-es-exitoso-recarga-sin-cortar-conexiones-activas">Si el test es exitoso, recarga sin cortar conexiones activas<a class="headerlink" href="#si-el-test-es-exitoso-recarga-sin-cortar-conexiones-activas" title="Permanent link">&para;</a></h1>
+<p>nginx -s reload</p></div>
             </div>
         </div>
 

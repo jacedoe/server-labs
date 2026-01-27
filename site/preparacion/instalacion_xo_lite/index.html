@@ -121,19 +121,19 @@
             
             <li class="nav-item" data-bs-level="1"><a href="#instalacion-y-configuracion-del-servidor-xcp-ng" class="nav-link">⚙️ Instalación y Configuración del Servidor XCP-ng</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-bs-level="2"><a href="#11-prerrequisitos" class="nav-link">📋 1.1. Prerrequisitos</a>
+            <li class="nav-item" data-bs-level="2"><a href="#1-prerrequisitos" class="nav-link">📋 1. Prerrequisitos</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#111-instalacion-del-hypervisor-xcp-ng" class="nav-link">🖥️ 1.1.1 Instalación del Hypervisor XCP-ng</a>
+            <li class="nav-item" data-bs-level="2"><a href="#2-instalacion-del-hypervisor-xcp-ng" class="nav-link">🖥️ 2. Instalación del Hypervisor XCP-ng</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#113-acceso-inicial-a-la-interfaz-xcp-ng" class="nav-link">🌐 1.1.3. Acceso Inicial a la Interfaz XCP-ng</a>
+            <li class="nav-item" data-bs-level="2"><a href="#4-acceso-inicial-a-la-interfaz-xcp-ng" class="nav-link">🌐 4. Acceso Inicial a la Interfaz XCP-ng</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#117-configuracion-post-instalacion-en-xcp-ng" class="nav-link">⚙️ 1.1.7. Configuración Post-Instalación en XCP-ng</a>
+            <li class="nav-item" data-bs-level="2"><a href="#8-configuracion-post-instalacion-en-xcp-ng" class="nav-link">⚙️ 8. Configuración Post-Instalación en XCP-ng</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -150,7 +150,7 @@
 <p>Nota: XCP-ng <strong>no es el hypervisor</strong>, sino la interfaz de gestión. Primero se instala XCP-ng y luego se accede a su interfaz web integrada.</p>
 </blockquote>
 <hr />
-<h2 id="11-prerrequisitos">📋 1.1. Prerrequisitos<a class="headerlink" href="#11-prerrequisitos" title="Permanent link">&para;</a></h2>
+<h2 id="1-prerrequisitos">📋 1. Prerrequisitos<a class="headerlink" href="#1-prerrequisitos" title="Permanent link">&para;</a></h2>
 <p>Antes de comenzar, asegúrate de contar con:</p>
 <ul>
 <li>Un servidor físico o máquina virtual para instalar el hypervisor XCP-ng.</li>
@@ -162,9 +162,9 @@
 <p>Guarda cuidadosamente la contraseña de root que establecerás durante la instalación. Será esencial para la gestión del servidor.</p>
 </div>
 <hr />
-<h2 id="111-instalacion-del-hypervisor-xcp-ng">🖥️ 1.1.1 Instalación del Hypervisor XCP-ng<a class="headerlink" href="#111-instalacion-del-hypervisor-xcp-ng" title="Permanent link">&para;</a></h2>
+<h2 id="2-instalacion-del-hypervisor-xcp-ng">🖥️ 2. Instalación del Hypervisor XCP-ng<a class="headerlink" href="#2-instalacion-del-hypervisor-xcp-ng" title="Permanent link">&para;</a></h2>
 <p>La instalación del hypervisor es el paso fundamental para acceder a XCP-ng.</p>
-<h3 id="112-arranque-desde-el-medio-de-instalacion">1.1.2 Arranque desde el medio de instalación<a class="headerlink" href="#112-arranque-desde-el-medio-de-instalacion" title="Permanent link">&para;</a></h3>
+<h3 id="3-arranque-desde-el-medio-de-instalacion">3. Arranque desde el medio de instalación<a class="headerlink" href="#3-arranque-desde-el-medio-de-instalacion" title="Permanent link">&para;</a></h3>
 <p>Inicia el servidor usando la imagen ISO o USB de XCP-ng. El asistente te guiará paso a paso:</p>
 <ol>
 <li>Selecciona el <strong>idioma</strong> y la distribución del teclado.  </li>
@@ -176,31 +176,31 @@
 <li>Finalización: el sistema instalará los archivos y te pedirá retirar el medio y reiniciar.</li>
 </ol>
 <hr />
-<h2 id="113-acceso-inicial-a-la-interfaz-xcp-ng">🌐 1.1.3. Acceso Inicial a la Interfaz XCP-ng<a class="headerlink" href="#113-acceso-inicial-a-la-interfaz-xcp-ng" title="Permanent link">&para;</a></h2>
+<h2 id="4-acceso-inicial-a-la-interfaz-xcp-ng">🌐 4. Acceso Inicial a la Interfaz XCP-ng<a class="headerlink" href="#4-acceso-inicial-a-la-interfaz-xcp-ng" title="Permanent link">&para;</a></h2>
 <p>Tras reiniciar el servidor:</p>
-<h3 id="114-obtener-la-direccion-ip">1.1.4. Obtener la Dirección IP<a class="headerlink" href="#114-obtener-la-direccion-ip" title="Permanent link">&para;</a></h3>
+<h3 id="5-obtener-la-direccion-ip">5. Obtener la Dirección IP<a class="headerlink" href="#5-obtener-la-direccion-ip" title="Permanent link">&para;</a></h3>
 <p>La consola de XCP-ng mostrará la IP asignada (ejemplo: <code>192.168.1.10</code>).</p>
-<h3 id="115-acceder-desde-el-navegador">1.1.5. Acceder desde el navegador<a class="headerlink" href="#115-acceder-desde-el-navegador" title="Permanent link">&para;</a></h3>
+<h3 id="6-acceder-desde-el-navegador">6. Acceder desde el navegador<a class="headerlink" href="#6-acceder-desde-el-navegador" title="Permanent link">&para;</a></h3>
 <p>Abre un navegador web y navega a:</p>
 <p>https://192.168.1.10</p>
 <div class="admonition info">
 <p class="admonition-title">Certificado autofirmado</p>
 <p>Es probable que tu navegador muestre una advertencia de seguridad. Acepta el certificado para continuar.</p>
 </div>
-<h3 id="116-inicio-de-sesion-en-xcp-ng">1.1.6. Inicio de sesión en XCP-ng<a class="headerlink" href="#116-inicio-de-sesion-en-xcp-ng" title="Permanent link">&para;</a></h3>
+<h3 id="7-inicio-de-sesion-en-xcp-ng">7. Inicio de sesión en XCP-ng<a class="headerlink" href="#7-inicio-de-sesion-en-xcp-ng" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Usuario:</strong> <code>root</code>  </li>
 <li><strong>Contraseña:</strong> La que configuraste durante la instalación de XCP-ng</li>
 </ul>
 <hr />
-<h2 id="117-configuracion-post-instalacion-en-xcp-ng">⚙️ 1.1.7. Configuración Post-Instalación en XCP-ng<a class="headerlink" href="#117-configuracion-post-instalacion-en-xcp-ng" title="Permanent link">&para;</a></h2>
+<h2 id="8-configuracion-post-instalacion-en-xcp-ng">⚙️ 8. Configuración Post-Instalación en XCP-ng<a class="headerlink" href="#8-configuracion-post-instalacion-en-xcp-ng" title="Permanent link">&para;</a></h2>
 <p>Dentro de XCP-ng, realiza estas configuraciones básicas:</p>
-<h3 id="118-configuracion-de-red">1.1.8. Configuración de Red<a class="headerlink" href="#118-configuracion-de-red" title="Permanent link">&para;</a></h3>
+<h3 id="9-configuracion-de-red">9. Configuración de Red<a class="headerlink" href="#9-configuracion-de-red" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Verifica que la interfaz de red (NIC) tenga la <strong>IP, máscara y gateway</strong> correctos.  </li>
 <li>Configura redes virtuales o VLANs si es necesario.</li>
 </ul>
-<h3 id="119-configuracion-de-almacenamiento-storage">1.1.9. Configuración de Almacenamiento (Storage)<a class="headerlink" href="#119-configuracion-de-almacenamiento-storage" title="Permanent link">&para;</a></h3>
+<h3 id="10-configuracion-de-almacenamiento-storage">10. Configuración de Almacenamiento (Storage)<a class="headerlink" href="#10-configuracion-de-almacenamiento-storage" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Crea un <strong>SR (Storage Repository)</strong> para alojar las máquinas virtuales.  </li>
 <li>Ejemplos de opciones comunes:  </li>
@@ -211,7 +211,7 @@
 <p class="admonition-title">Tip</p>
 <p>Si instalaste en un disco pequeño y tienes un disco más grande para VMs, crea un SR separado en ese disco para optimizar el rendimiento.</p>
 </div>
-<h3 id="1110-actualizaciones">1.1.10. Actualizaciones<a class="headerlink" href="#1110-actualizaciones" title="Permanent link">&para;</a></h3>
+<h3 id="11-actualizaciones">11. Actualizaciones<a class="headerlink" href="#11-actualizaciones" title="Permanent link">&para;</a></h3>
 <p>XCP-ng facilita la aplicación de parches y actualizaciones del hypervisor.<br />
 Asegúrate de que XCP-ng esté <strong>actualizado</strong> antes de desplegar tus VMs.</p>
 <hr />

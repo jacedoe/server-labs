@@ -119,7 +119,32 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-bs-level="2"><a href="#5-conexion-segura-con-cloudflare-tunnel" class="nav-link">5. Conexión Segura con Cloudflare Tunnel</a>
+            <li class="nav-item" data-bs-level="1"><a href="#instalar-dependencias-necesarias" class="nav-link">Instalar dependencias necesarias</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#descargar-el-binario-arquitectura-x86_64-para-xcp-ng" class="nav-link">Descargar el binario (arquitectura x86_64 para XCP-ng)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#mover-y-dar-permisos" class="nav-link">Mover y dar permisos</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#verificar-instalacion" class="nav-link">Verificar instalación</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#nombre-sugerido-server-labs" class="nav-link">Nombre sugerido: server-labs</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#sbinopenrc-run" class="nav-link">!/sbin/openrc-run</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -128,68 +153,86 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h2 id="5-conexion-segura-con-cloudflare-tunnel">5. Conexión Segura con Cloudflare Tunnel<a class="headerlink" href="#5-conexion-segura-con-cloudflare-tunnel" title="Permanent link">&para;</a></h2>
-<p>Cloudflare Tunnel (anteriormente conocido como Argo Tunnel) crea una conexión saliente segura entre tu VM (servidor local) y la red de Cloudflare. Esto permite que el tráfico web llegue a tus contenedores sin exponer directamente tu IP pública o requerir configuraciones complejas de firewall o redirección de puertos (port forwarding).</p>
-<p>5.1. Prerrequisitos en Cloudflare
-Dominio Activo: Tu dominio debe estar utilizando los servidores de nombres de Cloudflare.</p>
-<p>Registro DNS: Asegúrate de tener un registro A o CNAME en Cloudflare para el subdominio que usarás (ej: web.tudominio.com). El valor de la IP puede ser ficticio, ya que el Tunnel lo anulará.</p>
-<p>5.2. Instalación del Cliente cloudflared
-Instalaremos el cliente que gestionará el túnel en tu VM Debian Trixie.</p>
-<p>Descargar el Repositorio de Cloudflare:</p>
-<pre><code>curl -fsSL https://pkg.cloudflare.com/pubkey.gpg | sudo gpg --dearmor -o /usr/share/keyrings/cloudflare.gpg
-echo 'deb [signed-by=/usr/share/keyrings/cloudflare.gpg] https://pkg.cloudflare.com/cloudflared trixie main' | sudo tee /etc/apt/sources.list.d/cloudflared.list
+<p>Para cerrar el círculo de tu infraestructura en Alpine Linux, el túnel de Cloudflare (cloudflared) es la pieza clave: es lo que permite que tu servidor sea accesible desde internet sin abrir puertos en tu router y gestionando el SSL de forma automática.</p>
+<p>Al no usar contenedores, instalaremos el binario de forma nativa y lo configuraremos como un servicio de OpenRC.
+🛠️ Guía de Instalación: Cloudflare Tunnel en Alpine Linux
+1. Instalación del binario</p>
+<p>Alpine no siempre tiene la versión más reciente en sus repositorios oficiales, por lo que lo ideal es descargar el binario directamente de Cloudflare.
+Bash</p>
+<h1 id="instalar-dependencias-necesarias">Instalar dependencias necesarias<a class="headerlink" href="#instalar-dependencias-necesarias" title="Permanent link">&para;</a></h1>
+<p>apk add libc6-compat</p>
+<h1 id="descargar-el-binario-arquitectura-x86_64-para-xcp-ng">Descargar el binario (arquitectura x86_64 para XCP-ng)<a class="headerlink" href="#descargar-el-binario-arquitectura-x86_64-para-xcp-ng" title="Permanent link">&para;</a></h1>
+<p>wget https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64</p>
+<h1 id="mover-y-dar-permisos">Mover y dar permisos<a class="headerlink" href="#mover-y-dar-permisos" title="Permanent link">&para;</a></h1>
+<p>chmod +x cloudflared-linux-amd64
+mv cloudflared-linux-amd64 /usr/local/bin/cloudflared</p>
+<h1 id="verificar-instalacion">Verificar instalación<a class="headerlink" href="#verificar-instalacion" title="Permanent link">&para;</a></h1>
+<p>cloudflared --version</p>
+<ol>
+<li>Autenticación y Creación del Túnel</li>
+</ol>
+<p>Desde la terminal de tu servidor, ejecuta el login (esto te dará un enlace que debes abrir en tu navegador):
+Bash</p>
+<p>cloudflared tunnel login</p>
+<p>Una vez autorizado, crea el túnel para tu infraestructura:
+Bash</p>
+<h1 id="nombre-sugerido-server-labs">Nombre sugerido: server-labs<a class="headerlink" href="#nombre-sugerido-server-labs" title="Permanent link">&para;</a></h1>
+<p>cloudflared tunnel create server-labs</p>
+<p>Esto generará un archivo .json en ~/.cloudflared/. Anota el ID del túnel.
+3. Configuración del archivo config.yml</p>
+<p>Crea el archivo de configuración que redirigirá el tráfico a los puertos de Nginx que definimos antes:
+Bash</p>
+<p>mkdir -p /etc/cloudflared
+vi /etc/cloudflared/config.yml</p>
+<p>Contenido del archivo:
+YAML</p>
+<p>tunnel: TU_TUNNEL_ID
+credentials-file: /etc/cloudflared/TU_TUNNEL_ID.json</p>
+<p>ingress:
+  # Sitio principal (Hugo)
+  - hostname: merceponsautora.com
+    service: http://localhost:8080
+  - hostname: www.merceponsautora.com
+    service: http://localhost:8080</p>
+<p># Blog (WordPress)
+  - hostname: blog.merceponsautora.com
+    service: http://localhost:80</p>
+<p># Regla por defecto (404 si no coincide nada)
+  - service: http_status:404</p>
+<p>No olvides mover el archivo .json de credenciales a /etc/cloudflared/ para que sea accesible globalmente.
+4. Configuración como Servicio nativo (OpenRC)</p>
+<p>Para que el túnel arranque solo al iniciar la VM en XCP-ng, crearemos un script de servicio para Alpine.</p>
+<pre><code>Crea el archivo de servicio: vi /etc/init.d/cloudflared
+
+Pega este contenido:
 </code></pre>
-<p>Actualizar e Instalar:</p>
-<pre><code>sudo apt update
-sudo apt install -y cloudflared
+<p>Bash</p>
+<h1 id="sbinopenrc-run">!/sbin/openrc-run<a class="headerlink" href="#sbinopenrc-run" title="Permanent link">&para;</a></h1>
+<p>name="cloudflared"
+description="Cloudflare Tunnel"
+command="/usr/local/bin/cloudflared"
+command_args="tunnel --config /etc/cloudflared/config.yml run"
+command_background="yes"
+pidfile="/run/${RC_SVCNAME}.pid"
+output_log="/var/log/cloudflared.log"
+error_log="/var/log/cloudflared.err"</p>
+<p>depend() {
+    need net
+    after firewall
+}</p>
+<pre><code>Da permisos y activa el servicio:
 </code></pre>
-<p>5.3. Creación y Configuración del Tunnel
-La configuración se realiza en dos partes: autenticación y definición del túnel (rutas).</p>
-<p>A. Autenticación
-Autentica tu cloudflared con tu cuenta de Cloudflare. Se te pedirá iniciar sesión en el navegador.</p>
-<pre><code>cloudflared tunnel login
-</code></pre>
-<p>Se abrirá una URL en tu terminal. Pégala en tu navegador, inicia sesión en Cloudflare y selecciona tu dominio.</p>
-<p>B. Crear el Túnel
-Asigna un nombre a tu túnel y crea la configuración local.</p>
-<p>Crear el Túnel:</p>
-<pre><code>cloudflared tunnel create wp-tunnel
-</code></pre>
-<h3 id="esto-te-dara-un-id-de-tunel-unico-que-necesitaras">(Esto te dará un ID de túnel único que necesitarás)<a class="headerlink" href="#esto-te-dara-un-id-de-tunel-unico-que-necesitaras" title="Permanent link">&para;</a></h3>
-<p>Crear el Archivo de Configuración (config.yml): Crea el directorio de configuración para cloudflared y el archivo config.yml. </p>
-<pre><code>sudo mkdir /etc/cloudflared
-sudo nano /etc/cloudflared/config.yml
-</code></pre>
-<p>Pega la siguiente configuración, asegurándote de reemplazar <TUNNEL-ID> con el ID único que obtuviste en el paso anterior:</p>
-<pre><code>tunnel: &lt;TUNNEL-ID&gt;
-credentials-file: /root/.cloudflared/&lt;TUNNEL-ID&gt;.json
-ingress:
-  # Regla 1: Tráfico del dominio al puerto 80 del servidor local.
-  - hostname: web.tudominio.com # Reemplaza con tu dominio
-    service: http://localhost:80
-  # Regla final: Bloquea cualquier otra petición no mapeada.
-  - service: http_status:404 
-</code></pre>
-<p>Aquí, http://localhost:80 se refiere al puerto del host donde está escuchando tu contenedor NGINX.</p>
-<p>C. Mapeo DNS y Túnel
-Conecta el túnel a tu dominio en el panel de Cloudflare.</p>
-<pre><code>cloudflared tunnel route dns wp-tunnel web.tudominio.com
-</code></pre>
-<p>Esto crea automáticamente el registro DNS de tipo CNAME en tu zona de Cloudflare, apuntando a tu túnel.</p>
-<p>5.4. Ejecución del Tunnel como Servicio
-Ejecuta el cliente cloudflared como un servicio persistente.</p>
-<p>Instalar el Servicio del Sistema (Systemd):</p>
-<pre><code>sudo cloudflared tunnel run --overwrite-service
-</code></pre>
-<p>Iniciar y Habilitar el Servicio:</p>
-<pre><code>sudo systemctl start cloudflared
-sudo systemctl enable cloudflared
-</code></pre>
-<p>Verificar el Estado:</p>
-<pre><code>sudo systemctl status cloudflared
-</code></pre>
-<p>El estado debe mostrarse como active (running).</p>
-<p>Una vez que el servicio esté activo, tu sitio web de WordPress será accesible a través de web.tudominio.com sin que hayas abierto un solo puerto en tu router o firewall local. Todo el tráfico pasa a través de la infraestructura segura de Cloudflare.</p></div>
+<p>Bash</p>
+<p>chmod +x /etc/init.d/cloudflared
+rc-update add cloudflared default
+rc-service cloudflared start</p>
+<ol>
+<li>Configuración en el Panel de Cloudflare (DNS)</li>
+</ol>
+<p>El último paso es decirle a Cloudflare que use el túnel para tus dominios. Puedes hacerlo desde la web de Cloudflare o por comando:
+Bash</p>
+<p>cloudflared tunnel route dns server-labs merceponsautora.com
+cloudflared tunnel route dns server-labs blog.merceponsautora.com</p></div>
             </div>
         </div>
 

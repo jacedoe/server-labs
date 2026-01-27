@@ -4,13 +4,34 @@ repo_url: https://github.com/jacedoe/server-labs
 repo_name: server-labs
 site_description: >
   Documentación paso a paso para el despliegue de VM con XCP-ng,
-  contenedores Podman (NGINX, MariaDB, WordPress).
+  Alpine Linx, FreeBSD, NGINX, Hugo, MariaDB y WordPress.
 
 # ============================
-#        TEMA Y ESTILO
+#         TEMA Y ESTILO
 # ============================
 theme:
-  name: mkdocs 
+  name: material
+  language: es
+  palette:
+    # Opción para cambiar entre modo claro y oscuro
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Cambiar a modo oscuro
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Cambiar a modo claro
+  features:
+    - navigation.tabs # Navegación superior
+    - navigation.sections # Agrupa secciones lateralmente
+    - content.code.copy # Botón para copiar código
 
 # ============================
 #    EXTENSIONES MARKDOWN
@@ -18,17 +39,22 @@ theme:
 markdown_extensions:
   - admonition
   - attr_list
+  - pymdownx.highlight: # Resaltado de sintaxis mejorado
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences # Necesario para diagramas y bloques complejos
   - toc:
       permalink: true
 
 # ============================
-#       ARCHIVOS EXTRA
+#        ARCHIVOS EXTRA
 # ============================
 extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/jacedoe
-
+      
 # ============================
 #      NAVEGACIÓN DEL SITIO
 # ============================
@@ -47,4 +73,3 @@ nav:
   - 📚 Apéndices:
       - Comandos Útiles: apendices/comandos_utiles.md
 
-  - 📘 Guía de Estilo (Oficial): guia-de-estilo.md
