@@ -11,13 +11,9 @@
       
       
       
-        <link rel="canonical" href="https://jacedoe.github.io/server-labs/preparacion/instalacion_alpine/">
+        <link rel="canonical" href="https://jacedoe.github.io/server-labs/freebsd/deploy_www_jails/">
       
       
-        <link rel="prev" href="../instalacion_xo_lite/">
-      
-      
-        <link rel="next" href="../../web/nginx_conf/">
       
       
         
@@ -28,7 +24,7 @@
     
     
       
-        <title>1.2. Despliegue VM Alpine LInux - Guía de Infraestructura Xen, Linux y contenedores</title>
+        <title>Guía de Despliegue: WordPress y Hugo en FreeBSD con Jails - Guía de Infraestructura Xen, Linux y contenedores</title>
       
     
     
@@ -79,7 +75,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#1-despliegue-vm-alpine-linux" class="md-skip">
+        <a href="#guia-de-despliegue-wordpress-y-hugo-en-freebsd-con-jails" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -113,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              1.2. Despliegue VM Alpine LInux
+              Guía de Despliegue: WordPress y Hugo en FreeBSD con Jails
             
           </span>
         </div>
@@ -243,13 +239,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../instalacion_xo_lite/" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../preparacion/instalacion_xo_lite/" class="md-tabs__link">
           
   
   
@@ -379,31 +373,26 @@
       
   
   
-    
   
   
-  
     
     
     
     
-      
-        
-        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
             
   
   
@@ -421,7 +410,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -439,7 +428,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../instalacion_xo_lite/" class="md-nav__link">
+      <a href="../../preparacion/instalacion_xo_lite/" class="md-nav__link">
         
   
   
@@ -464,37 +453,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    1.2. Despliegue VM Alpine LInux
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../preparacion/instalacion_alpine/" class="md-nav__link">
         
   
   
@@ -510,125 +472,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Tabla de contenidos
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#2-requisitos-previos" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. Requisitos previos
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-creacion-de-la-maquina-virtual-en-xcp-ng" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. Creación de la máquina virtual en XCP-ng
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-instalacion-base-de-alpine-linux" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. Instalación base de Alpine Linux
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-configuracion-del-acceso-por-ssh" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5. Configuración del acceso por SSH
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-creacion-de-un-nuevo-usuario" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        6. Creación de un nuevo usuario
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#7-configuracion-de-doas-o-sudo-en-alpine" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        7. Configuración de doas o sudo en Alpine
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#8-instalacion-de-herramientas-basicas" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        8. Instalación de herramientas básicas
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#9-opcional-instalacion-y-configuracion-de-docker" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        9. Opcional: Instalación y configuración de Docker
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#10-configuracion-final-recomendada" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        10. Configuración final recomendada
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -898,10 +741,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#2-requisitos-previos" class="md-nav__link">
+  <a href="#introduccion" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Requisitos previos
+        Introducción
       
     </span>
   </a>
@@ -909,10 +752,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-creacion-de-la-maquina-virtual-en-xcp-ng" class="md-nav__link">
+  <a href="#requisitos-previos" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Creación de la máquina virtual en XCP-ng
+        Requisitos Previos
       
     </span>
   </a>
@@ -920,79 +763,325 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-instalacion-base-de-alpine-linux" class="md-nav__link">
+  <a href="#1-configuracion-del-entorno" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. Instalación base de Alpine Linux
+        1. Configuración del Entorno
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Configuración del Entorno">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-crear-el-jail" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Crear el Jail
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#5-configuracion-del-acceso-por-ssh" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#12-instalar-paquetes-necesarios" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5. Configuración del acceso por SSH
+        1.2 Instalar Paquetes Necesarios
       
     </span>
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#6-creacion-de-un-nuevo-usuario" class="md-nav__link">
+  <a href="#2-configuracion-de-nginx" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6. Creación de un nuevo usuario
+        2. Configuración de Nginx
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Configuración de Nginx">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-configuracion-para-hugo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Configuración para Hugo
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#7-configuracion-de-doas-o-sudo-en-alpine" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#22-configuracion-para-wordpress" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7. Configuración de doas o sudo en Alpine
+        2.2 Configuración para WordPress
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#8-instalacion-de-herramientas-basicas" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#23-habilitar-y-reiniciar-nginx" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8. Instalación de herramientas básicas
+        2.3 Habilitar y Reiniciar Nginx
       
     </span>
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#9-opcional-instalacion-y-configuracion-de-docker" class="md-nav__link">
+  <a href="#3-configuracion-de-php-fpm" class="md-nav__link">
     <span class="md-ellipsis">
       
-        9. Opcional: Instalación y configuración de Docker
+        3. Configuración de PHP-FPM
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Configuración de PHP-FPM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-configurar-php-fpm-para-tcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Configurar PHP-FPM para TCP
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#10-configuracion-final-recomendada" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#32-habilitar-y-reiniciar-php-fpm" class="md-nav__link">
     <span class="md-ellipsis">
       
-        10. Configuración final recomendada
+        3.2 Habilitar y Reiniciar PHP-FPM
       
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-configuracion-de-mariadb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Configuración de MariaDB
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Configuración de MariaDB">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-habilitar-y-iniciar-mariadb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Habilitar y Iniciar MariaDB
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-configurar-la-base-de-datos-para-wordpress" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Configurar la Base de Datos para WordPress
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-configuracion-de-wordpress" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Configuración de WordPress
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Configuración de WordPress">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-descargar-y-configurar-wordpress" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Descargar y Configurar WordPress
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-configurar-wp-configphp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Configurar wp-config.php
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-configuracion-de-hugo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Configuración de Hugo
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Configuración de Hugo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-crear-el-sitio-con-hugo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Crear el Sitio con Hugo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-generar-el-sitio-estatico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Generar el Sitio Estático
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-configuracion-de-pf-packet-filter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Configuración de PF (Packet Filter)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Configuración de PF (Packet Filter)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-configurar-pf-en-el-host-principal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Configurar PF en el Host Principal
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-habilitar-y-recargar-pf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 Habilitar y Recargar PF
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-probar-el-acceso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Probar el Acceso
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Probar el Acceso">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-desde-el-jail" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Desde el Jail
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-desde-otro-host-en-la-lan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 Desde Otro Host en la LAN
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1016,129 +1105,74 @@
   
 
 
-<h1 id="1-despliegue-vm-alpine-linux">1. Despliegue VM Alpine Linux<a class="headerlink" href="#1-despliegue-vm-alpine-linux" title="Permanent link">&para;</a></h1>
-<p>Este apartado describe el proceso completo para desplegar una máquina virtual con Alpine Linux sobre un servidor XCP-ng, así como su configuración inicial para dejarla lista para administración remota y uso de contenedores con Docker.</p>
-<h3 id="2-requisitos-previos">2. Requisitos previos<a class="headerlink" href="#2-requisitos-previos" title="Permanent link">&para;</a></h3>
-<p>Antes de comenzar, asegúrate de contar con:</p>
-<p>Servidor XCP-ng correctamente instalado y operativo</p>
-<p>Acceso a Xen Orchestra (XO Lite o completo)</p>
-<p>Imagen ISO de Alpine Linux (Standard x86_64)</p>
-<p>Conectividad de red funcional</p>
-<p>Conocimientos básicos de consola Linux</p>
-<h3 id="3-creacion-de-la-maquina-virtual-en-xcp-ng">3. Creación de la máquina virtual en XCP-ng<a class="headerlink" href="#3-creacion-de-la-maquina-virtual-en-xcp-ng" title="Permanent link">&para;</a></h3>
-<p>Accede a Xen Orchestra</p>
-<p>Selecciona New VM</p>
-<p>Elige la plantilla:</p>
-<p>Other install media</p>
-<p>Asigna los recursos recomendados:</p>
-<p>CPU: 1–2 vCPU</p>
-<p>RAM: 512 MB (mínimo) / 1 GB recomendado</p>
-<p>Disco: 8–16 GB</p>
-<p>Adjunta la ISO de Alpine Linux</p>
-<p>Configura la interfaz de red (bridge por defecto)</p>
-<p>Finaliza y arranca la VM</p>
-<h3 id="4-instalacion-base-de-alpine-linux">4. Instalación base de Alpine Linux<a class="headerlink" href="#4-instalacion-base-de-alpine-linux" title="Permanent link">&para;</a></h3>
-<p>En la consola de la VM, inicia sesión como:</p>
-<p>login: root</p>
-<p>Ejecuta el instalador:</p>
-<p>setup-alpine</p>
-<p>Responde a las preguntas principales:</p>
-<p>Teclado: es o us</p>
-<p>Hostname: (ej. alpine-vm)</p>
-<p>Red: DHCP (recomendado)</p>
-<p>Zona horaria: Europe/Madrid (o la correspondiente)</p>
-<p>Repositorio: por defecto</p>
-<p>Disco: sys</p>
-<p>Modo: standard</p>
-<p>Confirma la instalación y espera a que finalice.</p>
-<p>Reinicia el sistema:</p>
-<p>reboot</p>
-<h3 id="5-configuracion-del-acceso-por-ssh">5. Configuración del acceso por SSH<a class="headerlink" href="#5-configuracion-del-acceso-por-ssh" title="Permanent link">&para;</a></h3>
-<p>Instala el servidor OpenSSH:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>apk add openssh
-</code></pre></div></p>
-<p>Habilita el servicio:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>rc-update add sshd
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>rc-service sshd start
-</code></pre></div></p>
-<p>Verifica que el servicio esté activo:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>rc-service sshd status
-</code></pre></div></p>
-<p>(Opcional pero recomendado) Edita la configuración:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>vi /etc/ssh/sshd_config
-</code></pre></div></p>
-<p>Asegúrate de:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>PermitRootLogin no
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>PasswordAuthentication yes
-</code></pre></div></p>
-<p>Reinicia SSH:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>rc-service sshd restart
-</code></pre></div></p>
-<h3 id="6-creacion-de-un-nuevo-usuario">6. Creación de un nuevo usuario<a class="headerlink" href="#6-creacion-de-un-nuevo-usuario" title="Permanent link">&para;</a></h3>
-<p>Crea un usuario (ejemplo: admin):
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>adduser admin
-</code></pre></div></p>
-<p>Añádelo a los grupos necesarios:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>addgroup admin wheel
-</code></pre></div></p>
-<p>Verifica:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>id admin
-</code></pre></div></p>
-<h3 id="7-configuracion-de-doas-o-sudo-en-alpine">7. Configuración de doas o sudo en Alpine<a class="headerlink" href="#7-configuracion-de-doas-o-sudo-en-alpine" title="Permanent link">&para;</a></h3>
-<p>Alpine puede utilizar sudo o doas. En este despliegue utilizo doas.</p>
-<p>Instala doas:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>apk add doas
-</code></pre></div></p>
-<p>Edita el archivo de configuración:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>vi /etc/doas.conf
-</code></pre></div></p>
-<p>Añade la siguiente línea:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>permit persist :wheel
-</code></pre></div></p>
-<p>Asegura permisos correctos:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>chmod 0400 /etc/doas.conf
-</code></pre></div></p>
-<p>Cambia al nuevo usuario y prueba:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>su - admin
-<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>doas apk update
-</code></pre></div></p>
-<h3 id="8-instalacion-de-herramientas-basicas">8. Instalación de herramientas básicas<a class="headerlink" href="#8-instalacion-de-herramientas-basicas" title="Permanent link">&para;</a></h3>
-<p>Instala utilidades comunes para administración:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>doas apk add \
-<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>  curl \
-<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>  wget \
-<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>  vim \
-<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>  btop \
-<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>  bash \
-<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>  git \
-<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>  ca-certificates
-</code></pre></div></p>
-<p>Establece Bash como shell por defecto (opcional):
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>doas chsh -s /bin/bash admin
-</code></pre></div></p>
-<h3 id="9-opcional-instalacion-y-configuracion-de-docker">9. Opcional: Instalación y configuración de Docker<a class="headerlink" href="#9-opcional-instalacion-y-configuracion-de-docker" title="Permanent link">&para;</a></h3>
-<p>Instala Docker:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>doas apk add docker
-</code></pre></div></p>
-<p>Habilita el servicio:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>doas rc-update add docker
-<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>doas rc-service docker start
-</code></pre></div></p>
-<p>Añade el usuario al grupo docker:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>doas addgroup admin docker
-</code></pre></div></p>
-<p>Cierra sesión y vuelve a entrar para aplicar cambios.</p>
-<p>Verifica la instalación:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>docker version
-<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>docker run hello-world
-</code></pre></div></p>
-<h3 id="10-configuracion-final-recomendada">10. Configuración final recomendada<a class="headerlink" href="#10-configuracion-final-recomendada" title="Permanent link">&para;</a></h3>
-<p>Actualiza el sistema:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>doas apk update &amp;&amp; doas apk upgrade
-</code></pre></div></p>
-<p>Configura IP estática (opcional):
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>vi /etc/network/interfaces
-</code></pre></div></p>
+<h1 id="guia-de-despliegue-wordpress-y-hugo-en-freebsd-con-jails">Guía de Despliegue: WordPress y Hugo en FreeBSD con Jails<a class="headerlink" href="#guia-de-despliegue-wordpress-y-hugo-en-freebsd-con-jails" title="Permanent link">&para;</a></h1>
+<h2 id="introduccion">Introducción<a class="headerlink" href="#introduccion" title="Permanent link">&para;</a></h2>
+<p>Esta guía describe los pasos necesarios para desplegar un sitio web con <strong>Hugo</strong> y otro con <strong>WordPress</strong> en un entorno de <strong>FreeBSD</strong> utilizando <strong>jails</strong>, <strong>Nginx</strong>, <strong>PHP-FPM</strong>, y <strong>MariaDB</strong>.</p>
+<hr />
+<h2 id="requisitos-previos">Requisitos Previos<a class="headerlink" href="#requisitos-previos" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Un sistema FreeBSD configurado.</li>
+<li>Acceso a <code>root</code> o un usuario con privilegios de administrador.</li>
+<li>Conocimientos básicos de la terminal y configuración de servicios en FreeBSD.</li>
+</ul>
+<hr />
+<h2 id="1-configuracion-del-entorno">1. Configuración del Entorno<a class="headerlink" href="#1-configuracion-del-entorno" title="Permanent link">&para;</a></h2>
+<h3 id="11-crear-el-jail">1.1 Crear el Jail<a class="headerlink" href="#11-crear-el-jail" title="Permanent link">&para;</a></h3>
+<p><code># Crear el jail iocage create -n "mi_jail" -r 13.2-RELEASE ip4_addr="em0|10.8.8.2/24"   # Iniciar el jail iocage start mi_jail   # Acceder al jail iocage console mi_jail</code></p>
+<hr />
+<h3 id="12-instalar-paquetes-necesarios">1.2 Instalar Paquetes Necesarios<a class="headerlink" href="#12-instalar-paquetes-necesarios" title="Permanent link">&para;</a></h3>
+<p><code># Actualizar los paquetes pkg update &amp;&amp; pkg upgrade   # Instalar Nginx, PHP-FPM, MariaDB, y Hugo pkg install nginx php82 php82-fpm mariadb106-server mariadb106-client hugo</code></p>
+<hr />
+<h2 id="2-configuracion-de-nginx">2. Configuración de Nginx<a class="headerlink" href="#2-configuracion-de-nginx" title="Permanent link">&para;</a></h2>
+<h3 id="21-configuracion-para-hugo">2.1 Configuración para Hugo<a class="headerlink" href="#21-configuracion-para-hugo" title="Permanent link">&para;</a></h3>
+<p>Crea el archivo <code>/etc/nginx/http.d/merceponsautora.com.conf</code> con el siguiente contenido:</p>
+<p><code>server {  listen  10.8.8.2:8080; server_name merceponsautora.com www.merceponsautora.com;   root /usr/local/www/merceponsautora.com/public; index index.html;   location / { try_files $uri $uri/ =404; } }</code></p>
+<h3 id="22-configuracion-para-wordpress">2.2 Configuración para WordPress<a class="headerlink" href="#22-configuracion-para-wordpress" title="Permanent link">&para;</a></h3>
+<p>Crea el archivo <code>/etc/nginx/http.d/blog.merceponsautora.com.conf</code> con el siguiente contenido:</p>
+<p><code>server {  listen  10.8.8.2:80; server_name blog.merceponsautora.com;   root /usr/local/www/blog; index index.php index.html index.htm;   location / { try_files $uri $uri/ /index.php?$args; }   location  ~ \.php$ { include fastcgi.conf; fastcgi_pass  127.0.0.1:9000; fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name; }   location  ~ /\.ht { deny all; } }</code></p>
+<h3 id="23-habilitar-y-reiniciar-nginx">2.3 Habilitar y Reiniciar Nginx<a class="headerlink" href="#23-habilitar-y-reiniciar-nginx" title="Permanent link">&para;</a></h3>
+<p><code>sysrc nginx_enable=yes service nginx start</code></p>
+<hr />
+<h2 id="3-configuracion-de-php-fpm">3. Configuración de PHP-FPM<a class="headerlink" href="#3-configuracion-de-php-fpm" title="Permanent link">&para;</a></h2>
+<h3 id="31-configurar-php-fpm-para-tcp">3.1 Configurar PHP-FPM para TCP<a class="headerlink" href="#31-configurar-php-fpm-para-tcp" title="Permanent link">&para;</a></h3>
+<p>Edita el archivo <code>/usr/local/etc/php-fpm.d/www.conf</code>:</p>
+<p><code>listen = 127.0.0.1:9000 listen.owner = www listen.group = www listen.mode = 0660</code></p>
+<h3 id="32-habilitar-y-reiniciar-php-fpm">3.2 Habilitar y Reiniciar PHP-FPM<a class="headerlink" href="#32-habilitar-y-reiniciar-php-fpm" title="Permanent link">&para;</a></h3>
+<p><code>sysrc php_fpm_enable=yes service php_fpm start</code></p>
+<hr />
+<h2 id="4-configuracion-de-mariadb">4. Configuración de MariaDB<a class="headerlink" href="#4-configuracion-de-mariadb" title="Permanent link">&para;</a></h2>
+<h3 id="41-habilitar-y-iniciar-mariadb">4.1 Habilitar y Iniciar MariaDB<a class="headerlink" href="#41-habilitar-y-iniciar-mariadb" title="Permanent link">&para;</a></h3>
+<p><code>sysrc mysql_enable=yes service mysql-server start</code></p>
+<h3 id="42-configurar-la-base-de-datos-para-wordpress">4.2 Configurar la Base de Datos para WordPress<a class="headerlink" href="#42-configurar-la-base-de-datos-para-wordpress" title="Permanent link">&para;</a></h3>
+<p><code>mysql -u root -p</code></p>
+<p>Dentro de MariaDB:</p>
+<p><code>CREATE DATABASE wordpress; GRANT  ALL PRIVILEGES ON wordpress.*  TO  'wordpress'@'localhost' IDENTIFIED BY  'mypasswd'; FLUSH PRIVILEGES; EXIT;</code></p>
+<hr />
+<h2 id="5-configuracion-de-wordpress">5. Configuración de WordPress<a class="headerlink" href="#5-configuracion-de-wordpress" title="Permanent link">&para;</a></h2>
+<h3 id="51-descargar-y-configurar-wordpress">5.1 Descargar y Configurar WordPress<a class="headerlink" href="#51-descargar-y-configurar-wordpress" title="Permanent link">&para;</a></h3>
+<p><code>mkdir -p /usr/local/www/blog cd /usr/local/www/blog fetch https://wordpress.org/latest.tar.gz tar -xzvf latest.tar.gz mv wordpress/* . rm -rf wordpress latest.tar.gz chown -R www:www /usr/local/www/blog</code></p>
+<h3 id="52-configurar-wp-configphp">5.2 Configurar <code>wp-config.php</code><a class="headerlink" href="#52-configurar-wp-configphp" title="Permanent link">&para;</a></h3>
+<p>Edita el archivo <code>wp-config.php</code>:</p>
+<p><code>define('DB_NAME', 'wordpress'); define('DB_USER', 'wordpress'); define('DB_PASSWORD', 'mypasswd'); define('DB_HOST', '127.0.0.1'); define('DB_CHARSET', 'utf8mb4'); define('DB_COLLATE', '');   $table_prefix = 'wp_';   define('WP_HOME', 'http://192.168.1.57'); define('WP_SITEURL', 'http://192.168.1.57');   define('WP_DEBUG', true); define('WP_DEBUG_LOG', true); define('WP_DEBUG_DISPLAY', false);   require_once  __DIR__ . '/wp-settings.php';</code></p>
+<hr />
+<h2 id="6-configuracion-de-hugo">6. Configuración de Hugo<a class="headerlink" href="#6-configuracion-de-hugo" title="Permanent link">&para;</a></h2>
+<h3 id="61-crear-el-sitio-con-hugo">6.1 Crear el Sitio con Hugo<a class="headerlink" href="#61-crear-el-sitio-con-hugo" title="Permanent link">&para;</a></h3>
+<p><code>mkdir -p /usr/local/www/merceponsautora.com cd /usr/local/www/merceponsautora.com hugo new site .</code></p>
+<h3 id="62-generar-el-sitio-estatico">6.2 Generar el Sitio Estático<a class="headerlink" href="#62-generar-el-sitio-estatico" title="Permanent link">&para;</a></h3>
+<p><code>hugo</code></p>
+<hr />
+<h2 id="7-configuracion-de-pf-packet-filter">7. Configuración de PF (Packet Filter)<a class="headerlink" href="#7-configuracion-de-pf-packet-filter" title="Permanent link">&para;</a></h2>
+<h3 id="71-configurar-pf-en-el-host-principal">7.1 Configurar PF en el Host Principal<a class="headerlink" href="#71-configurar-pf-en-el-host-principal" title="Permanent link">&para;</a></h3>
+<p>Edita el archivo <code>/etc/pf.conf</code> en el host principal:</p>
+<p><code>ext_if = "xn0" jail_net = "10.8.8.0/24"   nat on $ext_if from $jail_net to any -&gt; ($ext_if)   rdr pass on $ext_if inet proto tcp from any to 192.168.1.57 port 8080 -&gt; 10.8.8.2 port 8080 rdr pass on $ext_if inet proto tcp from any to 192.168.1.57 port 80 -&gt; 10.8.8.2 port 80</code></p>
+<h3 id="72-habilitar-y-recargar-pf">7.2 Habilitar y Recargar PF<a class="headerlink" href="#72-habilitar-y-recargar-pf" title="Permanent link">&para;</a></h3>
+<p><code>sysrc pf_enable=yes service pf start pfctl -f /etc/pf.conf</code></p>
+<hr />
+<h2 id="8-probar-el-acceso">8. Probar el Acceso<a class="headerlink" href="#8-probar-el-acceso" title="Permanent link">&para;</a></h2>
+<h3 id="81-desde-el-jail">8.1 Desde el Jail<a class="headerlink" href="#81-desde-el-jail" title="Permanent link">&para;</a></h3>
+<p><code>curl http://10.8.8.2:8080 # Para Hugo curl http://10.8.8.2 # Para WordPress</code></p>
+<h3 id="82-desde-otro-host-en-la-lan">8.2 Desde Otro Host en la LAN<a class="headerlink" href="#82-desde-otro-host-en-la-lan" title="Permanent link">&para;</a></h3>
+<p><code>curl http://192.168.1.57:8080 # Para Hugo curl http://192.168.1.57 # Para WordPress</code></p>
 
 
 
