@@ -123,9 +123,9 @@ Verifica:
 ```
 id admin
 ```
-### 7. Configuración de doas (sudo en Alpine)
+### 7. Configuración de doas o sudo en Alpine
 
-Alpine utiliza doas en lugar de sudo.
+Alpine puede utilizar sudo o doas. En este despliegue utilizo doas.
 
 Instala doas:
 ```
@@ -170,7 +170,7 @@ Establece Bash como shell por defecto (opcional):
 ```
 doas chsh -s /bin/bash admin
 ```
-### 9. Instalación y configuración de Docker
+### 9. Opcional: Instalación y configuración de Docker
 
 Instala Docker:
 ```

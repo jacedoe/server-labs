@@ -55,8 +55,8 @@ El sistema cuenta con un script en /usr/local/bin/backup_mercepons.sh que realiz
 
 Este proyecto ha sido diseñado bajo el principio de agnosticismo de plataforma. Aunque actualmente reside en Alpine Linux, la configuración nativa (sin la opacidad de Docker) facilita la migración hacia:
 
-    FreeBSD: Aprovechando Jails y ZFS para una mayor integridad de datos.
+FreeBSD: Aprovechando Jails y ZFS para una mayor integridad de datos.
 
-    Otras Distros: Migración directa de los archivos de configuración de Nginx y PHP-FPM.
+Otras Distros: Migración directa de los archivos de configuración de Nginx y PHP-FPM.
 
-    "La simplicidad es la máxima sofisticación." — Este laboratorio es la prueba de que un stack nativo bien configurado supera en rendimiento y mantenimiento a soluciones más complejas.
+"La simplicidad es la máxima sofisticación." — Este laboratorio es la prueba de que un stack nativo bien configurado supera en rendimiento y mantenimiento a soluciones más complejas.
