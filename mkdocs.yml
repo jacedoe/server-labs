@@ -71,7 +71,7 @@ nav:
       - 2.3. Cloudflare Tunnel: seguridad/cloudflare_tunnel.md
 
   - 😈 3. Guía de Despliegue en FreeBSD:
-        - 3.1. Wordpress y Hugo en FreeBSD con Jails: [Despliegue completo](freebsd/deploy_www_jails)
+      - 3.1. Wordpress y Hugo en FreeBSD con Jails: freebsd/deploy_www_jails.md
 
   - 📚 Apéndices:
       - Comandos Útiles: apendices/comandos_utiles.md

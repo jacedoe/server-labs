@@ -289,6 +289,26 @@
     
     
       <li class="md-tabs__item">
+        <a href="../../freebsd/deploy_www_jails/" class="md-tabs__link">
+          
+  
+  
+  😈 3. Guía de Despliegue en FreeBSD
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
         <a href="../../apendices/comandos_utiles/" class="md-tabs__link">
           
   
@@ -560,8 +580,24 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
-        
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.1. Intalación de Nginx y Hugo
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -579,6 +615,155 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#reiniciar-nginx-tras-cambios-en-la-config" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reiniciar Nginx tras cambios en la config
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verificar-que-el-socket-de-php-fpm-este-activo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verificar que el socket de PHP-FPM esté activo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#logs-de-error-en-tiempo-real" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Logs de error en tiempo real
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#actualizar-indices-de-paquetes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Actualizar índices de paquetes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instalar-nginx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Instalar nginx
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#anadir-nginx-al-inicio-automatico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Añadir Nginx al inicio automático
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iniciar-el-servicio-por-primera-vez" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Iniciar el servicio por primera vez
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comprobar-el-estado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comprobar el estado
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#asegurate-de-que-el-usuario-nginx-tiene-acceso-a-tus-webs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Asegúrate de que el usuario nginx tiene acceso a tus webs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#permisos-recomendados-para-directorios-y-archivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Permisos recomendados para directorios y archivos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verificar-sintaxis-esto-te-ahorra-muchos-dolores-de-cabeza" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verificar sintaxis (esto te ahorra muchos dolores de cabeza)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#si-el-test-es-exitoso-recarga-sin-cortar-conexiones-activas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Si el test es exitoso, recarga sin cortar conexiones activas
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -678,7 +863,7 @@
   <span class="md-ellipsis">
     
   
-    📚 Apéndices
+    😈 3. Guía de Despliegue en FreeBSD
   
 
     
@@ -691,6 +876,93 @@
         
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    😈 3. Guía de Despliegue en FreeBSD
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../freebsd/deploy_www_jails/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.1. Wordpress y Hugo en FreeBSD con Jails
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📚 Apéndices
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -752,8 +1024,146 @@
   
   
   
-    
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#reiniciar-nginx-tras-cambios-en-la-config" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reiniciar Nginx tras cambios en la config
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verificar-que-el-socket-de-php-fpm-este-activo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verificar que el socket de PHP-FPM esté activo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#logs-de-error-en-tiempo-real" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Logs de error en tiempo real
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#actualizar-indices-de-paquetes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Actualizar índices de paquetes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instalar-nginx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Instalar nginx
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#anadir-nginx-al-inicio-automatico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Añadir Nginx al inicio automático
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iniciar-el-servicio-por-primera-vez" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Iniciar el servicio por primera vez
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comprobar-el-estado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comprobar el estado
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#asegurate-de-que-el-usuario-nginx-tiene-acceso-a-tus-webs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Asegúrate de que el usuario nginx tiene acceso a tus webs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#permisos-recomendados-para-directorios-y-archivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Permisos recomendados para directorios y archivos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verificar-sintaxis-esto-te-ahorra-muchos-dolores-de-cabeza" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verificar sintaxis (esto te ahorra muchos dolores de cabeza)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#si-el-test-es-exitoso-recarga-sin-cortar-conexiones-activas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Si el test es exitoso, recarga sin cortar conexiones activas
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -773,7 +1183,9 @@
   
 
 
-<p>🌐 Arquitectura de Servidor: Merce Pons</p>
+  <h1>2.1. Intalación de Nginx y Hugo</h1>
+
+<p>🌐 Arquitectura de Servidor: merceponsautora</p>
 <p>Esta sección documenta la implementación nativa en Alpine Linux para la infraestructura de la escritora Merce Pons.
 Esquema de Flujo de Datos
 1. Configuración de Nginx</p>
@@ -798,16 +1210,17 @@ Parámetros Críticos de Proxy: * fastcgi_param HTTPS on;: Crucial para evitar b
 <li>Manual de Mantenimiento (SysAdmin)
 Gestión de Servicios en Alpine (OpenRC)</li>
 </ol>
-<p>Para reiniciar o aplicar cambios en la configuración:
-Bash</p>
-<h1 id="reiniciar-nginx-tras-cambios-en-la-config">Reiniciar Nginx tras cambios en la config<a class="headerlink" href="#reiniciar-nginx-tras-cambios-en-la-config" title="Permanent link">&para;</a></h1>
-<p>rc-service nginx restart</p>
-<h1 id="verificar-que-el-socket-de-php-fpm-este-activo">Verificar que el socket de PHP-FPM esté activo<a class="headerlink" href="#verificar-que-el-socket-de-php-fpm-este-activo" title="Permanent link">&para;</a></h1>
-<p>ls -l /var/run/php-fpm84.sock</p>
-<h1 id="logs-de-error-en-tiempo-real">Logs de error en tiempo real<a class="headerlink" href="#logs-de-error-en-tiempo-real" title="Permanent link">&para;</a></h1>
-<p>tail -f /var/log/nginx/error.log</p>
+<h2 id="reiniciar-nginx-tras-cambios-en-la-config">Reiniciar Nginx tras cambios en la config<a class="headerlink" href="#reiniciar-nginx-tras-cambios-en-la-config" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>rc-service nginx restart
+</code></pre></div>
+<h2 id="verificar-que-el-socket-de-php-fpm-este-activo">Verificar que el socket de PHP-FPM esté activo<a class="headerlink" href="#verificar-que-el-socket-de-php-fpm-este-activo" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>ls -l /var/run/php-fpm84.sock
+</code></pre></div>
+<h2 id="logs-de-error-en-tiempo-real">Logs de error en tiempo real<a class="headerlink" href="#logs-de-error-en-tiempo-real" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>tail -f /var/log/nginx/error.log
+</code></pre></div>
 <p>Despliegue de Actualizaciones</p>
-<div class="highlight"><pre><span></span><code>Hugo: Al ejecutar hugo en tu entorno de desarrollo, el contenido se sincroniza con /var/www/mercepons/public.
+<div class="highlight"><pre><span></span><code>Hugo: Al ejecutar hugo, el contenido se sincroniza con /var/www/mercepons/public.
 
 WordPress: El núcleo y plugins se mantienen mediante el panel o wp-cli nativo en Alpine.
 </code></pre></div>
@@ -822,21 +1235,25 @@ WordPress: El núcleo y plugins se mantienen mediante el panel o wp-cli nativo e
 <p>🛠️ Paso 1: Instalación del paquete</p>
 <p>Como Alpine es minimalista, primero asegúrate de tener los repositorios actualizados.
 Bash</p>
-<h1 id="actualizar-indices-de-paquetes">Actualizar índices de paquetes<a class="headerlink" href="#actualizar-indices-de-paquetes" title="Permanent link">&para;</a></h1>
-<p>apk update</p>
-<h1 id="instalar-nginx">Instalar nginx<a class="headerlink" href="#instalar-nginx" title="Permanent link">&para;</a></h1>
-<p>apk add nginx</p>
+<h2 id="actualizar-indices-de-paquetes">Actualizar índices de paquetes<a class="headerlink" href="#actualizar-indices-de-paquetes" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>apk update
+</code></pre></div>
+<h2 id="instalar-nginx">Instalar nginx<a class="headerlink" href="#instalar-nginx" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>apk add nginx
+</code></pre></div>
 <p>⚙️ Paso 2: Gestión del Servicio (OpenRC)</p>
 <p>Alpine no usa systemd, usa OpenRC. Estos son los comandos que necesitas para que Nginx arranque siempre con el servidor:
 Bash</p>
-<h1 id="anadir-nginx-al-inicio-automatico">Añadir Nginx al inicio automático<a class="headerlink" href="#anadir-nginx-al-inicio-automatico" title="Permanent link">&para;</a></h1>
-<p>rc-update add nginx default</p>
-<h1 id="iniciar-el-servicio-por-primera-vez">Iniciar el servicio por primera vez<a class="headerlink" href="#iniciar-el-servicio-por-primera-vez" title="Permanent link">&para;</a></h1>
-<p>rc-service nginx start</p>
-<h1 id="comprobar-el-estado">Comprobar el estado<a class="headerlink" href="#comprobar-el-estado" title="Permanent link">&para;</a></h1>
-<p>rc-service nginx status</p>
+<h2 id="anadir-nginx-al-inicio-automatico">Añadir Nginx al inicio automático<a class="headerlink" href="#anadir-nginx-al-inicio-automatico" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>rc-update add nginx default
+</code></pre></div>
+<h2 id="iniciar-el-servicio-por-primera-vez">Iniciar el servicio por primera vez<a class="headerlink" href="#iniciar-el-servicio-por-primera-vez" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>rc-service nginx start
+</code></pre></div>
+<h2 id="comprobar-el-estado">Comprobar el estado<a class="headerlink" href="#comprobar-el-estado" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>rc-service nginx status
+</code></pre></div>
 <p>📂 Paso 3: Estructura de archivos en Alpine</p>
-<p>A diferencia de Debian/Ubuntu, Alpine organiza los archivos de forma ligeramente distinta:</p>
 <div class="highlight"><pre><span></span><code>Configuración principal: /etc/nginx/nginx.conf
 
 Configuraciones de sitios: /etc/nginx/http.d/ (Aquí es donde debes crear tus archivos .conf como el de Merce Pons).
@@ -848,19 +1265,21 @@ Directorio web por defecto: /var/lib/nginx/html (Aunque tú estás usando /var/w
 <p>👤 Paso 4: Usuarios y Permisos</p>
 <p>Nginx en Alpine corre bajo el usuario nginx por defecto. Para que pueda leer tus carpetas de Hugo y WordPress:
 Bash</p>
-<h1 id="asegurate-de-que-el-usuario-nginx-tiene-acceso-a-tus-webs">Asegúrate de que el usuario nginx tiene acceso a tus webs<a class="headerlink" href="#asegurate-de-que-el-usuario-nginx-tiene-acceso-a-tus-webs" title="Permanent link">&para;</a></h1>
-<p>chown -R nginx:nginx /var/www/mercepons
-chown -R nginx:nginx /var/www/blog</p>
-<h1 id="permisos-recomendados-para-directorios-y-archivos">Permisos recomendados para directorios y archivos<a class="headerlink" href="#permisos-recomendados-para-directorios-y-archivos" title="Permanent link">&para;</a></h1>
-<p>find /var/www/ -type d -exec chmod 755 {} \;
-find /var/www/ -type f -exec chmod 644 {} \;</p>
+<h2 id="asegurate-de-que-el-usuario-nginx-tiene-acceso-a-tus-webs">Asegúrate de que el usuario nginx tiene acceso a tus webs<a class="headerlink" href="#asegurate-de-que-el-usuario-nginx-tiene-acceso-a-tus-webs" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>chown -R nginx:nginx /var/www/mercepons
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>chown -R nginx:nginx /var/www/blog
+</code></pre></div>
+<h2 id="permisos-recomendados-para-directorios-y-archivos">Permisos recomendados para directorios y archivos<a class="headerlink" href="#permisos-recomendados-para-directorios-y-archivos" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>find /var/www/ -type d -exec chmod 755 {} \;
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>find /var/www/ -type f -exec chmod 644 {} \;
+</code></pre></div>
 <p>🚀 Paso 5: Verificación y Carga</p>
-<p>Cada vez que edites tu configuración (como el archivo que me pasaste antes), nunca reinicies sin probar primero:
-Bash</p>
-<h1 id="verificar-sintaxis-esto-te-ahorra-muchos-dolores-de-cabeza">Verificar sintaxis (esto te ahorra muchos dolores de cabeza)<a class="headerlink" href="#verificar-sintaxis-esto-te-ahorra-muchos-dolores-de-cabeza" title="Permanent link">&para;</a></h1>
-<p>nginx -t</p>
-<h1 id="si-el-test-es-exitoso-recarga-sin-cortar-conexiones-activas">Si el test es exitoso, recarga sin cortar conexiones activas<a class="headerlink" href="#si-el-test-es-exitoso-recarga-sin-cortar-conexiones-activas" title="Permanent link">&para;</a></h1>
-<p>nginx -s reload</p>
+<h2 id="verificar-sintaxis-esto-te-ahorra-muchos-dolores-de-cabeza">Verificar sintaxis (esto te ahorra muchos dolores de cabeza)<a class="headerlink" href="#verificar-sintaxis-esto-te-ahorra-muchos-dolores-de-cabeza" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>nginx -t
+</code></pre></div>
+<h2 id="si-el-test-es-exitoso-recarga-sin-cortar-conexiones-activas">Si el test es exitoso, recarga sin cortar conexiones activas<a class="headerlink" href="#si-el-test-es-exitoso-recarga-sin-cortar-conexiones-activas" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>nginx -s reload
+</code></pre></div>
 
 
 

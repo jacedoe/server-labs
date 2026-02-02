@@ -31,7 +31,7 @@ Esta documentación te guiará paso a paso en la creación de tu infraestructura
 
 ## 😈 3. Guía de Despliegue en FreeBSD
 
-- **Wordpress y Hugo en FreeBSD con Jails** [Despliegue completo](freebsd/deploy_www_jails)
+- **Wordpress y Hugo en FreeBSD con Jails** [Despliegue completo](freebsd/deploy_www_jails.md)
 
 ---
 
