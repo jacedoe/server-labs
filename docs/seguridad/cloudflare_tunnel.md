@@ -7,17 +7,17 @@ Al no usar contenedores, instalaremos el binario de forma nativa y lo configurar
 Alpine no siempre tiene la versión más reciente en sus repositorios oficiales, por lo que lo ideal es descargar el binario directamente de Cloudflare.
 Bash
 
-# Instalar dependencias necesarias
+## Instalar dependencias necesarias
 apk add libc6-compat
 
-# Descargar el binario (arquitectura x86_64 para XCP-ng)
+## Descargar el binario (arquitectura x86_64 para XCP-ng)
 wget https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64
 
-# Mover y dar permisos
+## Mover y dar permisos
 chmod +x cloudflared-linux-amd64
 mv cloudflared-linux-amd64 /usr/local/bin/cloudflared
 
-# Verificar instalación
+## Verificar instalación
 cloudflared --version
 
 2. Autenticación y Creación del Túnel
@@ -30,7 +30,7 @@ cloudflared tunnel login
 Una vez autorizado, crea el túnel para tu infraestructura:
 Bash
 
-# Nombre sugerido: server-labs
+## Nombre sugerido: server-labs
 cloudflared tunnel create server-labs
 
 Esto generará un archivo .json en ~/.cloudflared/. Anota el ID del túnel.
@@ -49,17 +49,17 @@ tunnel: TU_TUNNEL_ID
 credentials-file: /etc/cloudflared/TU_TUNNEL_ID.json
 
 ingress:
-  # Sitio principal (Hugo)
+  ## Sitio principal (Hugo)
   - hostname: merceponsautora.com
     service: http://localhost:8080
   - hostname: www.merceponsautora.com
     service: http://localhost:8080
 
-  # Blog (WordPress)
+  ## Blog (WordPress)
   - hostname: blog.merceponsautora.com
     service: http://localhost:80
 
-  # Regla por defecto (404 si no coincide nada)
+  ## Regla por defecto (404 si no coincide nada)
   - service: http_status:404
 
 No olvides mover el archivo .json de credenciales a /etc/cloudflared/ para que sea accesible globalmente.
@@ -73,7 +73,7 @@ Para que el túnel arranque solo al iniciar la VM en XCP-ng, crearemos un script
 
 Bash
 
-#!/sbin/openrc-run
+##!/sbin/openrc-run
 
 name="cloudflared"
 description="Cloudflare Tunnel"

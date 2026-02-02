@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Documentación paso a paso para el despliegue de VM con XCP-ng, Alpine Linux y puesta en marcha de un sito web en producción (NGINX, MariaDB, WordPress).">
+        <meta name="description" content="Documentación paso a paso para el despliegue de VM con XCP-ng, Alpine Linux, FreeBSD y puesta en marcha de un sito web en producción (NGINX, MariaDB, WordPress y Hugo).">
       
       
       
@@ -431,6 +431,17 @@
     <span class="md-ellipsis">
       
         🔒 2. Despliegue en producción de sitio web
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-despliegue-con-jails-en-freebsd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚙️ 3. Despliegue con jails en FreeBSD
       
     </span>
   </a>
@@ -863,6 +874,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#3-despliegue-con-jails-en-freebsd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚙️ 3. Despliegue con jails en FreeBSD
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#apendices" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -907,7 +929,7 @@
 
 
 <h1 id="bienvenido-a-server-labs">🏡 Bienvenido a Server Labs<a class="headerlink" href="#bienvenido-a-server-labs" title="Permanent link">&para;</a></h1>
-<p>Esta documentación te guiará paso a paso en la creación de tu infraestructura con <strong>XCP-ng</strong>, <strong>Linux</strong> y <strong>Contenedores Docker</strong>. </p>
+<p>Esta documentación te guiará paso a paso en la creación de tu infraestructura con <strong>XCP-ng</strong>, <strong>Linux</strong> y <strong>FreeBSD</strong>. </p>
 <blockquote>
 <p>Sigue la guía según tu objetivo: despliegue de VM, contenedores o referencia de comandos útiles.</p>
 </blockquote>
@@ -923,6 +945,11 @@
 <li><strong>Instalación y configuración de Nginx y Hugo</strong> <a href="web/nginx_conf/">Despliegue completo</a></li>
 <li><strong>Configuración del stack Alpine-Nginx-MariaDB-WordPress</strong> <a href="web/despliegue_stack_web/">Despliegue completo</a></li>
 <li><strong>Cloudflare Tunnel:</strong> <a href="seguridad/cloudflare_tunnel/">Configuración segura</a></li>
+</ul>
+<hr />
+<h2 id="3-despliegue-con-jails-en-freebsd">⚙️ 3. Despliegue con jails en FreeBSD<a class="headerlink" href="#3-despliegue-con-jails-en-freebsd" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Wordpress y Hugo en FreeBSD con Jails</strong> <a href="freebsd/deploy_www_jails">Despliegue completo</a></li>
 </ul>
 <hr />
 <h2 id="apendices">📚 Apéndices<a class="headerlink" href="#apendices" title="Permanent link">&para;</a></h2>

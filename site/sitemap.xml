@@ -2,34 +2,38 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://jacedoe.github.io/server-labs/</loc>
-         <lastmod>2026-01-27</lastmod>
+         <lastmod>2026-02-02</lastmod>
     </url>
     <url>
          <loc>https://jacedoe.github.io/server-labs/apendices/comandos_utiles/</loc>
-         <lastmod>2026-01-27</lastmod>
+         <lastmod>2026-02-02</lastmod>
     </url>
     <url>
          <loc>https://jacedoe.github.io/server-labs/apendices/notas/</loc>
-         <lastmod>2026-01-27</lastmod>
+         <lastmod>2026-02-02</lastmod>
+    </url>
+    <url>
+         <loc>https://jacedoe.github.io/server-labs/freebsd/deploy_www_jails/</loc>
+         <lastmod>2026-02-02</lastmod>
     </url>
     <url>
          <loc>https://jacedoe.github.io/server-labs/preparacion/instalacion_alpine/</loc>
-         <lastmod>2026-01-27</lastmod>
+         <lastmod>2026-02-02</lastmod>
     </url>
     <url>
          <loc>https://jacedoe.github.io/server-labs/preparacion/instalacion_xo_lite/</loc>
-         <lastmod>2026-01-27</lastmod>
+         <lastmod>2026-02-02</lastmod>
     </url>
     <url>
          <loc>https://jacedoe.github.io/server-labs/seguridad/cloudflare_tunnel/</loc>
-         <lastmod>2026-01-27</lastmod>
+         <lastmod>2026-02-02</lastmod>
     </url>
     <url>
          <loc>https://jacedoe.github.io/server-labs/web/despliegue_stack_web/</loc>
-         <lastmod>2026-01-27</lastmod>
+         <lastmod>2026-02-02</lastmod>
     </url>
     <url>
          <loc>https://jacedoe.github.io/server-labs/web/nginx_conf/</loc>
-         <lastmod>2026-01-27</lastmod>
+         <lastmod>2026-02-02</lastmod>
     </url>
 </urlset>

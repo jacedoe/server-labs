@@ -1,6 +1,6 @@
 
 
-🌐 Arquitectura de Servidor: Merce Pons
+🌐 Arquitectura de Servidor: merceponsautora
 
 Esta sección documenta la implementación nativa en Alpine Linux para la infraestructura de la escritora Merce Pons.
 Esquema de Flujo de Datos
@@ -28,21 +28,24 @@ B. Blog (WordPress - Dinámico)
 2. Manual de Mantenimiento (SysAdmin)
 Gestión de Servicios en Alpine (OpenRC)
 
-Para reiniciar o aplicar cambios en la configuración:
-Bash
-
-# Reiniciar Nginx tras cambios en la config
+## Reiniciar Nginx tras cambios en la config
+```
 rc-service nginx restart
+```
 
-# Verificar que el socket de PHP-FPM esté activo
+## Verificar que el socket de PHP-FPM esté activo
+```
 ls -l /var/run/php-fpm84.sock
+```
 
-# Logs de error en tiempo real
+## Logs de error en tiempo real
+```
 tail -f /var/log/nginx/error.log
+```
 
 Despliegue de Actualizaciones
 
-    Hugo: Al ejecutar hugo en tu entorno de desarrollo, el contenido se sincroniza con /var/www/mercepons/public.
+    Hugo: Al ejecutar hugo, el contenido se sincroniza con /var/www/mercepons/public.
 
     WordPress: El núcleo y plugins se mantienen mediante el panel o wp-cli nativo en Alpine.
 
@@ -59,29 +62,35 @@ Despliegue de Actualizaciones
 Como Alpine es minimalista, primero asegúrate de tener los repositorios actualizados.
 Bash
 
-# Actualizar índices de paquetes
+## Actualizar índices de paquetes
+```
 apk update
-
-# Instalar nginx
+```
+## Instalar nginx
+```
 apk add nginx
+```
 
 ⚙️ Paso 2: Gestión del Servicio (OpenRC)
 
 Alpine no usa systemd, usa OpenRC. Estos son los comandos que necesitas para que Nginx arranque siempre con el servidor:
 Bash
 
-# Añadir Nginx al inicio automático
+## Añadir Nginx al inicio automático
+```
 rc-update add nginx default
-
-# Iniciar el servicio por primera vez
+```
+## Iniciar el servicio por primera vez
+```
 rc-service nginx start
+```
 
-# Comprobar el estado
+## Comprobar el estado
+```
 rc-service nginx status
+```
 
 📂 Paso 3: Estructura de archivos en Alpine
-
-A diferencia de Debian/Ubuntu, Alpine organiza los archivos de forma ligeramente distinta:
 
     Configuración principal: /etc/nginx/nginx.conf
 
@@ -96,21 +105,27 @@ A diferencia de Debian/Ubuntu, Alpine organiza los archivos de forma ligeramente
 Nginx en Alpine corre bajo el usuario nginx por defecto. Para que pueda leer tus carpetas de Hugo y WordPress:
 Bash
 
-# Asegúrate de que el usuario nginx tiene acceso a tus webs
+## Asegúrate de que el usuario nginx tiene acceso a tus webs
+```
 chown -R nginx:nginx /var/www/mercepons
 chown -R nginx:nginx /var/www/blog
+```
 
-# Permisos recomendados para directorios y archivos
+## Permisos recomendados para directorios y archivos
+```
 find /var/www/ -type d -exec chmod 755 {} \;
 find /var/www/ -type f -exec chmod 644 {} \;
+```
 
 🚀 Paso 5: Verificación y Carga
 
-Cada vez que edites tu configuración (como el archivo que me pasaste antes), nunca reinicies sin probar primero:
-Bash
 
-# Verificar sintaxis (esto te ahorra muchos dolores de cabeza)
+## Verificar sintaxis (esto te ahorra muchos dolores de cabeza)
+```
 nginx -t
+```
 
-# Si el test es exitoso, recarga sin cortar conexiones activas
+## Si el test es exitoso, recarga sin cortar conexiones activas
+```
 nginx -s reload
+```
