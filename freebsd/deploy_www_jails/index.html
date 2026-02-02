@@ -14,6 +14,10 @@
         <link rel="canonical" href="https://jacedoe.github.io/server-labs/freebsd/deploy_www_jails/">
       
       
+        <link rel="prev" href="../../seguridad/cloudflare_tunnel/">
+      
+      
+        <link rel="next" href="../../apendices/comandos_utiles/">
       
       
         
@@ -24,7 +28,7 @@
     
     
       
-        <title>Guía de Despliegue: WordPress y Hugo en FreeBSD con Jails - Guía de Infraestructura Xen, Linux y contenedores</title>
+        <title>3.1. Wordpress y Hugo en FreeBSD con Jails - Guía de Infraestructura Xen, Linux y contenedores</title>
       
     
     
@@ -109,7 +113,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Guía de Despliegue: WordPress y Hugo en FreeBSD con Jails
+              3.1. Wordpress y Hugo en FreeBSD con Jails
             
           </span>
         </div>
@@ -268,6 +272,28 @@
   
   
   🔒 2. Despliegue en producción de sitio web
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+  😈 3. Guía de Despliegue en FreeBSD
 
         </a>
       </li>
@@ -631,6 +657,490 @@
       
   
   
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    😈 3. Guía de Despliegue en FreeBSD
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    😈 3. Guía de Despliegue en FreeBSD
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.1. Wordpress y Hugo en FreeBSD con Jails
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.1. Wordpress y Hugo en FreeBSD con Jails
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introducción
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requisitos-previos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Requisitos Previos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-configuracion-del-entorno" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Configuración del Entorno
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Configuración del Entorno">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-crear-el-jail" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Crear el Jail
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-instalar-paquetes-necesarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Instalar Paquetes Necesarios
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-configuracion-de-nginx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Configuración de Nginx
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Configuración de Nginx">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-configuracion-para-hugo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Configuración para Hugo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-configuracion-para-wordpress" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Configuración para WordPress
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-habilitar-y-reiniciar-nginx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Habilitar y Reiniciar Nginx
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-configuracion-de-php-fpm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Configuración de PHP-FPM
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Configuración de PHP-FPM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-configurar-php-fpm-para-tcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Configurar PHP-FPM para TCP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-habilitar-y-reiniciar-php-fpm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Habilitar y Reiniciar PHP-FPM
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-configuracion-de-mariadb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Configuración de MariaDB
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Configuración de MariaDB">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-habilitar-y-iniciar-mariadb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Habilitar y Iniciar MariaDB
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-configurar-la-base-de-datos-para-wordpress" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Configurar la Base de Datos para WordPress
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-configuracion-de-wordpress" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Configuración de WordPress
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Configuración de WordPress">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-descargar-y-configurar-wordpress" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Descargar y Configurar WordPress
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-configurar-wp-configphp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Configurar wp-config.php
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-configuracion-de-hugo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Configuración de Hugo
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Configuración de Hugo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-crear-el-sitio-con-hugo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Crear el Sitio con Hugo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-generar-el-sitio-estatico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Generar el Sitio Estático
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-configuracion-de-pf-packet-filter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Configuración de PF (Packet Filter)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Configuración de PF (Packet Filter)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-configurar-pf-en-el-host-principal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Configurar PF en el Host Principal
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-habilitar-y-recargar-pf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 Habilitar y Recargar PF
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-probar-el-acceso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Probar el Acceso
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Probar el Acceso">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-desde-el-jail" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Desde el Jail
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-desde-otro-host-en-la-lan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 Desde Otro Host en la LAN
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
   
   
     
@@ -647,10 +1157,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
         
           
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
             
   
   
@@ -668,8 +1178,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
   

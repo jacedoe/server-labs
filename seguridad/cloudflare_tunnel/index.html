@@ -17,7 +17,7 @@
         <link rel="prev" href="../../web/despliegue_stack_web/">
       
       
-        <link rel="next" href="../../apendices/comandos_utiles/">
+        <link rel="next" href="../../freebsd/deploy_www_jails/">
       
       
         
@@ -274,6 +274,26 @@
   
   
   🔒 2. Despliegue en producción de sitio web
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../freebsd/deploy_www_jails/" class="md-tabs__link">
+          
+  
+  
+  😈 3. Guía de Despliegue en FreeBSD
 
         </a>
       </li>
@@ -616,8 +636,24 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
-        
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.3. Cloudflare Tunnel
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -635,6 +671,89 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#instalar-dependencias-necesarias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Instalar dependencias necesarias
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#descargar-el-binario-arquitectura-x86_64-para-xcp-ng" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Descargar el binario (arquitectura x86_64 para XCP-ng)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mover-y-dar-permisos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mover y dar permisos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verificar-instalacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verificar instalación
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nombre-sugerido-server-labs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nombre sugerido: server-labs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sbinopenrc-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        !/sbin/openrc-run
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -678,7 +797,7 @@
   <span class="md-ellipsis">
     
   
-    📚 Apéndices
+    😈 3. Guía de Despliegue en FreeBSD
   
 
     
@@ -691,6 +810,93 @@
         
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    😈 3. Guía de Despliegue en FreeBSD
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../freebsd/deploy_www_jails/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.1. Wordpress y Hugo en FreeBSD con Jails
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📚 Apéndices
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -752,8 +958,80 @@
   
   
   
-    
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#instalar-dependencias-necesarias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Instalar dependencias necesarias
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#descargar-el-binario-arquitectura-x86_64-para-xcp-ng" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Descargar el binario (arquitectura x86_64 para XCP-ng)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mover-y-dar-permisos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mover y dar permisos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verificar-instalacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verificar instalación
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nombre-sugerido-server-labs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nombre sugerido: server-labs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sbinopenrc-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        !/sbin/openrc-run
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -773,20 +1051,22 @@
   
 
 
+  <h1>2.3. Cloudflare Tunnel</h1>
+
 <p>Para cerrar el círculo de tu infraestructura en Alpine Linux, el túnel de Cloudflare (cloudflared) es la pieza clave: es lo que permite que tu servidor sea accesible desde internet sin abrir puertos en tu router y gestionando el SSL de forma automática.</p>
 <p>Al no usar contenedores, instalaremos el binario de forma nativa y lo configuraremos como un servicio de OpenRC.
 🛠️ Guía de Instalación: Cloudflare Tunnel en Alpine Linux
 1. Instalación del binario</p>
 <p>Alpine no siempre tiene la versión más reciente en sus repositorios oficiales, por lo que lo ideal es descargar el binario directamente de Cloudflare.
 Bash</p>
-<h1 id="instalar-dependencias-necesarias">Instalar dependencias necesarias<a class="headerlink" href="#instalar-dependencias-necesarias" title="Permanent link">&para;</a></h1>
+<h2 id="instalar-dependencias-necesarias">Instalar dependencias necesarias<a class="headerlink" href="#instalar-dependencias-necesarias" title="Permanent link">&para;</a></h2>
 <p>apk add libc6-compat</p>
-<h1 id="descargar-el-binario-arquitectura-x86_64-para-xcp-ng">Descargar el binario (arquitectura x86_64 para XCP-ng)<a class="headerlink" href="#descargar-el-binario-arquitectura-x86_64-para-xcp-ng" title="Permanent link">&para;</a></h1>
+<h2 id="descargar-el-binario-arquitectura-x86_64-para-xcp-ng">Descargar el binario (arquitectura x86_64 para XCP-ng)<a class="headerlink" href="#descargar-el-binario-arquitectura-x86_64-para-xcp-ng" title="Permanent link">&para;</a></h2>
 <p>wget https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64</p>
-<h1 id="mover-y-dar-permisos">Mover y dar permisos<a class="headerlink" href="#mover-y-dar-permisos" title="Permanent link">&para;</a></h1>
+<h2 id="mover-y-dar-permisos">Mover y dar permisos<a class="headerlink" href="#mover-y-dar-permisos" title="Permanent link">&para;</a></h2>
 <p>chmod +x cloudflared-linux-amd64
 mv cloudflared-linux-amd64 /usr/local/bin/cloudflared</p>
-<h1 id="verificar-instalacion">Verificar instalación<a class="headerlink" href="#verificar-instalacion" title="Permanent link">&para;</a></h1>
+<h2 id="verificar-instalacion">Verificar instalación<a class="headerlink" href="#verificar-instalacion" title="Permanent link">&para;</a></h2>
 <p>cloudflared --version</p>
 <ol>
 <li>Autenticación y Creación del Túnel</li>
@@ -796,7 +1076,7 @@ Bash</p>
 <p>cloudflared tunnel login</p>
 <p>Una vez autorizado, crea el túnel para tu infraestructura:
 Bash</p>
-<h1 id="nombre-sugerido-server-labs">Nombre sugerido: server-labs<a class="headerlink" href="#nombre-sugerido-server-labs" title="Permanent link">&para;</a></h1>
+<h2 id="nombre-sugerido-server-labs">Nombre sugerido: server-labs<a class="headerlink" href="#nombre-sugerido-server-labs" title="Permanent link">&para;</a></h2>
 <p>cloudflared tunnel create server-labs</p>
 <p>Esto generará un archivo .json en ~/.cloudflared/. Anota el ID del túnel.
 3. Configuración del archivo config.yml</p>
@@ -809,15 +1089,15 @@ YAML</p>
 <p>tunnel: TU_TUNNEL_ID
 credentials-file: /etc/cloudflared/TU_TUNNEL_ID.json</p>
 <p>ingress:
-  # Sitio principal (Hugo)
+  ## Sitio principal (Hugo)
   - hostname: merceponsautora.com
     service: http://localhost:8080
   - hostname: www.merceponsautora.com
     service: http://localhost:8080</p>
-<p># Blog (WordPress)
+<p>## Blog (WordPress)
   - hostname: blog.merceponsautora.com
     service: http://localhost:80</p>
-<p># Regla por defecto (404 si no coincide nada)
+<p>## Regla por defecto (404 si no coincide nada)
   - service: http_status:404</p>
 <p>No olvides mover el archivo .json de credenciales a /etc/cloudflared/ para que sea accesible globalmente.
 4. Configuración como Servicio nativo (OpenRC)</p>
@@ -827,7 +1107,7 @@ credentials-file: /etc/cloudflared/TU_TUNNEL_ID.json</p>
 Pega este contenido:
 </code></pre></div>
 <p>Bash</p>
-<h1 id="sbinopenrc-run">!/sbin/openrc-run<a class="headerlink" href="#sbinopenrc-run" title="Permanent link">&para;</a></h1>
+<h2 id="sbinopenrc-run">!/sbin/openrc-run<a class="headerlink" href="#sbinopenrc-run" title="Permanent link">&para;</a></h2>
 <p>name="cloudflared"
 description="Cloudflare Tunnel"
 command="/usr/local/bin/cloudflared"
